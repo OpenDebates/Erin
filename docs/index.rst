@@ -13,6 +13,7 @@ Contents
 
    License <license>
    Authors <authors>
+   Contribution Guidelines <contributing>
    Module Reference <api/modules>
 
 

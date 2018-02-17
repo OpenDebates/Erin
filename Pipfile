@@ -10,6 +10,7 @@ name = "pypi"
 "e1839a8" = {path = ".", editable = true}
 "discord.py" = {extras = ["voice"]}
 codecov = "*"
+raven = "*"
 
 
 [dev-packages]
@@ -19,4 +20,3 @@ sphinx-rtd-theme = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-runner = "*"
-rollbar = "*"
