@@ -22,5 +22,5 @@ install:
   - "pipenv install .[TESTS]"
 
 test_script:
-- ps: "python3.6 -m pytest --cov=enigma tests/"
-- ps: "python3.6 -m codecov"
+- "pytest --cov=enigma tests/"
+- "codecov"
