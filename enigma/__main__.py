@@ -1,6 +1,8 @@
 import argparse
 import sys
 
+import enigma
+
 
 def _optional_commands(parser):
     parser.add_argument(

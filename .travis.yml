@@ -1,0 +1,22 @@
+sudo: false
+language: python
+matrix:
+  fast_finish: true
+  include:
+    - python: "3.6.4"
+    - python: nightly
+  allow_failures:
+    - python: nightly
+os:
+  - linux
+git:
+  depth: 3
+branches:
+  only:
+  - /.*/
+install:
+  - pip install pipenv codecov
+  - pipenv install .[TESTS]
+script:
+- pytest --cov=enigma tests/
+- codecov

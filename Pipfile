@@ -7,10 +7,15 @@ name = "pypi"
 
 [packages]
 
-sphinx-rtd-theme = "*"
-sphinx = "*"
 "e1839a8" = {path = ".", editable = true}
+"discord.py" = {extras = ["voice"]}
+codecov = "*"
 
 
 [dev-packages]
 
+sphinx = "*"
+sphinx-rtd-theme = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-runner = "*"

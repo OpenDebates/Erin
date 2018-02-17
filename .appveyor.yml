@@ -1,0 +1,26 @@
+build: false
+
+environment:
+  matrix:
+    - PYTHON: "C:\\Python36"
+      PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "64"
+
+platform:
+  - x64
+
+init:
+  - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
+
+install:
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - "pip install pipenv codecov"
+  - "pipenv install .[TESTS]"
+
+test_script:
+- ps: "pytest --cov=enigma tests/"
+- ps: "codecov"
