@@ -12,3 +12,7 @@ The Polyglot Discord Bot
 
 .. image:: https://codecov.io/gh/UnethicalDiscord/Enigma/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/UnethicalDiscord/Enigma
+
+.. image:: https://readthedocs.org/projects/enigma/badge/?version=latest
+    :target: http://enigma.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
