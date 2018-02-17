@@ -16,3 +16,7 @@ The Polyglot Discord Bot
 .. image:: https://readthedocs.org/projects/enigma/badge/?version=latest
     :target: http://enigma.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
+
+.. image:: https://snyk.io/test/github/unethicaldiscord/enigma/badge.svg?targetFile=requirements.txt
+    :target: https://snyk.io/test/github/unethicaldiscord/enigma?targetFile=requirements.txt
+
