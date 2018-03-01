@@ -45,7 +45,7 @@ try:
     import sphinx
     from distutils.version import LooseVersion
 
-    cmd_line_template = "sphinx-apidoc -f -o {outputdir} {moduledir}"
+    cmd_line_template = "sphinx-apidoc --implicit-namespaces -f -o {outputdir} {moduledir}"
     cmd_line = cmd_line_template.format(outputdir=output_dir, moduledir=module_dir)
 
     args = cmd_line.split(" ")
@@ -266,5 +266,5 @@ python_version = '.'.join(map(str, sys.version_info[0:2]))
 intersphinx_mapping = {
     'sphinx': ('http://www.sphinx-doc.org/en/stable', None),
     'python': ('https://docs.python.org/' + python_version, None),
-    'discord.py': ('http://discordpy.readthedocs.io/en/stable/', None)
+    'discord.': ('http://discordpy.readthedocs.io/en/rewrite/', None)
 }
