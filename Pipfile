@@ -14,8 +14,9 @@ raven = "*"
 
 [dev-packages]
 
-Sphinx = "*"
-sphinx_rtd_theme = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-runner = "*"
+wheel = "*"

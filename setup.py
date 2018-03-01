@@ -8,7 +8,7 @@ import codecs
 import os
 import re
 import sys
-from setuptools import setup
+from setuptools import setup, find_packages
 
 path_here = os.path.abspath(os.path.dirname(__file__))
 
@@ -33,6 +33,7 @@ def setup_package():
     sphinx = ['sphinx'] if needs_sphinx else []
     setup(
         version=find_version('enigma', '__init__.py'),
+        packages=find_packages(exclude=['docs', 'tests']),
         entry_points={
             'console_scripts': [
                 'enigma = enigma.__main__:main'
@@ -44,7 +45,7 @@ def setup_package():
             'TESTS': [
                 'pytest',
                 'pytest-cov',
-                'pytest-runner'
+                'pytest-runner',
             ],
             'DOCS': [
                 'Sphinx',
