@@ -2,12 +2,16 @@ import argparse
 import sys
 
 import enigma
+from enigma.commands.start import StartCommand
 
 
 def _optional_commands(parser):
+    """
+    Optional commands passed directly to the main parser.
+    """
     parser.add_argument(
             "-V", "--version",
-            version="%(prog)s {}".format(enigma.__version__),
+            version=f"%(prog)s {enigma.__version__}",
             action="version"
         )
     parser.add_argument(
@@ -19,7 +23,19 @@ def _optional_commands(parser):
 
 
 def _main_commands(parser):
-    # Any important commands we need go here.
+    """
+    Commands for the commands subparser is defined in
+    :mod:`enigma.commands` and called here.
+
+    You can pass any of the arguments except `action` to these commands
+    as defined by :func:`argparse.ArgumentParser.add_parser`.
+    """
+    StartCommand(
+        parser,
+        "start",
+        aliases=["run"],
+        help="start the server"
+    )
     return parser
 
 
@@ -45,7 +61,7 @@ def main(args=None):
         args = parser.parse_args()
 
     try:
-        args.action(args)  # Investigate why this fails
+        args.action(args)
     except AttributeError:
         pass
 
@@ -53,7 +69,13 @@ def main(args=None):
         pass  # This is where we start running code
 
     if args.verbose:
-        print("Verbosity enabled!")
+        """
+        This is different from logging output verbosity. Enabling this
+        will print command internals directly to STDOUT regardless of
+        the settings defined in the logging module. Only recommended
+        for use by developers. 
+        """
+        print("Verbose Mode: Enabled")
 
 
 if __name__ == "__main__":
