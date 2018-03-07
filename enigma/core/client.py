@@ -1,11 +1,19 @@
 import logging
 import traceback
 
-import plugins
+import coloredlogs
+import toml
 from discord.ext import commands
+
+import plugins
 from enigma.core.utils import find_cogs
 
-logger = logging.getLogger("enigma.app")
+# Logging
+logger = logging.getLogger(__name__)
+coloredlogs.install(level='INFO', logger=logger)
+
+# Config Loader
+config = toml.load("enigma/app.cfg")
 
 
 class EnigmaClient(commands.Bot):
@@ -20,11 +28,11 @@ class EnigmaClient(commands.Bot):
         )
 
     def _get_command_prefix(self):
-        self.prefixes = [">"]
-        return self.prefixes[0]
+        self.prefixes = config["global"]["prefixes"]
+        return self.prefixes
 
     def _get_description(self):
-        self.description = "Polyglot Discord Bot"
+        self.description = config["global"]["description"]
         return self.description
 
     def _load_plugins(self):

@@ -1,17 +1,7 @@
-import logging
-
-import coloredlogs
-import toml
-
-from enigma.core.client import EnigmaClient
+from enigma.core.client import EnigmaClient, config, logger
 
 # Client
 bot = EnigmaClient()
-config = toml.load("enigma/app.cfg")
-
-# Logger
-logger = logging.getLogger(__name__)
-coloredlogs.install(level='INFO', logger=logger)
 
 
 def start():
