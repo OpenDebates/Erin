@@ -22,5 +22,5 @@ install:
   - "pip install .[TESTS]"
 
 test_script:
-- "pipenv run pytest --cov=enigma tests/"
+- "pytest --cov=enigma tests/"
 - "codecov"
