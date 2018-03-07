@@ -18,8 +18,8 @@ init:
 
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - "pip install pipenv codecov"
-  - "pipenv install .[TESTS]"
+  - "pip install codecov"
+  - "pip install .[TESTS]"
 
 test_script:
 - "pipenv run pytest --cov=enigma tests/"

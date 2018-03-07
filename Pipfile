@@ -7,15 +7,17 @@ name = "pypi"
 
 [packages]
 
-"discord.py" = {extras = ["voice"]}
 codecov = "*"
 raven = "*"
+toml = "*"
+"72eb2aa" = {file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip", extras = ["voice"]}
+coloredlogs = "*"
 
 
 [dev-packages]
 
 sphinx = "*"
-sphinx_rtd_theme = "*"
+sphinx-rtd-theme = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-runner = "*"

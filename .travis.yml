@@ -18,8 +18,8 @@ branches:
   only:
   - "/.*/"
 install:
-- pip install pipenv codecov
-- pipenv install .[TESTS]
+- pip install codecov
+- pip install .[TESTS]
 script:
 - pytest --cov=enigma tests/
 after_success:
