@@ -2,11 +2,12 @@ import logging
 import traceback
 
 import coloredlogs
+import discord
 import toml
 from discord.ext import commands
 
 import plugins
-from enigma.core.utils import find_cogs
+from enigma.core.utils import find_cogs, get_plugin_data
 
 # Logging
 logger = logging.getLogger(__name__)
@@ -38,10 +39,12 @@ class EnigmaClient(commands.Bot):
     def _load_plugins(self):
         for extension in find_cogs(plugins):
             try:
+                plugin_data = get_plugin_data(extension)
+                logger.info(f"Loading plugin: {plugin_data['name']}")
                 self.load_extension(extension)
             except Exception as e:
                 logger.error(
-                    f'Failed to load extension {extension}.'
+                    f'Failed to load plugin: {extension}.'
                 )
                 traceback.print_exc()
 
@@ -51,3 +54,11 @@ class EnigmaClient(commands.Bot):
         called here.
         """
         self._load_plugins()
+
+    async def on_ready(self):
+        logger.info(f"Logged in as: {self.user.name}, {self.user.id}")
+        await self.change_presence(
+            activity=discord.Activity(
+                type=discord.ActivityType.watching, name="over Unethical"
+            )
+        )

@@ -48,3 +48,27 @@ def find_cogs(package):
     for spec in spec_list:
         del sys.modules[spec.name]
     return cog_list
+
+
+def get_plugin_data(plugin):
+    """
+    Retrieve the plugin_data dictionary defined in a plugin.
+
+    Parameters
+    -----------
+    plugin : path to a plugin in module import format
+
+    Returns
+    --------
+    dict or None
+        The plugin_data dict defined in a plugin or None if the dict is
+        not defined.
+    """
+    plugin = importlib.import_module(plugin)
+    try:
+        plugin_data = plugin.plugin_data
+    except AttributeError as e:
+        plugin_data = None
+    finally:
+        del sys.modules[plugin.__name__]
+        return plugin_data

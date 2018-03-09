@@ -1,26 +1,17 @@
-from enigma.core.client import EnigmaClient, config, logger
+import enigma
 
-# Client
-bot = EnigmaClient()
+from enigma.core.client import config, EnigmaClient, logger
 
 
 def start():
     """
     Starts the bot and obtains all necessary config data.
     """
+    logger.info(f"Starting Enigma: {enigma.__version__}")
+    bot = EnigmaClient()
     bot.setup()
     bot.run(
         config['bot']['token'],
         bot=True,
         reconnect=True
     )
-
-
-@bot.event
-async def on_ready():
-    logger.info(f"Logged in as: {bot.user.name}, {bot.user.id}")
-    await bot.change_presence()
-
-
-if __name__ == "__main__":
-    pass

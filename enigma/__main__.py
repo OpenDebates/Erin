@@ -66,7 +66,8 @@ def main(args=None):
         pass
 
     if len(sys.argv[1:]) == 0:
-        pass  # This is where we start running code
+        parser.print_help()
+        parser.exit(0)
 
     if args.verbose:
         """

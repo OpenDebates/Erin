@@ -2,6 +2,10 @@ import datetime
 
 from discord.ext import commands
 
+plugin_data = {
+    "name": "Load Data"
+}
+
 
 class LoadData:
     def __init__(self, bot):

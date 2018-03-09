@@ -167,3 +167,4 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 /enigma/app.cfg
+/venv/
