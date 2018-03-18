@@ -7,6 +7,7 @@ import toml
 from discord.ext import commands
 
 import plugins
+from enigma.core.database import EnigmaDatabase
 from enigma.core.utils import find_cogs, get_plugin_data
 
 # Logging
@@ -27,6 +28,9 @@ class EnigmaClient(commands.Bot):
             command_prefix=self._get_command_prefix(),
             description=self._get_description()
         )
+
+        # Database
+        self.db = EnigmaDatabase
 
     def _get_command_prefix(self):
         self.prefixes = config["global"]["prefixes"]
