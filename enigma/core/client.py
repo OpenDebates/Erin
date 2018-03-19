@@ -44,7 +44,10 @@ class EnigmaClient(commands.Bot):
 
     def _get_description(self):
         self.description = config["global"]["description"]
-        return self.description
+        if self.description:
+            return self.description
+        else:
+            return ""
 
     def _load_plugins(self):
         for extension in find_cogs(plugins):
