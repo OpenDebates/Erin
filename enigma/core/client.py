@@ -5,6 +5,7 @@ import coloredlogs
 import discord
 import toml
 from discord.ext import commands
+from motor.motor_asyncio import AsyncIOMotorClient
 
 import plugins
 from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
@@ -36,7 +37,7 @@ class EnigmaClient(commands.Bot):
         )
 
         # Database
-        self.db = EnigmaDatabase
+        self.db = EnigmaDatabase(self, config)
 
     def _get_command_prefix(self):
         self.prefixes = config["global"]["prefixes"]

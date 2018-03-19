@@ -10,6 +10,10 @@ The Polyglot Discord Bot
 .. image:: https://ci.appveyor.com/api/projects/status/k860vof2i68snwsi/branch/master?svg=true
     :target: https://ci.appveyor.com/project/daegontaven/enigma
 
+.. image:: https://api.codeclimate.com/v1/badges/f2ab14cd1ca989684ee5/maintainability
+   :target: https://codeclimate.com/github/UnethicalDiscord/Enigma/maintainability
+   :alt: Maintainability
+
 .. image:: https://codecov.io/gh/UnethicalDiscord/Enigma/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/UnethicalDiscord/Enigma
 
