@@ -1,0 +1,8 @@
+
+.gitignore
+*.py[cod]
+/enigma/app.cfg
+/Dockerfile
+/venv/
+/build/
+/dist/
