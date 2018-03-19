@@ -7,15 +7,21 @@ import toml
 from discord.ext import commands
 
 import plugins
+from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
 from enigma.core.database import EnigmaDatabase
-from enigma.core.utils import find_cogs, get_plugin_data
+from enigma.core.utils import find_cogs, get_plugin_data, config_loader
 
 # Logging
 logger = logging.getLogger(__name__)
 coloredlogs.install(level='INFO', logger=logger)
 
 # Config Loader
-config = toml.load("enigma/app.cfg")
+try:
+    config = toml.load("enigma/app.cfg")
+except FileNotFoundError as e:
+    logger.warning("Looks like enigma/app.cfg is missing.")
+    logger.info("Checking for environment variables instead.")
+    config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
 
 class EnigmaClient(commands.Bot):

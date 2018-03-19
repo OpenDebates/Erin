@@ -1,6 +1,9 @@
 import importlib
+import os
 import pkgutil
 import sys
+
+from enigma.core.exceptions import EnigmaEnvironmentVariableError
 
 
 def find_cogs(package):
@@ -72,3 +75,20 @@ def get_plugin_data(plugin):
     finally:
         del sys.modules[plugin.__name__]
         return plugin_data
+
+
+def config_loader(mappings, optional_envs):
+    for category, settings in mappings.items():
+        for setting, value in settings.items():
+            if value.startswith("ENIGMA_"):
+                if value in os.environ:
+                    mappings[category][setting] = os.environ[value]
+                elif value in optional_envs:
+                    mappings[category][setting] = None
+                else:
+                    raise EnigmaEnvironmentVariableError(
+                        f"{value} is not optional.\n"
+                        "Set this in your YAML file or use 'export "
+                        f"{value}=YOUR_CUSTOM_VALUE' if you're a developer."
+                    )
+    return mappings
