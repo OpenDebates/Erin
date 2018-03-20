@@ -5,7 +5,6 @@ import coloredlogs
 import discord
 import toml
 from discord.ext import commands
-from motor.motor_asyncio import AsyncIOMotorClient
 
 import plugins
 from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
@@ -37,7 +36,7 @@ class EnigmaClient(commands.Bot):
         )
 
         # Database
-        self.db = EnigmaDatabase(self, config)
+        self.db = EnigmaDatabase(self, config, logger)
 
     def _get_command_prefix(self):
         self.prefixes = config["global"]["prefixes"]
@@ -56,9 +55,14 @@ class EnigmaClient(commands.Bot):
                 plugin_data = get_plugin_data(extension)
                 logger.info(f"Loading plugin: {plugin_data['name']}")
                 self.load_extension(extension)
-            except Exception as e:
+            except discord.ClientException as e:
                 logger.error(
-                    f'Failed to load plugin: {extension}.'
+                    f'Missing setup() for plugin: {extension}.'
+                )
+                traceback.print_exc()
+            except ImportError as e:
+                logger.error(
+                    f"Failed to load plugin: {extension}"
                 )
                 traceback.print_exc()
 
@@ -76,3 +80,6 @@ class EnigmaClient(commands.Bot):
                 type=discord.ActivityType.watching, name="over Unethical"
             )
         )
+
+        await self.db.connect()
+        await self.db._startup()
