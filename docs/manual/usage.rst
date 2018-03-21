@@ -85,3 +85,19 @@ You should also already have your database connection details. If not, read :ref
     prefixes = ["!" , "="]
     description = "I will ping you back. Don't worry!"
 
+Starting Enigma
+===============
+
+Now that we have a config file ready. Let's save it is somewhere. By convention, it's named ``app.cfg``.
+
+Now let's tell Enigma to start by passing the path to this file as an argument.
+
+::
+
+    enigma start --config /path/to/app.cfg
+
+
+.. note::
+
+    You can also place it in the ``enigma/app.cfg`` folder of the repository if you installed from source.
+    However, you must make sure to name it ``app.cfg`` in this case or Enigma will throw an error.

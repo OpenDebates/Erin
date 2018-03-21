@@ -13,6 +13,8 @@ import os
 import shutil
 import sys
 
+from sphinx.builders.html import StandaloneHTMLBuilder
+
 __location__ = os.path.join(os.getcwd(), os.path.dirname(
     inspect.getfile(inspect.currentframe())))
 
@@ -264,7 +266,15 @@ latex_documents = [
 # If false, no module index is generated.
 # latex_domain_indices = True
 
-# -- External mapping ------------------------------------------------------------
+# Custom Image order for PDFS
+StandaloneHTMLBuilder.supported_image_types = [
+    'image/svg+xml',
+    'image/gif',
+    'image/png',
+    'image/jpeg'
+]
+
+# -- External mapping --------------------------------------------------
 python_version = '.'.join(map(str, sys.version_info[0:2]))
 intersphinx_mapping = {
     'sphinx': ('http://www.sphinx-doc.org/en/stable', None),
