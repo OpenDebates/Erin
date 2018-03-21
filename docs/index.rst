@@ -14,6 +14,8 @@ Contents
    License <license>
    Authors <authors>
    Contribution Guidelines <contributing>
+   Installation <installation/index>
+   User Manual <manual/index>
    Module Reference <api/modules>
 
 
