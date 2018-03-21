@@ -1,3 +1,5 @@
+.. _configuring_database:
+
 =======================
 Configuring a database
 =======================
@@ -28,10 +30,10 @@ Then run this sql query either in the shell or using your preferred database man
     CREATE DATABASE my_database OWNER my_user; -- Where my_database is your desired database name.
 
 Congratulations! You now have a working installation of Enigma.
-If all went well, you can proceed to reading the `User Manual <../manual/index>`_
+If all went well, you can proceed to reading the :ref:`manual_index`.
 
 
 For Developers
 ==============
 
-Read the `Developer Handbook <../handbook/index>`_ to start contributing.
+Read the :ref:`handbook_index` to start contributing.

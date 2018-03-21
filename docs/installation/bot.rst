@@ -1,3 +1,5 @@
+.. _installing_bot:
+
 ==================
 Installing the bot
 ==================

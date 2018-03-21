@@ -1,3 +1,5 @@
+.. _manual_index:
+
 ===========
 User Manual
 ===========

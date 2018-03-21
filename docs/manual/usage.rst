@@ -1,3 +1,5 @@
+.. _basic_usage:
+
 ========================
 Basic Usage Instructions
 ========================
@@ -62,7 +64,7 @@ You can get the client ID from your bot's app page.
     :alt: Client ID
 
 Now that we have all the details, we can start filling in our config file. It should look something like this.
-You should also already have your database connection details. If not, read `Configuring a database <../installation/database>`_.
+You should also already have your database connection details. If not, read :ref:`configuring_database`.
 
 .. code-block:: cfg
 
