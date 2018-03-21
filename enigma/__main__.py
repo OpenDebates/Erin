@@ -60,15 +60,6 @@ def main(args=None):
     else:
         args = parser.parse_args()
 
-    try:
-        args.action(args)
-    except AttributeError:
-        pass
-
-    if len(sys.argv[1:]) == 0:
-        parser.print_help()
-        parser.exit(0)
-
     if args.verbose:
         """
         This is different from logging output verbosity. Enabling this
@@ -77,6 +68,15 @@ def main(args=None):
         for use by developers. 
         """
         print("Verbose Mode: Enabled")
+
+    try:
+        args.action(args)
+    except AttributeError:
+        pass
+
+    if len(sys.argv[1:]) == 0:
+        parser.print_help()
+        parser.exit(0)
 
 
 if __name__ == "__main__":

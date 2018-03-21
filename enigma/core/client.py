@@ -3,25 +3,15 @@ import traceback
 
 import coloredlogs
 import discord
-import toml
 from discord.ext import commands
 
 import plugins
-from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
 from enigma.core.database import EnigmaDatabase
-from enigma.core.utils import find_cogs, get_plugin_data, config_loader
+from enigma.core.utils import find_cogs, get_plugin_data
 
 # Logging
 logger = logging.getLogger(__name__)
 coloredlogs.install(level='INFO', logger=logger)
-
-# Config Loader
-try:
-    config = toml.load("enigma/app.cfg")
-except FileNotFoundError as e:
-    logger.warning("Looks like enigma/app.cfg is missing.")
-    logger.info("Checking for environment variables instead.")
-    config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
 
 class EnigmaClient(commands.Bot):
@@ -29,7 +19,9 @@ class EnigmaClient(commands.Bot):
     Custom implementation designed to load configuration from the TOML
     config file and dynamic console configurations
     """
-    def __init__(self):
+    def __init__(self, config):
+        self.config = config
+
         super().__init__(
             command_prefix=self._get_command_prefix(),
             description=self._get_description()
@@ -39,11 +31,11 @@ class EnigmaClient(commands.Bot):
         self.db = EnigmaDatabase(self, config, logger)
 
     def _get_command_prefix(self):
-        self.prefixes = config["global"]["prefixes"]
+        self.prefixes = self.config["global"]["prefixes"]
         return self.prefixes
 
     def _get_description(self):
-        self.description = config["global"]["description"]
+        self.description = self.config["global"]["description"]
         if self.description:
             return self.description
         else:

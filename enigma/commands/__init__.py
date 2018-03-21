@@ -14,12 +14,8 @@ class CommandFactory(object):
     """
     __metaclass__ = ABCMeta
 
-    def __init__(self, parser, *args, **kwargs):
-        self.parser = parser.add_parser(*args, **kwargs)
-        self.parser.set_defaults(action=self.run)
-
     @abstractmethod
-    def run(self, args):
+    def run(self, *args, **kwargs):
         """
         Kittens will die if this isn't implemented.
         """
