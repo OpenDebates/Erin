@@ -1,26 +1,55 @@
 CHECK_VANILLA_DB = \
 """
-   SELECT EXISTS (
-       SELECT 1
-       FROM   pg_tables 
-       WHERE  schemaname = 'public'
-       AND    tablename = 'guild_config'
-   );
+SELECT EXISTS (
+   SELECT 1
+   FROM   pg_tables 
+   WHERE  schemaname = 'public'
+   AND    tablename = 'guild'
+);
 """
 
 INITIALIZE_TABLES = \
 """
-    CREATE TABLE guild_config
-    (
-      guild_id INTEGER NOT NULL
-        CONSTRAINT guild_config_pkey
-        PRIMARY KEY,
-      owner_id INTEGER NOT NULL
-    );
-    
-    CREATE UNIQUE INDEX guild_config_guild_id_uindex
-      ON guild_config (guild_id);
-    
-    CREATE UNIQUE INDEX guild_config_owner_id_uindex
-      ON guild_config (owner_id);
+CREATE TABLE guild
+(
+  id INTEGER NOT NULL
+    CONSTRAINT guild_pkey
+    PRIMARY KEY
+);
+
+CREATE UNIQUE INDEX guild_id_uindex
+  ON guild (id);
+
+CREATE TABLE member
+(
+  id INTEGER NOT NULL
+    CONSTRAINT member_pkey
+    PRIMARY KEY
+);
+
+CREATE UNIQUE INDEX member_id_uindex
+  ON member (id);
+
+CREATE TABLE role
+(
+  id       INTEGER NOT NULL
+    CONSTRAINT role_pkey
+    PRIMARY KEY,
+  guild_id INTEGER NOT NULL
+    CONSTRAINT guild_id___fk
+    REFERENCES guild
+);
+
+CREATE UNIQUE INDEX role_id_uindex
+  ON role (id);
+
+CREATE TABLE member_roles
+(
+  member_id INTEGER NOT NULL
+    CONSTRAINT member_id___fk
+    REFERENCES member,
+  role_id   INTEGER NOT NULL
+    CONSTRAINT role_id___fk
+    REFERENCES role
+);
 """
