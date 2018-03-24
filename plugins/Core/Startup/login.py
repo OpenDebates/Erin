@@ -1,0 +1,28 @@
+import discord
+
+plugin_data = {
+    "name": "Login"
+}
+
+
+class Login:
+    def __init__(self, bot):
+        self.bot = bot
+        self.data = plugin_data
+
+    async def on_ready(self):
+        self.bot.logger.info(
+            f"Logged in as: {self.bot.user.name}, {self.bot.user.id}"
+        )
+        await self.bot.change_presence(
+            activity=discord.Activity(
+                type=discord.ActivityType.watching, name="over Unethical"
+            )
+        )
+
+        await self.bot.db.connect()
+        await self.bot.db._startup()
+
+
+def setup(bot):
+    bot.add_cog(Login(bot))

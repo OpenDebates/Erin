@@ -73,17 +73,6 @@ class EnigmaClient(commands.Bot):
         """
         self._load_plugins()
 
-    async def on_ready(self):
-        logger.info(f"Logged in as: {self.user.name}, {self.user.id}")
-        await self.change_presence(
-            activity=discord.Activity(
-                type=discord.ActivityType.watching, name="over Unethical"
-            )
-        )
-
-        await self.db.connect()
-        await self.db._startup()
-
     async def on_command(self, ctx):
         try:
             plugin_name = ctx.cog.data['name']
