@@ -1,4 +1,3 @@
-import logging
 import traceback
 
 import coloredlogs
@@ -7,11 +6,17 @@ from discord.ext import commands
 
 import plugins
 from enigma.core.database import EnigmaDatabase
+from enigma.core.loggers import EnigmaLogger, LEVEL_STYLES
 from enigma.core.utils import find_cogs, get_plugin_data
 
 # Logging
-logger = logging.getLogger(__name__)
-coloredlogs.install(level='INFO', logger=logger)
+logger = EnigmaLogger(__name__)
+coloredlogs.install(
+    level='INFO',
+    logger=logger,
+    level_styles=LEVEL_STYLES,
+    fmt="%(asctime)s %(hostname)s pid:%(process)d %(levelname)s %(message)s"
+)
 
 
 class EnigmaClient(commands.Bot):
@@ -45,7 +50,7 @@ class EnigmaClient(commands.Bot):
         for extension in find_cogs(plugins):
             try:
                 plugin_data = get_plugin_data(extension)
-                logger.info(f"Loading plugin: {plugin_data['name']}")
+                logger.plugin(f"Loading: {plugin_data['name']}")
                 self.load_extension(extension)
             except discord.ClientException as e:
                 logger.error(
