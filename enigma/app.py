@@ -1,3 +1,5 @@
+import logging
+
 import toml
 
 import enigma
@@ -6,16 +8,19 @@ from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
 from enigma.core.utils import config_loader
 
 
-def start(*config_file):
+def start(**kwargs):
     """
     Starts the bot and obtains all necessary config data.
     """
+    if kwargs['log_level']:
+        level = logging.getLevelName(kwargs['log_level'].upper())
+        logger.setLevel(level)
     logger.info(f"Starting Enigma: {enigma.__version__}")
 
     # Config Loader
     try:
-        if config_file:
-            config = toml.load(config_file[0].name)
+        if kwargs['config_file']:
+            config = toml.load(kwargs['config_file'])
         else:
             config = toml.load("enigma/app.cfg")
     except FileNotFoundError as e:

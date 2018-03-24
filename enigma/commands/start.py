@@ -15,8 +15,24 @@ class StartCommand(CommandFactory):
             type=argparse.FileType('r')
         )
 
+        # Set Logging Levels
+        self.choices = [
+            'debug', 'info', 'plugin', 'warning', 'error', 'critical'
+        ]
+        self.parser.add_argument(
+            '--log',
+            choices=self.choices,
+            type=str.lower
+        )
+
     def run(self, *sys_args, **kwargs):
+        passed_args = {
+            'config_file': None,
+            'log_level': None
+        }
         if sys_args[0].config:
-            app.start(sys_args[0].config)
-        else:
-            app.start()
+            passed_args['config_file'] = sys_args[0].config
+        if sys_args[0].log:
+            passed_args['log_level'] = sys_args[0].log
+
+        app.start(**passed_args)
