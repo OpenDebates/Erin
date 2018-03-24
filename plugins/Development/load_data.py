@@ -3,11 +3,11 @@ import datetime
 from discord.ext import commands
 
 plugin_data = {
-    "name": "Load Data"
+    "name": "Server Status"
 }
 
 
-class LoadData:
+class ServerStatus:
     def __init__(self, bot):
         self.bot = bot
         self.data = plugin_data
@@ -20,5 +20,5 @@ class LoadData:
 
 
 def setup(bot):
-    bot.add_cog(LoadData(bot))
+    bot.add_cog(ServerStatus(bot))
 

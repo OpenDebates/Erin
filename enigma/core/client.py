@@ -82,7 +82,17 @@ class EnigmaClient(commands.Bot):
         await self.db._startup()
 
     async def on_command(self, ctx):
-        logger.plugin(
-            f"{ctx.cog.data['name']}"
-            f" [{ctx.invoked_with}]: {ctx.message.content}"
-        )
+        try:
+            plugin_name = ctx.cog.data['name']
+        except AttributeError as e:
+            plugin_name = None
+
+        if plugin_name:
+            logger.plugin(
+                f"{plugin_name}"
+                f" [{ctx.invoked_with}]: {ctx.message.content}"
+            )
+        else:
+            logger.command(
+                f"{ctx.invoked_with}: {ctx.message.content}"
+            )
