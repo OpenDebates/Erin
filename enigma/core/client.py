@@ -50,7 +50,7 @@ class EnigmaClient(commands.Bot):
         for extension in find_cogs(plugins):
             try:
                 plugin_data = get_plugin_data(extension)
-                logger.plugin(f"Loading: {plugin_data['name']}")
+                logger.info(f"Loading Plugin: {plugin_data['name']}")
                 self.load_extension(extension)
             except discord.ClientException as e:
                 logger.error(
@@ -80,3 +80,9 @@ class EnigmaClient(commands.Bot):
 
         await self.db.connect()
         await self.db._startup()
+
+    async def on_command(self, ctx):
+        logger.plugin(
+            f"{ctx.cog.data['name']}"
+            f" [{ctx.invoked_with}]: {ctx.message.content}"
+        )

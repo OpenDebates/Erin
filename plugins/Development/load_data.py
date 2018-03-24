@@ -10,6 +10,7 @@ plugin_data = {
 class LoadData:
     def __init__(self, bot):
         self.bot = bot
+        self.data = plugin_data
 
     @commands.command(name="ping")
     async def ping(self, ctx):
