@@ -35,6 +35,9 @@ class EnigmaClient(commands.Bot):
         # Database
         self.db = EnigmaDatabase(self, config, logger)
 
+        # Logger
+        self.logger = logger
+
     def _get_command_prefix(self):
         self.prefixes = self.config["global"]["prefixes"]
         return self.prefixes
