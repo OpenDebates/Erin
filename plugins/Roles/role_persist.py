@@ -1,31 +1,46 @@
 from discord.ext import commands
 
+from enigma.utils import find_members
+
 plugin_data = {
-    "name": "Role Persist"
+    "name": "Persist Roles"
 }
 
 
-class RolePersist:
+class PersistRoles:
     def __init__(self, bot):
         self.bot = bot
         self.data = plugin_data
 
     @commands.group(
-        name="rolepersist",
+        name="persistroles",
         shorthelp="Saves the roles of a member.",
-        aliases=["persistrole", "rp", "pr"]
+        aliases=["pr"],
+        invoke_without_command=True
     )
     @commands.guild_only()
-    async def role_persist(self, ctx):
-        pass
+    async def persist_roles(self, ctx):
+        members = find_members(ctx)
+        for member in members:
+            await self.save_roles(member)
 
-    @role_persist.command(
+    async def save_roles(self, member):
+        print(f"Roles for {member} saved.")
+
+    @persist_roles.command(
         name="global",
-        shorthelp="Toggle persistent roles for all member."
+        shorthelp="Toggle persistent roles for all members."
     )
     async def toggle_global(self, ctx):
-        pass
+        toggled = await self.bot.db.get(ctx, "persistrole_global")
+        if toggled is None or toggled == "False":
+            await self.bot.db.set(ctx, "persistrole_global", "True")
+        else:
+            await self.bot.db.set(ctx, "persistrole_global", "False")
+
+    async def on_member_join(self, member):
+        print(f"{member.guild}: {member.id}")
 
 
 def setup(bot):
-    bot.add_cog(RolePersist(bot))
+    bot.add_cog(PersistRoles(bot))

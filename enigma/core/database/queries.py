@@ -12,17 +12,14 @@ INITIALIZE_TABLES = \
 """
 CREATE TABLE guild
 (
-  id INTEGER NOT NULL
-    CONSTRAINT guild_pkey
-    PRIMARY KEY
+  id    VARCHAR NOT NULL,
+  key   VARCHAR,
+  value VARCHAR
 );
-
-CREATE UNIQUE INDEX guild_id_uindex
-  ON guild (id);
 
 CREATE TABLE member
 (
-  id INTEGER NOT NULL
+  id VARCHAR NOT NULL
     CONSTRAINT member_pkey
     PRIMARY KEY
 );
@@ -32,12 +29,9 @@ CREATE UNIQUE INDEX member_id_uindex
 
 CREATE TABLE role
 (
-  id       INTEGER NOT NULL
+  id VARCHAR NOT NULL
     CONSTRAINT role_pkey
-    PRIMARY KEY,
-  guild_id INTEGER NOT NULL
-    CONSTRAINT guild_id___fk
-    REFERENCES guild
+    PRIMARY KEY
 );
 
 CREATE UNIQUE INDEX role_id_uindex
@@ -45,11 +39,11 @@ CREATE UNIQUE INDEX role_id_uindex
 
 CREATE TABLE member_roles
 (
-  member_id INTEGER NOT NULL
-    CONSTRAINT member_id___fk
+  member_id VARCHAR
+    CONSTRAINT member_id__fk
     REFERENCES member,
-  role_id   INTEGER NOT NULL
-    CONSTRAINT role_id___fk
+  role_id   VARCHAR
+    CONSTRAINT role_id__fk
     REFERENCES role
 );
 """
