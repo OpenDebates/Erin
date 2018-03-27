@@ -13,6 +13,8 @@ def find_members(ctx):
     for arg in args:
         arg = re.findall("\d{18}", arg)[0]
         if len(arg) == 18:
-            members.append(ctx.guild.get_member(int(arg)))
+            member_obj = ctx.guild.get_member(int(arg))
+            if member_obj:
+                members.append(member_obj)
     members = list(set(members))
     return members

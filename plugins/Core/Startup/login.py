@@ -21,7 +21,6 @@ class Login:
         )
 
         await self.bot.db.connect()
-        await self.bot.db._startup()
 
 
 def setup(bot):

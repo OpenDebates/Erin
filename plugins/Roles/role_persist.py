@@ -25,6 +25,10 @@ class PersistRoles:
             await self.save_roles(member)
 
     async def save_roles(self, member):
+        await self.bot.db.upsert(
+            table='member',
+            id=str(member.id)
+        )
         print(f"Roles for {member} saved.")
 
     @persist_roles.command(
