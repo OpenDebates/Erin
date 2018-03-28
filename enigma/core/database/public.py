@@ -22,6 +22,10 @@ class EnigmaDatabase:
         self.uri = f"postgresql://{self.username}:{self.password}" \
                    f"@{self.host}/{self.database}"
 
+        # TODO Add find, replace, and delete methods.
+        # TODO Create CI tests for the DB API
+        # TODO Rename DB Exceptions and add child DB Error exceptions
+
     async def connect(self):
         """
         Connect to the preconfigured database. This is only made a
@@ -108,17 +112,13 @@ class EnigmaDatabase:
         else:
             return row['value']
 
-    async def upsert(self, table: str, **columns: Dict[str, int or str]):
+    async def check_primary_key(self, table):
         """
-        This is used to `upsert` column values to a table  which means
-        to insert a row if it is not found or update it if it already
-        exists with the new values.
+        Check if the given table has a primary key.
 
-        :param table: table name in string format
-        :param columns: column-to-value mapping as params
+        :param table: a table as :obj:`str`
+        :return: True if PK exists or False.
         """
-
-        # Check if table has a primary key
         row = await self.conn.fetchrow(
             """
             SELECT *
@@ -129,7 +129,49 @@ class EnigmaDatabase:
             table
         )
         if row is None:
-            raise EnigmaDatabaseError(f"Table {table} has no primary key.")
+            return False
+        else:
+            return True
+
+    async def check_record_exists(
+            self, table, columns: Dict[str, int or str]
+    ):
+        """
+        Check if a record in the given table exists.
+
+        :param table: a tables as :obj:`str`
+        :param columns: column-to-value mapping as params
+        :return:
+        """
+        conditions = ""
+        for key, value in columns.items():
+            conditions += f"{key} = {repr(value)} AND "
+        conditions = re.sub('\sAND\s$', '', conditions)
+        select_query = \
+            f"""
+            SELECT * FROM public.{table}
+            WHERE {conditions}
+            """
+        record = await self.conn.fetchrow(select_query)
+        if record is None:
+            return False
+        else:
+            return True
+
+    async def upsert(self, table: str, columns: Dict[str, int or str]):
+        """
+        This is used to `upsert` column values to a table  which means
+        to insert a row if it is not found or update it if it already
+        exists with the new values.
+
+        :param table: table name in string format
+        :param columns: column-to-value mapping as params
+        """
+        if not await self.check_primary_key(table):
+            raise EnigmaDatabaseError(
+                f"Can only upsert into tables with primary keys."
+            )
+
         row = await self.conn.fetchrow(
             """
             SELECT count(*) FROM information_schema.columns
@@ -140,24 +182,10 @@ class EnigmaDatabase:
         if row[0] == len(columns):
             query_repr = list(map(lambda x: repr(x), list(columns.values())))
 
-            # Check if a record exists
-            conditions = ""
-            for key, value in columns.items():
-                conditions += f"{key} = {repr(value)} AND "
-            conditions = re.sub('\sAND\s$', '', conditions)
-            select_query = \
-                f"""
-                SELECT * FROM public.{table}
-                WHERE {conditions}
-                """
-            record = await self.conn.fetchrow(select_query)
-
-            if record is None:
-                # Insert record
-                values = ", ".join(query_repr)
-                insert_query = f"INSERT into public.{table} VALUES ({values})"
-                await self.conn.execute(insert_query)
-            else:
+            record_exists = await self.check_record_exists(
+                table, columns=columns
+            )
+            if record_exists:
                 # Update record
                 set_values = ""
                 for key, value in columns.items():
@@ -169,5 +197,34 @@ class EnigmaDatabase:
                     WHERE {conditions}
                     """
                 await self.conn.execute(update_query)
+            else:
+                # Insert record
+                values = ", ".join(query_repr)
+                insert_query = f"INSERT into public.{table} VALUES ({values})"
+                await self.conn.execute(insert_query)
+        else:
+            raise EnigmaDatabaseError(f"Table needs {row[0]} columns passed.")
+
+    async def insert(self, table, columns: Dict[str, int or str]):
+        row = await self.conn.fetchrow(
+            """
+            SELECT count(*) FROM information_schema.columns
+            WHERE table_name = $1
+            """,
+            table
+        )
+        if row[0] == len(columns):
+            # Make sure record doesn't exist already
+            record_exists = await self.check_record_exists(
+                table, columns=columns
+            )
+            if record_exists:
+                raise EnigmaDatabaseError(f"Record already exists.")
+
+            query_repr = list(map(lambda x: repr(x), list(columns.values())))
+            # Insert record
+            values = ", ".join(query_repr)
+            insert_query = f"INSERT into public.{table} VALUES ({values})"
+            await self.conn.execute(insert_query)
         else:
             raise EnigmaDatabaseError(f"Table needs {row[0]} columns passed.")
