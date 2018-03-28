@@ -23,6 +23,11 @@ class EnigmaDatabase:
                    f"@{self.host}/{self.database}"
 
     async def connect(self):
+        """
+        Connect to the preconfigured database. This is only made a
+        public method for emergencies (eg: connectivity issues) and
+        should never be called inside a plugin.
+        """
         self._logger.info(
             f"Connecting to database {self.database} at {self.host}"
         )
@@ -30,6 +35,13 @@ class EnigmaDatabase:
         await self._startup()
 
     async def disconnect(self):
+        """
+        Used to disconnect from the database. This is not to be called
+        called directly in a plugin and is often used in conjunction
+        when a commands need to terminate the application. Keeping the
+        bot up while the database is disconnected may result in lost
+        data.
+        """
         await self.conn.close()
         self._logger.info("Disconnecting from the database")
 
@@ -44,6 +56,15 @@ class EnigmaDatabase:
                 await self.conn.execute(INITIALIZE_TABLES)
 
     async def set(self, ctx, key: str, value: str):
+        """
+        Store a value in the key-value store. If you want to store other
+        types, you will need to cast them to a string first. Everything
+        can be represented as a string.
+
+        :param ctx: pass a :class:`discord.ext.commands.Context` object
+        :param key: a :obj:`str` where to save your value
+        :param value: :obj:`str`
+        """
         guild_id = ctx.guild.id
         row = await self.conn.fetchrow(
             "SELECT * FROM public.guild WHERE id = $1 AND key = $2",
@@ -69,6 +90,13 @@ class EnigmaDatabase:
             )
 
     async def get(self, ctx, key: str):
+        """
+        Get a value stored in the key-value store of the database.
+
+        :param ctx: pass a :class:`discord.ext.commands.Context` object
+        :param key: the key you previously set as :obj:`str`
+        :return: a :obj:`str` corresponding to the key
+        """
         guild_id = ctx.guild.id
         row = await self.conn.fetchrow(
             "SELECT * FROM public.guild WHERE id = $1 AND key = $2",

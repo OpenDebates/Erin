@@ -1,13 +1,29 @@
 import re
 
 
-def get_command_args(ctx):
+def get_command_args(ctx, lower_case=True):
+    """
+    Gets the arguments passed to a command.
+
+    :param ctx: pass a :class:`discord.ext.commands.Context` object
+    :param lower_case: returns arguments in lower case
+    :return: :obj:`list`
+    """
     args = ctx.message.content.split(" ")
-    args = [item.strip().lower() for item in args][1:]
+    if lower_case:
+        args = [item.strip().lower() for item in args][1:]
+    else:
+        args = [item.strip() for item in args][1:]
     return args
 
 
 def find_members(ctx):
+    """
+    Parses arguments passed to a command and returns a list of me
+
+    :param ctx: pass a :class:`discord.ext.commands.Context` object
+    :return: a list of :class:`discord.Member` objects
+    """
     args = get_command_args(ctx)
     members = []
     for arg in args:

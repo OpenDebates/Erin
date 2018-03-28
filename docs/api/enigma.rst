@@ -19,6 +19,14 @@ enigma.app module
     :undoc-members:
     :show-inheritance:
 
+enigma.utils module
+-------------------
+
+.. automodule:: enigma.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

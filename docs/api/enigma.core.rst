@@ -35,6 +35,14 @@ enigma.core.exceptions module
     :undoc-members:
     :show-inheritance:
 
+enigma.core.loggers module
+--------------------------
+
+.. automodule:: enigma.core.loggers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 enigma.core.utils module
 ------------------------
 
