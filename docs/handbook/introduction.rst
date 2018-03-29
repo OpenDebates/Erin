@@ -49,6 +49,11 @@ From the discord.py_ docs
 Plugins are simply extensions that have cogs with extra metadata and custom methods called in it. An existing cog can be converted into a plugin by defining a ``plugin_data`` variable in it's class.
 However, plugins are not guaranteed to work as a cog in another discord bot.
 
+To give you a better picture:
+
+- All plugins are extensions, but all extensions are not plugins.
+- All cogs work with plugins, but not cogs built specifically for plugins.
+
 **Plugin Metadata:**
 
 This is simply a local ``plugin_data`` variable of type :obj:`dict` defined in a plugin. This defines metadata like the name, description, status and other properties of a plugin.
@@ -56,4 +61,4 @@ This is simply a local ``plugin_data`` variable of type :obj:`dict` defined in a
 **Plugin Setup:**
 
 This is a local ``setup()`` function defined outside the cog's class. It's used to do initialize cogs and prepare the plugin to be imported as an extension.
-Although it is fairly easy to initialize other cogs and commands directly from the `setup()` function, it's recommended to only place commands that complement each other into the same plugin.
+Although it is fairly easy to initialize other cogs and commands directly from the ``setup()`` function, it's recommended to only place commands that complement each other into the same plugin.
