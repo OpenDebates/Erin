@@ -2,7 +2,7 @@
 Enigma
 ======
 
-The Polyglot Discord Bot
+Batteries Included
 
 .. image:: https://travis-ci.org/UnethicalDiscord/Enigma.svg?branch=master
     :target: https://travis-ci.org/UnethicalDiscord/Enigma

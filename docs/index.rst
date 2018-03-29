@@ -16,6 +16,7 @@ Contents
    Contribution Guidelines <contributing>
    Installation <installation/index>
    User Manual <manual/index>
+   Developer Handbook <handbook/index>
    Module Reference <api/modules>
 
 
