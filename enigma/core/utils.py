@@ -3,7 +3,7 @@ import os
 import pkgutil
 import sys
 
-from enigma.core.exceptions import EnigmaEnvironmentVariableError
+from enigma.core.exceptions import EnvironmentVariableError
 
 
 def find_cogs(package):
@@ -86,7 +86,7 @@ def config_loader(mappings, optional_envs):
                 elif value in optional_envs:
                     mappings[category][setting] = None
                 else:
-                    raise EnigmaEnvironmentVariableError(
+                    raise EnvironmentVariableError(
                         f"{value} is not optional.\n"
                         "Set this in your YAML file or use 'export "
                         f"{value}=YOUR_CUSTOM_VALUE' if you're a developer."

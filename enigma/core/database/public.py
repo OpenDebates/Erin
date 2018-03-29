@@ -3,7 +3,10 @@ from typing import Dict
 
 import asyncpg
 
-from enigma.core.exceptions import EnigmaDatabaseError
+from enigma.core.exceptions import (
+    DatabaseError, DatabaseKeyError, PrimaryKeyError, TableNotFoundError,
+    DatabaseTypeError, RecordExistsError
+)
 from .queries import CHECK_VANILLA_DB, INITIALIZE_TABLES
 
 
@@ -22,8 +25,6 @@ class EnigmaDatabase:
         self.uri = f"postgresql://{self.username}:{self.password}" \
                    f"@{self.host}/{self.database}"
 
-        # TODO Add find, replace, and delete methods.
-        # TODO Create CI tests for the DB API
         # TODO Rename DB Exceptions and add child DB Error exceptions
 
     async def connect(self):
@@ -108,7 +109,7 @@ class EnigmaDatabase:
             str(key)
         )
         if row is None:
-            return row
+            raise DatabaseKeyError(f"{repr(key)} not found.")
         else:
             return row['value']
 
@@ -173,8 +174,8 @@ class EnigmaDatabase:
         :param columns: column-to-value mapping as params
         """
         if not await self.check_primary_key(table):
-            raise EnigmaDatabaseError(
-                f"Can only upsert into tables with primary keys."
+            raise PrimaryKeyError(
+                f"upsert() only works on tables with primary keys."
             )
 
         row = await self.conn.fetchrow(
@@ -209,7 +210,9 @@ class EnigmaDatabase:
                 insert_query = f"INSERT into public.{table} VALUES ({values})"
                 await self.conn.execute(insert_query)
         else:
-            raise EnigmaDatabaseError(f"Table needs {row[0]} columns passed.")
+            raise DatabaseTypeError(
+                f"missing {row[0] - len(columns)} columns."
+            )
 
     async def insert(self, table, columns: Dict[str, int or str]):
         row = await self.conn.fetchrow(
@@ -225,7 +228,7 @@ class EnigmaDatabase:
                 table, columns=columns
             )
             if record_exists:
-                raise EnigmaDatabaseError(f"Record already exists.")
+                raise RecordExistsError(f"Passed values matched a record.")
 
             query_repr = list(map(lambda x: repr(x), list(columns.values())))
             # Insert record
@@ -233,7 +236,9 @@ class EnigmaDatabase:
             insert_query = f"INSERT into public.{table} VALUES ({values})"
             await self.conn.execute(insert_query)
         else:
-            raise EnigmaDatabaseError(f"Table needs {row[0]} columns passed.")
+            raise DatabaseTypeError(
+                f"missing {row[0] - len(columns)} columns."
+            )
 
     async def update(
             self, table, columns: Dict[str, int or str],
@@ -247,7 +252,9 @@ class EnigmaDatabase:
             table
         )
         if row[0] != len(columns):
-            raise EnigmaDatabaseError(f"Table needs {row[0]} columns passed.")
+            raise DatabaseTypeError(
+                f"missing {row[0] - len(columns)} columns."
+            )
         else:
             pass
 
@@ -268,4 +275,4 @@ class EnigmaDatabase:
                 """
             await self.conn.execute(update_query)
         else:
-            raise EnigmaDatabaseError(f"Table {table} does not exist.")
+            raise TableNotFoundError(f"{repr(table)}")
