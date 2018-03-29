@@ -8,7 +8,7 @@ from .queries import CHECK_VANILLA_DB, INITIALIZE_TABLES
 
 
 class EnigmaDatabase:
-    def __init__(self, bot, config, logger):
+    def __init__(self, config, logger, bot=None):
         # Internal
         self.conn = None
         self._logger = logger
@@ -143,10 +143,7 @@ class EnigmaDatabase:
         :param columns: column-to-value mapping as params
         :return:
         """
-        conditions = ""
-        for key, value in columns.items():
-            conditions += f"{key} = {repr(value)} AND "
-        conditions = re.sub('\sAND\s$', '', conditions)
+        conditions = self._build_conditions(columns)
         select_query = \
             f"""
             SELECT * FROM public.{table}
@@ -157,6 +154,14 @@ class EnigmaDatabase:
             return False
         else:
             return True
+
+    @staticmethod
+    def _build_conditions(columns, sep="AND"):
+        conditions = ""
+        for key, value in columns.items():
+            conditions += f"{key} = {repr(value)} {sep} "
+        conditions = re.sub(f'\s{sep}\s$', '', conditions)
+        return conditions
 
     async def upsert(self, table: str, columns: Dict[str, int or str]):
         """
@@ -185,6 +190,7 @@ class EnigmaDatabase:
             record_exists = await self.check_record_exists(
                 table, columns=columns
             )
+            conditions = self._build_conditions(columns)
             if record_exists:
                 # Update record
                 set_values = ""
@@ -228,3 +234,38 @@ class EnigmaDatabase:
             await self.conn.execute(insert_query)
         else:
             raise EnigmaDatabaseError(f"Table needs {row[0]} columns passed.")
+
+    async def update(
+            self, table, columns: Dict[str, int or str],
+            replace: Dict[str, int or str]
+    ):
+        row = await self.conn.fetchrow(
+            """
+            SELECT count(*) FROM information_schema.columns
+            WHERE table_name = $1
+            """,
+            table
+        )
+        if row[0] != len(columns):
+            raise EnigmaDatabaseError(f"Table needs {row[0]} columns passed.")
+        else:
+            pass
+
+        record_exists = await self.check_record_exists(
+            table, columns=columns
+        )
+        conditions = self._build_conditions(columns)
+        if record_exists:
+            # Update record
+            set_values = ""
+            for key, value in replace.items():
+                set_values += f"{key} = {repr(value)}, "
+            set_values = re.sub(',\s$', '', set_values)
+            update_query = \
+                f"""
+                UPDATE public.{table} SET {set_values} 
+                WHERE {conditions}
+                """
+            await self.conn.execute(update_query)
+        else:
+            raise EnigmaDatabaseError(f"Table {table} does not exist.")

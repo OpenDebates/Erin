@@ -33,7 +33,7 @@ class EnigmaClient(commands.Bot):
         )
 
         # Database
-        self.db = EnigmaDatabase(self, config, logger)
+        self.db = EnigmaDatabase(config, logger, bot=self)
 
         # Logger
         self.logger = logger
