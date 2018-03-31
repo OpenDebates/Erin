@@ -33,8 +33,7 @@ class EnigmaClient(commands.Bot):
         )
 
         # Database
-        self.client = MongoClient(config, logger, bot=self)
-        self.db = self.client["enigma"]
+        self.db = MongoClient(config, logger, bot=self)
 
         # Logger
         self.logger = logger

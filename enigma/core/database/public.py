@@ -32,3 +32,44 @@ class MongoClient(AsyncIOMotorClient):
             super(MongoClient, self).__init__(
                 host_list, replicaSet=f"{self.replica_set}", *args, **kwargs
             )
+
+    async def upsert(self, entity, **states):
+        """
+        Updates an existing state's value. Creates a state
+        if it does not exist. Also creates a database collection
+        for each entity type when needed.
+
+        :param entity: Any discord object with an id attribute
+        :param states: A dict of state and possible values
+        """
+        if not (hasattr(entity, "id")):
+            raise TypeError(f"'{entity}' is not an Entity!")
+
+        collection = self[self.database][
+            f'{entity.__class__.__name__}States']
+        await collection.update(
+            {f"{entity.__class__.__name__}ID": entity.id},
+            {"$set": states},
+            upsert=True
+        )
+
+    async def get(self, entity, state):
+        """
+        Grabs the value stored for an entities state.
+
+        :param entity: Any discord object with an id attribute
+        :param state: An event passed as str
+        :return: Returns the state's value if found or returns None
+        """
+        if not (hasattr(entity, "id")):
+            raise TypeError(f"'{entity}' is not an Entity!")
+
+        collection = self[self.database][
+            f'{entity.__class__.__name__}States']
+        record = await collection.find_one(
+            {f"{entity.__class__.__name__}ID": entity.id})
+        if record is None:
+            return record
+        else:
+            state = record[state]
+            return state
