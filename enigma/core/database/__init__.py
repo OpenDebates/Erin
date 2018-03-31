@@ -1,1 +1,1 @@
-from .public import EnigmaDatabase
+from .public import MongoClient

@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 
 import plugins
-from enigma.core.database import EnigmaDatabase
+from enigma.core.database import MongoClient
 from enigma.core.loggers import EnigmaLogger, LEVEL_STYLES
 from enigma.core.utils import find_cogs, get_plugin_data
 
@@ -33,7 +33,8 @@ class EnigmaClient(commands.Bot):
         )
 
         # Database
-        self.db = EnigmaDatabase(config, logger, bot=self)
+        self.client = MongoClient(config, logger, bot=self)
+        self.db = self.client["enigma"]
 
         # Logger
         self.logger = logger

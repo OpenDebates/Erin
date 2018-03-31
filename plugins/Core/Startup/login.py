@@ -16,11 +16,9 @@ class Login:
         )
         await self.bot.change_presence(
             activity=discord.Activity(
-                type=discord.ActivityType.watching, name="over Unethical"
+                type=discord.ActivityType.watching, name="over Discord"
             )
         )
-
-        await self.bot.db.connect()
 
 
 def setup(bot):
