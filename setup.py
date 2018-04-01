@@ -31,6 +31,8 @@ def find_version(*file_paths):
 def setup_package():
     needs_sphinx = {'build_sphinx', 'upload_docs'}.intersection(sys.argv)
     sphinx = ['sphinx'] if needs_sphinx else []
+    os.environ['SANIC_NO_UVLOOP'] = 'true'
+    os.environ['SANIC_NO_UJSON'] = 'true'
     setup(
         version=find_version('enigma', '__init__.py'),
         packages=find_packages(exclude=['docs', 'tests']),

@@ -1,11 +1,13 @@
+import asyncio
 import logging
 
 import toml
 
 import enigma
-from enigma.core.client import EnigmaClient, logger
+from enigma.client import EnigmaClient, logger
 from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
 from enigma.core.utils import config_loader
+from enigma.dashboard import web
 
 
 def start(**kwargs):
@@ -28,7 +30,22 @@ def start(**kwargs):
         logger.info("Checking for environment variables instead.")
         config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
-    bot = EnigmaClient(config)
+    # Faster Event Loop
+    try:
+        import uvloop
+        asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+    except ImportError:
+        pass
+
+    # Web Dashboard Initialization
+    server = web.create_server(
+        host=config["web"]["bind_ip"], port=config["web"]["port"]
+    )
+    loop = asyncio.get_event_loop()
+    task = asyncio.ensure_future(server)
+
+    # Initialize Bot
+    bot = EnigmaClient(config, loop=loop)
     bot.setup()
     bot.run(
         config['bot']['token'],

@@ -1,22 +1,22 @@
-import traceback
+import logging
 
-import coloredlogs
 import discord
 from discord.ext import commands
 
 import plugins
 from enigma.core.database import MongoClient
-from enigma.core.loggers import EnigmaLogger, LEVEL_STYLES
+from enigma.core.loggers import BotLogger
 from enigma.core.utils import find_cogs, get_plugin_data
 
 # Logging
-logger = EnigmaLogger(__name__)
-coloredlogs.install(
-    level='INFO',
-    logger=logger,
-    level_styles=LEVEL_STYLES,
-    fmt="%(asctime)s %(hostname)s pid:%(process)d %(levelname)s %(message)s"
+logger = BotLogger(__name__)
+handler = logging.StreamHandler()
+formatter = logging.Formatter(
+    "%(asctime)s [%(process)d] [%(levelname)s] %(message)s",
+    datefmt="[%Y-%m-%d %H:%M:%S %z]"
 )
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class EnigmaClient(commands.Bot):
@@ -24,12 +24,13 @@ class EnigmaClient(commands.Bot):
     Custom implementation designed to load configuration from the TOML
     config file and dynamic console configurations
     """
-    def __init__(self, config):
+    def __init__(self, config, *args, **kwargs):
         self.config = config
 
         super().__init__(
             command_prefix=self._get_command_prefix(),
-            description=self._get_description()
+            description=self._get_description(),
+            *args, **kwargs
         )
 
         # Database
