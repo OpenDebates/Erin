@@ -94,7 +94,7 @@ You can learn more about groups `here <http://rapptz.github.io/discord.py/docs/f
 
        # Notice this is now group()
        # Setting invoke_without_command=True makes sure sub commands don't
-       # the code in this function when they are called.
+       # run the code in this function when they are called.
        @commands.group(
            name="tag",
            invoke_without_command=True
@@ -109,8 +109,8 @@ You can learn more about groups `here <http://rapptz.github.io/discord.py/docs/f
        async def add_tag(self, ctx, tag: str, *, content: commands.clean_content):
             """
             Notice the '*' used after the tag param. This will ensure that
-            the content of the message after the tag won't get pass into
-            out coroutine. In short, without the '*', it will raise an
+            the content of the message after the tag won't get passed into
+            our coroutine. In short, without the '*', it will raise an
             error for more than one argument after the tag.
 
             With the '*' it will consider everything after the tag as a
@@ -128,7 +128,7 @@ You can learn more about groups `here <http://rapptz.github.io/discord.py/docs/f
                 {"guild_id": ctx.guild.id, "tag": tag, "content": content}
             )
 
-Run ``+tag add mytag 123`` or something similar (preferally with newlines and spaces as well) from discord to ensure
+Run ``+tag add mytag 123`` or something similar (preferably with newlines and spaces as well) from discord to ensure
 there are no errors. Then check you MongoDB client to make sure that the document's were inserted.
 
 If all went well we can add some code to display the tags.

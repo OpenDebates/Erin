@@ -30,7 +30,7 @@ Now this is the most important part. We need to create a configuration file whic
 
     [database]
 
-    host = ""
+    host = []
     port =
     username = ""
     password = ""
@@ -74,15 +74,16 @@ You should also already have your database connection details. If not, read :ref
 
     [database]
 
-    host = "myvps.com" # This can also be an IP address
-    port = 5432
+    host = ["myvps.com"] # This can also be a list of hosts (including replica sets)
+    port = 27017
     username = "pingbot"
     password = "ilov3bacon"
     database = "pingbot"
+    replica_set = "rs0"  # This is needed added when using replica sets
 
     [global]
 
-    prefixes = ["!" , "="]
+    prefixes = ["+" , ">"]
     description = "I will ping you back. Don't worry!"
 
 .. _starting_enigma:
