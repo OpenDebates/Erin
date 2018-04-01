@@ -48,14 +48,14 @@ class MongoClient(AsyncIOMotorClient):
         collection = self[self.database][
             f'{entity.__class__.__name__}States']
         await collection.update(
-            {f"{entity.__class__.__name__}ID": entity.id},
+            {f"{entity.__class__.__name__.lower()}_id": entity.id},
             {"$set": states},
             upsert=True
         )
 
     async def get(self, entity, state):
         """
-        Grabs the value stored for an entities state.
+        Grabs the value stored for an entity's state.
 
         :param entity: Any discord object with an id attribute
         :param state: An event passed as str
@@ -67,7 +67,7 @@ class MongoClient(AsyncIOMotorClient):
         collection = self[self.database][
             f'{entity.__class__.__name__}States']
         record = await collection.find_one(
-            {f"{entity.__class__.__name__}ID": entity.id})
+            {f"{entity.__class__.__name__.lower()}_id": entity.id})
         if record is None:
             return record
         else:

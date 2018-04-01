@@ -12,14 +12,6 @@ enigma.core.database.public module
     :undoc-members:
     :show-inheritance:
 
-enigma.core.database.queries module
------------------------------------
-
-.. automodule:: enigma.core.database.queries
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 
 Module contents
 ---------------

@@ -56,15 +56,15 @@ class EnigmaClient(commands.Bot):
                 logger.info(f"Loading Plugin: {plugin_data['name']}")
                 self.load_extension(extension)
             except discord.ClientException as e:
-                logger.error(
+                logger.exception(
                     f'Missing setup() for plugin: {extension}.'
                 )
-                traceback.print_exc()
             except ImportError as e:
-                logger.error(
+                logger.exception(
                     f"Failed to load plugin: {extension}"
                 )
-                traceback.print_exc()
+            except Exception as e:
+                logger.exception("Core Error")
 
     def setup(self):
         """

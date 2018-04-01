@@ -85,6 +85,8 @@ You should also already have your database connection details. If not, read :ref
     prefixes = ["!" , "="]
     description = "I will ping you back. Don't worry!"
 
+.. _starting_enigma:
+
 Starting Enigma
 ===============
 

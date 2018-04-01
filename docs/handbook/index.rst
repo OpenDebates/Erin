@@ -8,4 +8,4 @@ Developer Handbook
    :maxdepth: 2
 
    Introduction <introduction>
-   Basic Plugins <basics>
+   Plugins <plugins>

@@ -32,14 +32,13 @@ class PersistRoles:
     async def save_roles(self, member):
         role_ids = [role.id for role in member.roles]
         await self.bot.db.upsert(member, roles=role_ids)
-        print(f"Roles for {member} saved.")
 
     @persist_roles.command(
-        name="global",
+        name="guild",
         shorthelp="Toggle persistent roles for all members."
     )
-    async def toggle_global(self, ctx):
-        toggled = await self.bot.db.get(ctx.guild, "persistrole_global")
+    async def toggle_guild(self, ctx):
+        toggled = await self.bot.db.get(ctx.guild, "persistrole_guild")
         if toggled is None or toggled == "False":
             await self.bot.db.upsert(
                 ctx.guild, persistrole_global=True
@@ -65,7 +64,7 @@ class PersistRoles:
 
     async def on_member_join(self, member):
         persist_enabled = await self.bot.db.get(
-            member.guild, 'persistrole_global'
+            member.guild, 'persistrole_guild'
         )
         if persist_enabled is not True:
             return
@@ -79,7 +78,7 @@ class PersistRoles:
 
     async def on_member_update(self, before, after):
         persist_enabled = await self.bot.db.get(
-            after.guild, 'persistrole_global'
+            after.guild, 'persistrole_guild'
         )
         if persist_enabled and before.roles != after.roles:
             role_ids = [role.id for role in after.roles]

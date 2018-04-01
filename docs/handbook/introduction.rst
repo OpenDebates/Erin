@@ -23,7 +23,7 @@ Advanced Commands
 ------------------------------
 
 - Experience using relational databases
-- Knowledge of SQL (not mandatory unless want to access the database directly)
+- Knowledge of MongoDB (not mandatory unless you want to access the database directly)
 
 Terminology
 ===========
@@ -62,3 +62,12 @@ This is simply a local ``plugin_data`` variable of type :obj:`dict` defined in a
 
 This is a local ``setup()`` function defined outside the cog's class. It's used to do initialize cogs and prepare the plugin to be imported as an extension.
 Although it is fairly easy to initialize other cogs and commands directly from the ``setup()`` function, it's recommended to only place commands that complement each other into the same plugin.
+
+**Entities:**
+
+Entities are simply `discord data model <http://discordpy.readthedocs.io/en/rewrite/api.html#discord-models>`_ objects that represents anything that for which information can be stored.
+In simple terms, entities are any object in discord that can be referenced by an ID.
+
+**Entity States:**
+
+These are MongoDB database collections that can store data about a particular entity.
