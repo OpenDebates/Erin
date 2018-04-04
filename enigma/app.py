@@ -7,7 +7,7 @@ import enigma
 from enigma.client import EnigmaClient, logger
 from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
 from enigma.core.utils import config_loader
-from enigma.dashboard import web
+from enigma.core.loggers import discord_logger
 
 
 def start(**kwargs):
@@ -15,6 +15,7 @@ def start(**kwargs):
     Starts the bot and obtains all necessary config data.
     """
     if kwargs['log_level']:
+        # Set app level
         level = logging.getLevelName(kwargs['log_level'].upper())
         logger.setLevel(level)
     logger.info(f"Starting Enigma: {enigma.__version__}")
@@ -30,6 +31,10 @@ def start(**kwargs):
         logger.info("Checking for environment variables instead.")
         config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
+    # Discord Debug Logging
+    if config["bot"]["debug"]:
+        discord_logger.setLevel(logging.DEBUG)
+
     # Faster Event Loop
     try:
         import uvloop
@@ -37,15 +42,8 @@ def start(**kwargs):
     except ImportError:
         pass
 
-    # Web Dashboard Initialization
-    server = web.create_server(
-        host=config["web"]["bind_ip"], port=config["web"]["port"]
-    )
-    loop = asyncio.get_event_loop()
-    task = asyncio.ensure_future(server)
-
     # Initialize Bot
-    bot = EnigmaClient(config, loop=loop)
+    bot = EnigmaClient(config)
     bot.setup()
     bot.run(
         config['bot']['token'],

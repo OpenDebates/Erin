@@ -86,6 +86,4 @@ class EnigmaClient(commands.Bot):
                 f" [{ctx.invoked_with}]: {ctx.message.content}"
             )
         else:
-            logger.command(
-                f"{ctx.invoked_with}: {ctx.message.content}"
-            )
+            pass
