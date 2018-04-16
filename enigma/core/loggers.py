@@ -15,13 +15,11 @@ discord_logger.addHandler(discord_handler)
 
 class BotLogger(getLoggerClass()):
     PLUGIN = 25
-    COMMAND = 24
 
     def __init__(self, name, level=NOTSET):
         super().__init__(name, level)
 
         addLevelName(self.PLUGIN, "PLUGIN")
-        addLevelName(self.COMMAND, "COMMAND")
 
     def plugin(self, msg, *args, **kwargs):
         if self.isEnabledFor(self.PLUGIN):

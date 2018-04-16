@@ -71,5 +71,26 @@ class MongoClient(AsyncIOMotorClient):
         if record is None:
             return record
         else:
-            state = record[state]
+            try:
+                state = record[state]
+            except KeyError:
+                return None
             return state
+
+    async def increment(self, entity, state, value):
+        """
+        Increments an existing state's value.
+
+        :param entity: Any discord object with an id attribute
+        :param state: A state of type int
+        :param value: The value to increment the state by
+        """
+        if not (hasattr(entity, "id")):
+            raise TypeError(f"'{entity}' is not an Entity!")
+
+        collection = self[self.database][
+            f'{entity.__class__.__name__}States']
+        await collection.update(
+            {f"{entity.__class__.__name__.lower()}_id": entity.id},
+            {"$inc": {state: value}},
+        )
