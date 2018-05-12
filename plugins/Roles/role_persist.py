@@ -69,7 +69,6 @@ class PersistRoles:
         if persist_enabled is not True:
             return
         all_role_ids = await self.bot.db.get(member, 'roles')
-        print(all_role_ids)
         if all_role_ids and len(all_role_ids) > 1:
             for persist_role in all_role_ids[1:]:
                 role = discord.utils.find(lambda x: x.id == persist_role,
