@@ -1,22 +1,16 @@
-======
-Enigma
-======
+.. raw:: html
 
-Batteries Included
-
-.. image:: https://travis-ci.org/UnethicalDiscord/Enigma.svg?branch=master
-    :target: https://travis-ci.org/UnethicalDiscord/Enigma
-
-.. image:: https://ci.appveyor.com/api/projects/status/k860vof2i68snwsi/branch/master?svg=true
-    :target: https://ci.appveyor.com/project/daegontaven/enigma
-
-.. image:: https://api.codeclimate.com/v1/badges/f2ab14cd1ca989684ee5/maintainability
-   :target: https://codeclimate.com/github/UnethicalDiscord/Enigma/maintainability
-   :alt: Maintainability
-
-.. image:: https://codecov.io/gh/UnethicalDiscord/Enigma/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/UnethicalDiscord/Enigma
-
-.. image:: https://readthedocs.org/projects/enigma/badge/?version=latest
-    :target: http://enigma.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
+    <h1 align="center">Enigma</h1>
+    <p align="center">
+        <img width="100" src="https://i.imgur.com/m3Lagqr.png"/>
+    </p>
+    <p align="center">
+        Batteries Included
+        <br>
+        <br>
+        <a href="https://travis-ci.org/Unethical/Enigma"><img src="https://travis-ci.org/Unethical/Enigma.svg?branch=master"/></a>
+        <a href="https://ci.appveyor.com/project/daegontaven/enigma"><img src="https://ci.appveyor.com/api/projects/status/k860vof2i68snwsi/branch/master?svg=true"/></a>
+        <a href="https://codeclimate.com/github/Unethical/Enigma/maintainability"><img src="https://api.codeclimate.com/v1/badges/f2ab14cd1ca989684ee5/maintainability"/></a>
+        <a href="https://codecov.io/gh/Unethical/Enigma"><img src="https://codecov.io/gh/UnethicalDiscord/Enigma/branch/master/graph/badge.svg"/></a>
+        <a hre="http://enigma.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/enigma/badge/?version=latest"/></a>
+    </p>
