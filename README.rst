@@ -2,7 +2,7 @@
 
     <h1 align="center">Enigma</h1>
     <p align="center">
-        <img width="100" src="https://i.imgur.com/m3Lagqr.png"/>
+        <a href="enigma.unethical.me"><img width="100" src="https://i.imgur.com/m3Lagqr.png"/></a>
     </p>
     <p align="center">
         Batteries Included
