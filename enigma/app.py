@@ -32,8 +32,11 @@ def start(**kwargs):
         config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
     # Discord Debug Logging
-    if config["bot"]["debug"]:
-        discord_logger.setLevel(logging.DEBUG)
+    try:
+        if config["bot"]["debug"]:
+            discord_logger.setLevel(logging.DEBUG)
+    except KeyError:
+        pass
 
     # Faster Event Loop
     try:
