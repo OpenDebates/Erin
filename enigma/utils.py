@@ -5,7 +5,7 @@ def get_command_args(ctx, lower_case=True):
     """
     Gets the arguments passed to a command.
 
-    :param ctx: pass a :class:`discord.ext.commands.Context` object
+    :param ctx: pass a :class:`discord.ext.cli.Context` object
     :param lower_case: returns arguments in lower case
     :return: :obj:`list`
     """
@@ -21,7 +21,7 @@ def find_members(ctx):
     """
     Parses arguments passed to a command and returns a list of me
 
-    :param ctx: pass a :class:`discord.ext.commands.Context` object
+    :param ctx: pass a :class:`discord.ext.cli.Context` object
     :return: a list of :class:`discord.Member` objects
     """
     args = get_command_args(ctx)

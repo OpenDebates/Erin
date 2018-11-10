@@ -2,12 +2,12 @@ import argparse
 import sys
 
 import enigma
-from enigma.commands.start import StartCommand
+from enigma.cli.start import StartCommand
 
 
 def _optional_commands(parser):
     """
-    Optional commands passed directly to the main parser.
+    Optional cli passed directly to the main parser.
     """
     parser.add_argument(
             "-V", "--version",
@@ -24,10 +24,10 @@ def _optional_commands(parser):
 
 def _main_commands(parser):
     """
-    Commands for the commands subparser is defined in
-    :mod:`enigma.commands` and called here.
+    Commands for the cli subparser is defined in
+    :mod:`enigma.cli` and called here.
 
-    You can pass any of the arguments except `action` to these commands
+    You can pass any of the arguments except `action` to these cli
     as defined by :func:`argparse.ArgumentParser.add_parser`.
     """
     StartCommand(
@@ -51,7 +51,7 @@ def main(args=None):
     parser = _optional_commands(parser)
     parser_commands = parser.add_subparsers(
         title="Commands",
-        dest="commands"
+        dest="cli"
     )
     parser_commands = _main_commands(parser_commands)
 

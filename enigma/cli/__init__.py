@@ -3,10 +3,10 @@ from abc import ABCMeta, abstractmethod
 
 class CommandFactory(object):
     """
-    Makes building commands easier. Why not :class:`argparse.Action`?
+    Makes building commands for cli easier. Why not :class:`argparse.Action`?
     We tried doing that, but Action can't handle subparsers that have
-    actions that need it's own extra sub commands. Plus this way, we
-    have a neat structure for commands.
+    actions that need it's own extra sub cli. Plus this way, we
+    have a neat structure for cli.
 
     When defining new sub commands, just pass your command's method
     name to the action key.

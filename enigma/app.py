@@ -6,8 +6,8 @@ import toml
 import enigma
 from enigma.client import EnigmaClient, logger
 from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
-from enigma.core.utils import config_loader
 from enigma.core.loggers import discord_logger
+from enigma.core.utils import config_loader
 
 
 def start(**kwargs):
@@ -47,6 +47,7 @@ def start(**kwargs):
 
     # Initialize Bot
     bot = EnigmaClient(config)
+    bot.remove_command("help")
     bot.setup()
     bot.run(
         config['bot']['token'],

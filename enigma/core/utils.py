@@ -9,7 +9,7 @@ from enigma.core.exceptions import EnvironmentVariableError
 def find_cogs(package):
     """
     Finds all modules in package and presents them in the format
-    required by :meth:`discord.ext.commands.Bot.load_extension`.
+    required by :meth:`discord.ext.cli.Bot.load_extension`.
 
     This is useful when you need to load cogs from multiple
     areas of your bot. Simply convert your cogs directory
