@@ -12,7 +12,7 @@ class Help:
         self.data = plugin_data
 
     @commands.command(name="help")
-    async def help(self, ctx):
+    async def help(self, ctx, command=None):
         response = discord.Embed(
             color=self.bot.config['help']['color'],
             title=f"{self.bot.config['global']['name']} Help Resources",
@@ -23,11 +23,20 @@ class Help:
         )
         response.add_field(
             name="Quick Help",
-            value=f"`{self.get_command_signature(ctx)} [command]`"
+            value=f"`{self.get_command_signature(ctx)}`"
         )
         response.add_field(
             name="​",
             value="Powered by [Enigma](https://github.com/Unethical/Enigma)")
+
+        if command:
+            del response
+            response = discord.Embed(
+                color=self.bot.config['help']['color'],
+                title=f"{self.bot.config['global']['name']} Help Resources",
+                description=self.bot.config["help"]["description"]
+            )
+        print(self.bot.commands)
         await ctx.send(embed=response)
 
     def clean_prefix(self, ctx):
