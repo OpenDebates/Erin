@@ -3,15 +3,13 @@ from discord.ext import commands
 
 from enigma.utils import find_members
 
-plugin_data = {
-    "name": "Persist Roles"
-}
-
 
 class PersistRoles:
     def __init__(self, bot):
         self.bot = bot
-        self.data = plugin_data
+        self.data = {
+            "name": "Persist Roles"
+        }
 
     @commands.group(
         name="persistroles",

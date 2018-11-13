@@ -2,15 +2,13 @@ import datetime
 
 from discord.ext import commands
 
-plugin_data = {
-    "name": "Server Status"
-}
-
 
 class ServerStatus:
     def __init__(self, bot):
         self.bot = bot
-        self.data = plugin_data
+        self.data = {
+            "name": "Server Status"
+        }
 
     @commands.command(name="ping")
     async def ping(self, ctx):

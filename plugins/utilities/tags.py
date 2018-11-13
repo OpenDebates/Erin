@@ -1,15 +1,13 @@
 import discord
 from discord.ext import commands
 
-plugin_data = {
-    "name": "Tags"
-}
-
 
 class Tag:
     def __init__(self, bot):
         self.bot = bot
-        self.data = plugin_data
+        self.data = {
+            "name": "Tags"
+        }
 
         # Easier Access
         self.db = self.bot.db[self.bot.db.database]

@@ -1,28 +1,26 @@
 import discord
 from discord.ext import commands
 
-plugin_data = {
-    "name": "Help"
-}
-
 
 class Help:
     def __init__(self, bot):
         self.bot = bot
-        self.data = plugin_data
+        self.data = {
+            "name": "Help"
+        }
 
     @commands.command(name="help")
     async def help(self, ctx, command=None):
         response = discord.Embed(
             color=self.bot.config['help']['color'],
-            title=f"{self.bot.config['global']['name']} Help Resources",
+            title=f"{self.bot.config['global']['name']} help Resources",
             description=self.bot.config["help"]["description"]
         )
         response.set_thumbnail(
             url=f"{self.bot.config['global']['icon_url']}"
         )
         response.add_field(
-            name="Quick Help",
+            name="Quick help",
             value=f"`{self.get_command_signature(ctx)}`"
         )
         response.add_field(
@@ -33,7 +31,7 @@ class Help:
             del response
             response = discord.Embed(
                 color=self.bot.config['help']['color'],
-                title=f"{self.bot.config['global']['name']} Help Resources",
+                title=f"{self.bot.config['global']['name']} help Resources",
                 description=self.bot.config["help"]["description"]
             )
         print(self.bot.commands)

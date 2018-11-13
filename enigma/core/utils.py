@@ -6,7 +6,7 @@ import sys
 from enigma.core.exceptions import EnvironmentVariableError
 
 
-def find_cogs(package):
+def find_extensions(package):
     """
     Finds all modules in package and presents them in the format
     required by :meth:`discord.ext.cli.Bot.load_extension`.
@@ -18,7 +18,7 @@ def find_cogs(package):
     Parameters
     -----------
     package : package
-        Your cogs directory as a python package.
+        Your extensions directory as a python package.
 
     Returns
     --------
@@ -36,7 +36,7 @@ def find_cogs(package):
     except AttributeError:
         return None
 
-    cog_list = []
+    extension_list = []
     spec_list = []
     for importer, modname, ispkg in pkgutil.walk_packages(package.__path__):
         import_path = f"{package.__name__}.{modname}"
@@ -45,36 +45,40 @@ def find_cogs(package):
             importlib._bootstrap._load(spec)
             spec_list.append(spec)
         else:
-            cog_list.append(import_path)
+            extension_list.append(import_path)
 
     # remove sys.modules clutter created during cog search
     for spec in spec_list:
         del sys.modules[spec.name]
-    return cog_list
+    return extension_list
 
 
-def get_plugin_data(plugin):
+def find_plugins(package):
+    pass
+
+
+def get_extension_data(extension):
     """
-    Retrieve the plugin_data dictionary defined in a plugin.
+    Retrieve the extension_data dictionary defined in a plugin.
 
     Parameters
     -----------
-    plugin : path to a plugin in module import format
+    extension : path to a plugin in module import format
 
     Returns
     --------
     dict or None
-        The plugin_data dict defined in a plugin or None if the dict is
+        The extension_data dict defined in a plugin or None if the dict is
         not defined.
     """
-    plugin = importlib.import_module(plugin)
+    extension = importlib.import_module(extension)
     try:
-        plugin_data = plugin.plugin_data
+        extension_data = extension.plugin_data
     except AttributeError as e:
-        plugin_data = None
+        extension_data = None
     finally:
-        del sys.modules[plugin.__name__]
-        return plugin_data
+        del sys.modules[extension.__name__]
+        return extension_data
 
 
 def config_loader(mappings, optional_envs):

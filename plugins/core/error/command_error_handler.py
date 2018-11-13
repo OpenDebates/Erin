@@ -1,15 +1,13 @@
 import discord
 from discord.ext import commands
 
-plugin_data = {
-    "name": "Command Error"
-}
-
 
 class CommandError:
     def __init__(self, bot):
         self.bot = bot
-        self.data = plugin_data
+        self.data = {
+            "name": "Command Error"
+        }
 
     async def on_command_error(self, ctx, exception):
 

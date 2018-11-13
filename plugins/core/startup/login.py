@@ -1,14 +1,12 @@
 import discord
 
-plugin_data = {
-    "name": "Login"
-}
-
 
 class Login:
     def __init__(self, bot):
         self.bot = bot
-        self.data = plugin_data
+        self.data = {
+            "name": "Login"
+        }
 
     async def on_ready(self):
         self.bot.logger.info(

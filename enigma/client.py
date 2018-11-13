@@ -6,7 +6,7 @@ from discord.ext import commands
 import plugins
 from enigma.core.database import MongoClient
 from enigma.core.loggers import BotLogger
-from enigma.core.utils import find_cogs, get_plugin_data
+from enigma.core.utils import find_extensions, get_extension_data
 
 # Logging
 logger = BotLogger(__name__)
@@ -51,21 +51,25 @@ class EnigmaClient(commands.Bot):
             return ""
 
     def _load_plugins(self):
-        for extension in find_cogs(plugins):
+        extensions = find_extensions(plugins)
+        for extension in extensions:
             try:
-                plugin_data = get_plugin_data(extension)
-                logger.info(f"Loading Plugin: {plugin_data['name']}")
+                logger.debug(f"Loading Extension: {extension}")
                 self.load_extension(extension)
             except discord.ClientException as e:
                 logger.exception(
-                    f'Missing setup() for plugin: {extension}.'
+                    f'Missing setup() for extension: {extension}.'
                 )
             except ImportError as e:
                 logger.exception(
-                    f"Failed to load plugin: {extension}"
+                    f"Failed to load extension: {extension}"
                 )
             except Exception as e:
                 logger.exception("Core Error")
+
+    def add_cog(self, cog):
+
+        super().add_cog(cog)
 
     def setup(self):
         """
@@ -76,13 +80,13 @@ class EnigmaClient(commands.Bot):
 
     async def on_command(self, ctx):
         try:
-            plugin_name = ctx.cog.data['name']
+            cog_name = ctx.cog.data['name']
         except AttributeError as e:
-            plugin_name = None
+            cog_name = None
 
-        if plugin_name:
+        if cog_name:
             logger.plugin(
-                f"{plugin_name}"
+                f"{cog_name}"
                 f" [{ctx.invoked_with}]: {ctx.message.content}"
             )
         else:
