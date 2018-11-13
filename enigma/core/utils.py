@@ -1,9 +1,12 @@
 import importlib
+import logging
 import os
 import pkgutil
 import sys
 
 from enigma.core.exceptions import EnvironmentVariableError
+
+logger = logging.getLogger('enigma')
 
 
 def find_extensions(package):
@@ -54,7 +57,8 @@ def find_extensions(package):
 
 
 def find_plugins(package):
-    pass
+    path = package.__path__
+    logger.debug(f"Package Path: {path}")
 
 
 def get_extension_data(extension):
@@ -68,8 +72,8 @@ def get_extension_data(extension):
     Returns
     --------
     dict or None
-        The extension_data dict defined in a plugin or None if the dict is
-        not defined.
+        The extension_data dict defined in a plugin or None if the
+        dict is not defined.
     """
     extension = importlib.import_module(extension)
     try:

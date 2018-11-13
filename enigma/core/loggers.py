@@ -13,6 +13,9 @@ discord_handler.setFormatter(discord_formatter)
 discord_logger.addHandler(discord_handler)
 
 
+# Don't forget to call logging.setLoggerClass(BotLogger) at the start
+# of the code to ensure that this formatting is used everywhere.
+# The current logger class is set in enigma.__init__.py.
 class BotLogger(getLoggerClass()):
     PLUGIN = 25
 

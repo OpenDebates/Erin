@@ -5,18 +5,10 @@ from discord.ext import commands
 
 import plugins
 from enigma.core.database import MongoClient
-from enigma.core.loggers import BotLogger
-from enigma.core.utils import find_extensions, get_extension_data
+from enigma.core.utils import find_extensions, find_plugins
 
 # Logging
-logger = BotLogger(__name__)
-handler = logging.StreamHandler()
-formatter = logging.Formatter(
-    "%(asctime)s [%(process)d] [%(levelname)s] %(message)s",
-    datefmt="[%Y-%m-%d %H:%M:%S %z]"
-)
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+logger = logging.getLogger('enigma')
 
 
 class EnigmaClient(commands.Bot):
@@ -52,6 +44,7 @@ class EnigmaClient(commands.Bot):
 
     def _load_plugins(self):
         extensions = find_extensions(plugins)
+        find_plugins(plugins)
         for extension in extensions:
             try:
                 logger.debug(f"Loading Extension: {extension}")
