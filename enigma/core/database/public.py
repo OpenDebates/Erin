@@ -1,13 +1,15 @@
+import logging
 import urllib.parse
 
 from motor.motor_asyncio import AsyncIOMotorClient
 
+logger = logging.getLogger('enigma')
+
 
 class MongoClient(AsyncIOMotorClient):
-    def __init__(self, config, logger, bot=None, *args, **kwargs):
+    def __init__(self, config,  bot=None, *args, **kwargs):
         # Internal
         self.conn = None
-        self.logger = logger
 
         # Config
         self.host = config["database"]["host"]

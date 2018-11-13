@@ -6,7 +6,11 @@ from enigma.core.loggers import BotLogger
 dist_name = 'Enigma'
 __version__ = "0.1.0.dev0"
 
-# Logging
+# Set Custom Global Logger
+# This needs to be above all other code.
+logging.setLoggerClass(BotLogger)
+
+# Logging Formats
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()
 formatter = logging.Formatter(
@@ -15,6 +19,3 @@ formatter = logging.Formatter(
 )
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-
-# Set Custom Global Logger
-logging.setLoggerClass(BotLogger)

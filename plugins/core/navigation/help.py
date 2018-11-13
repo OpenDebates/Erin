@@ -5,6 +5,7 @@ from discord.ext import commands
 class Help:
     def __init__(self, bot):
         self.bot = bot
+        self.logger = self.bot.logger
         self.data = {
             "name": "Help"
         }
@@ -34,7 +35,6 @@ class Help:
                 title=f"{self.bot.config['global']['name']} help Resources",
                 description=self.bot.config["help"]["description"]
             )
-        print(self.bot.commands)
         await ctx.send(embed=response)
 
     def clean_prefix(self, ctx):

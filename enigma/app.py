@@ -4,10 +4,12 @@ import logging
 import toml
 
 import enigma
-from enigma.client import EnigmaClient, logger
+from enigma.client import EnigmaClient
 from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
 from enigma.core.loggers import discord_logger
 from enigma.core.utils import config_loader
+
+logger = logging.getLogger('enigma')
 
 
 def start(**kwargs):
@@ -18,6 +20,8 @@ def start(**kwargs):
         # Set app level
         level = logging.getLevelName(kwargs['log_level'].upper())
         logger.setLevel(level)
+    else:
+        logger.setLevel('INFO')
     logger.info(f"Starting Enigma: {enigma.__version__}")
 
     # Config Loader

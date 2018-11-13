@@ -20,7 +20,7 @@ class Tag:
     @commands.guild_only()
     async def tag(self, ctx, tag: str):
         document = await self.db.tags.find_one({"tag": tag})
-        self.logger.debug(f"Tag: {tag} | Document: {document}")
+        self.logger.database(f"Tag: {tag} | Document: {document}")
         if document:
             await ctx.send(document["content"])
         else:

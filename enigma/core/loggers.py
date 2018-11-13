@@ -1,3 +1,4 @@
+import inspect
 import logging
 from logging import getLoggerClass, NOTSET, addLevelName
 
@@ -17,13 +18,34 @@ discord_logger.addHandler(discord_handler)
 # of the code to ensure that this formatting is used everywhere.
 # The current logger class is set in enigma.__init__.py.
 class BotLogger(getLoggerClass()):
-    PLUGIN = 25
+    DATABASE = 15
+    COMMAND = 16
+    PLUGIN = 17
 
     def __init__(self, name, level=NOTSET):
         super().__init__(name, level)
 
+        addLevelName(self.DATABASE, "DATABASE")
+        addLevelName(self.COMMAND, "COMMAND")
         addLevelName(self.PLUGIN, "PLUGIN")
 
+    def database(self, msg, *args, **kwargs):
+        """
+        Call to log database operations from within plugins.
+        """
+        if self.isEnabledFor(self.DATABASE):
+            self._log(self.DATABASE, msg, args, **kwargs)
+
+    def command(self, msg, *args, **kwargs):
+        """
+        Logs commands that are sent to the bot by users.
+        """
+        if self.isEnabledFor(self.COMMAND):
+            self._log(self.COMMAND, msg, args, **kwargs)
+
     def plugin(self, msg, *args, **kwargs):
+        """
+        Plugin specific logs to let users know something happened.
+        """
         if self.isEnabledFor(self.PLUGIN):
             self._log(self.PLUGIN, msg, args, **kwargs)

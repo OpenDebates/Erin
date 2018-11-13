@@ -26,7 +26,8 @@ class EnigmaClient(commands.Bot):
         )
 
         # Database
-        self.db = MongoClient(config, logger, bot=self)
+        self.db = MongoClient(config, bot=self)
+
 
         # Logger
         self.logger = logger
@@ -78,9 +79,10 @@ class EnigmaClient(commands.Bot):
             cog_name = None
 
         if cog_name:
-            logger.plugin(
-                f"{cog_name}"
-                f" [{ctx.invoked_with}]: {ctx.message.content}"
+            logger.command(
+                f"Cog: {cog_name} | "
+                f"Invoked With: {ctx.invoked_with} | Message Content: \n"
+                f"{ctx.message.content}"
             )
         else:
             pass
