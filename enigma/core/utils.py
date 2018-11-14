@@ -3,6 +3,7 @@ import logging
 import os
 import pkgutil
 import sys
+from pathlib import Path
 
 from enigma.core.exceptions import EnvironmentVariableError
 
@@ -56,9 +57,33 @@ def find_extensions(package):
     return extension_list
 
 
-def find_plugins(package):
-    path = package.__path__
-    logger.debug(f"Package Path: {path}")
+def find_plugins(package, extensions):
+    path = str(package.__path__[0])
+    config_paths = list(Path(path).glob("**/plugin.cfg"))
+    plugin_paths, plugin_names = zip(*[
+        (cfg.parent.absolute(), cfg.parent.name) for cfg in config_paths
+    ])
+
+    # The current plugin dict is horrible.
+    # Create a plugin namedtuple for later to make accessing nested
+    # structures easier. However since namedtuples are not mutable,
+    # this should be attempted with attrs module first and if that
+    # fails, with a custom class like that in importlib's ModuleSpec.
+    plugins = dict(zip(plugin_names, plugin_paths))
+
+    ext_mods = [importlib.import_module(ext) for ext in extensions]
+    plugin_mods = []
+    for ext in ext_mods:
+        logger.debug(
+            f"Plugin Path: {Path(ext.__spec__.origin).parent.absolute())}"
+        )
+
+    # Module Populator
+    # modlist, speclist = [], []
+    # for importer, modname, ispkg in pkgutil.walk_packages(plugin_paths):
+    #     import_path = f"{package.__name__}.{modname}"
+    #     print(import_path)
+    return plugins
 
 
 def get_extension_data(extension):

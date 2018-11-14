@@ -28,7 +28,6 @@ class EnigmaClient(commands.Bot):
         # Database
         self.db = MongoClient(config, bot=self)
 
-
         # Logger
         self.logger = logger
 
@@ -45,7 +44,12 @@ class EnigmaClient(commands.Bot):
 
     def _load_plugins(self):
         extensions = find_extensions(plugins)
-        find_plugins(plugins)
+        try:
+            logger.debug(
+                f"Plugins: {find_plugins(plugins, extensions)}"
+            )
+        except Exception as e:
+            logger.exception()
         for extension in extensions:
             try:
                 logger.debug(f"Loading Extension: {extension}")
