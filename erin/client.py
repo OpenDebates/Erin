@@ -5,7 +5,7 @@ from discord.ext import commands
 
 import plugins
 from erin.core.database import MongoClient
-from erin.core.utils import find_extensions, find_plugins
+from erin.core.utils import find_plugins
 
 # Logging
 logger = logging.getLogger('erin')
@@ -43,24 +43,25 @@ class ErinClient(commands.Bot):
             return ""
 
     def _load_plugins(self):
-        extensions = find_extensions(plugins)
         try:
+            extensions = find_plugins(plugins)
             logger.debug(
-                f"Plugins: {find_plugins(plugins, extensions)}"
+                f"Plugins: {extensions}"
             )
         except Exception as e:
             logger.exception()
+            self.logout()
         for extension in extensions:
             try:
-                logger.debug(f"Loading Extension: {extension}")
+                logger.plugin(f"Loading Plugin: {extension}")
                 self.load_extension(extension)
             except discord.ClientException as e:
                 logger.exception(
-                    f'Missing setup() for extension: {extension}.'
+                    f'Missing setup() for Plugin: {extension}.'
                 )
             except ImportError as e:
                 logger.exception(
-                    f"Failed to load extension: {extension}"
+                    f"Failed to load Plugin: {extension}"
                 )
             except Exception as e:
                 logger.exception("Core Error")

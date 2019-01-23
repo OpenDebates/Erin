@@ -1,5 +1,5 @@
 erin.core package
-===================
+=================
 
 Subpackages
 -----------
@@ -11,16 +11,8 @@ Subpackages
 Submodules
 ----------
 
-erin.core.client module
--------------------------
-
-.. automodule:: erin.core.client
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 erin.core.constants module
-----------------------------
+--------------------------
 
 .. automodule:: erin.core.constants
     :members:
@@ -28,7 +20,7 @@ erin.core.constants module
     :show-inheritance:
 
 erin.core.exceptions module
------------------------------
+---------------------------
 
 .. automodule:: erin.core.exceptions
     :members:
@@ -36,7 +28,7 @@ erin.core.exceptions module
     :show-inheritance:
 
 erin.core.loggers module
---------------------------
+------------------------
 
 .. automodule:: erin.core.loggers
     :members:
@@ -44,7 +36,7 @@ erin.core.loggers module
     :show-inheritance:
 
 erin.core.utils module
-------------------------
+----------------------
 
 .. automodule:: erin.core.utils
     :members:

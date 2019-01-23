@@ -1,19 +1,18 @@
-import importlib
 import logging
 import os
 import pkgutil
-import sys
 from pathlib import Path
+from typing import List
 
-from erin.core.exceptions import EnvironmentVariableError
+from erin.core.exceptions import EnvironmentVariableError, PluginNotFoundError
 
 logger = logging.getLogger('erin')
 
 
-def find_extensions(package):
+def find_plugins(package) -> List[str]:
     """
-    Finds all modules in package and presents them in the format
-    required by :meth:`discord.ext.cli.Bot.load_extension`.
+    Finds all top level subpackages in a package and presents them in
+    the format required by :meth:`discord.ext.cli.Bot.load_extension`.
 
     This is useful when you need to load cogs from multiple
     areas of your bot. Simply convert your cogs directory
@@ -22,92 +21,38 @@ def find_extensions(package):
     Parameters
     -----------
     package : package
-        Your extensions directory as a python package.
+        Your package as a python package or a path to one.
+        Note: All packages are modules, all modules are not packages.
 
     Returns
     --------
     list or None
         A list of strings of format `foo.bar` as required by
-        :func: `load_extension`. If package passed is not
+        :meth:`discord.ext.cli.Bot.load_extension`. If package passed is not
         valid then `None` is returned instead.
     """
-    loader = pkgutil.get_loader(package)
-    if loader is None:
-        return loader
-    try:
-        if not loader.is_package(package.__name__):
-            return None
-    except AttributeError:
-        return None
-
-    extension_list = []
-    spec_list = []
-    for importer, modname, ispkg in pkgutil.walk_packages(package.__path__):
-        import_path = f"{package.__name__}.{modname}"
-        if ispkg:
-            spec = pkgutil._get_spec(importer, modname)
-            importlib._bootstrap._load(spec)
-            spec_list.append(spec)
+    # Check if parameter is a package
+    if hasattr(package, '__path__'):
+        plugins = pkgutil.walk_packages(package.__path__)
+    elif isinstance(package, str):
+        if os.path.exists(package):
+            plugins = pkgutil.walk_packages([package])
         else:
-            extension_list.append(import_path)
-
-    # remove sys.modules clutter created during cog search
-    for spec in spec_list:
-        del sys.modules[spec.name]
-    return extension_list
-
-
-def find_plugins(package, extensions):
-    path = str(package.__path__[0])
-    config_paths = list(Path(path).glob("**/plugin.cfg"))
-    plugin_paths, plugin_names = zip(*[
-        (cfg.parent.absolute(), cfg.parent.name) for cfg in config_paths
-    ])
-
-    # The current plugin dict is horrible.
-    # Create a plugin namedtuple for later to make accessing nested
-    # structures easier. However since namedtuples are not mutable,
-    # this should be attempted with attrs module first and if that
-    # fails, with a custom class like that in importlib's ModuleSpec.
-    plugins = dict(zip(plugin_names, plugin_paths))
-
-    ext_mods = [importlib.import_module(ext) for ext in extensions]
-    plugin_mods = []
-    for ext in ext_mods:
-        logger.debug(
-            f"Plugin Path: {Path(ext.__spec__.origin).parent.absolute()}"
+            raise PluginNotFoundError(package)
+    elif isinstance(package, Path):
+        if package.exists():
+            plugins = pkgutil.walk_packages([package])
+        else:
+            raise PluginNotFoundError(package)
+    else:
+        raise TypeError(
+            f"expected package, str, pathlib.Path or os.PathLike "
+            f"object, not {type(package).__name__}"
         )
 
-    # Module Populator
-    # modlist, speclist = [], []
-    # for importer, modname, ispkg in pkgutil.walk_packages(plugin_paths):
-    #     import_path = f"{package.__name__}.{modname}"
-    #     print(import_path)
+    # Create plugin import list
+    plugins = [f"plugins.{i.name}" for i in plugins]
     return plugins
-
-
-def get_extension_data(extension):
-    """
-    Retrieve the extension_data dictionary defined in a plugin.
-
-    Parameters
-    -----------
-    extension : path to a plugin in module import format
-
-    Returns
-    --------
-    dict or None
-        The extension_data dict defined in a plugin or None if the
-        dict is not defined.
-    """
-    extension = importlib.import_module(extension)
-    try:
-        extension_data = extension.plugin_data
-    except AttributeError as e:
-        extension_data = None
-    finally:
-        del sys.modules[extension.__name__]
-        return extension_data
 
 
 def config_loader(mappings, optional_envs):

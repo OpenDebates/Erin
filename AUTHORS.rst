@@ -2,4 +2,4 @@
 Contributors
 ============
 
-* Vivek Joshy <daegontaven@gmail.com>
+* Taven <admin@discord.cx>

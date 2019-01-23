@@ -1,26 +1,35 @@
 erin package
-==============
+============
 
 Subpackages
 -----------
 
 .. toctree::
 
-    erin.commands
+    erin.cli
+    erin.core
 
 Submodules
 ----------
 
 erin.app module
------------------
+---------------
 
 .. automodule:: erin.app
     :members:
     :undoc-members:
     :show-inheritance:
 
+erin.client module
+------------------
+
+.. automodule:: erin.client
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 erin.utils module
--------------------
+-----------------
 
 .. automodule:: erin.utils
     :members:

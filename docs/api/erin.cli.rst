@@ -1,13 +1,13 @@
-erin.commands package
-=======================
+erin.cli package
+================
 
 Submodules
 ----------
 
-erin.commands.start module
-----------------------------
+erin.cli.start module
+---------------------
 
-.. automodule:: erin.commands.start
+.. automodule:: erin.cli.start
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ erin.commands.start module
 Module contents
 ---------------
 
-.. automodule:: erin.commands
+.. automodule:: erin.cli
     :members:
     :undoc-members:
     :show-inheritance:

@@ -6,16 +6,15 @@ name = "pypi"
 [packages]
 toml = "*"
 motor = "*"
-codecov = "==2.0.15"
+codecov = "*"
 "discord.py" = {file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py", extras = ["voice"]}
-pytest-cov = "==2.5.1"
-pytest-runner = "==4.0"
-PyNaCl = "==1.0.1"
-Sphinx = "==1.7.0"
-sphinx_rtd_theme = "==0.2.4"
+pytest-cov = "*"
+pytest-runner = "*"
+Sphinx = "*"
+sphinx_rtd_theme = "*"
 "e1839a8" = {editable = true, path = "."}
 
 [dev-packages]
 
 [requires]
-python_version = "3.6"
+python_version = "3.7.1"

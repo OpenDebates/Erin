@@ -1,11 +1,11 @@
 erin.core.database package
-============================
+==========================
 
 Submodules
 ----------
 
 erin.core.database.public module
-----------------------------------
+--------------------------------
 
 .. automodule:: erin.core.database.public
     :members:

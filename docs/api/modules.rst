@@ -1,5 +1,5 @@
 erin
-======
+====
 
 .. toctree::
    :maxdepth: 4

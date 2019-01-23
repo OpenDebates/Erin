@@ -7,7 +7,7 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-
+import datetime
 import inspect
 import os
 import shutil
@@ -87,7 +87,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Erin'
-copyright = u'2018, Unethical Discord'
+copyright = u'2018 - ' + str(datetime.datetime.now().year) + \
+            u', Erin Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

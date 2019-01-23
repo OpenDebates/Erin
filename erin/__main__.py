@@ -45,7 +45,7 @@ def main(args=None):
         args = sys.argv[1:]
 
     parser = argparse.ArgumentParser(
-        description="The Polyglot Discord Bot"
+        description="Fully Fledged Discord Bot Framework"
     )
 
     parser = _optional_commands(parser)
