@@ -28,7 +28,7 @@ Erin is very easy to install from source. First clone the latest development ver
 
 ::
 
-    git clone https://github.com/UnethicalDiscord/Erin.git
+    git clone https://github.com/DiscordFederation/Erin.git
 
 
 Since Erin has a lot of dependencies, it is wise to install a virtualenv first. Please do not use `pipenv <https://docs.pipenv.org/>`_ however.

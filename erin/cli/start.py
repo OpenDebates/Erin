@@ -12,7 +12,8 @@ class StartCommand(CommandFactory):
         # Config File
         self.parser.add_argument(
             '--config',
-            type=argparse.FileType('r')
+            type=argparse.FileType('r'),
+            help="give a path to custom config file"
         )
 
         # Set Logging Levels
@@ -23,7 +24,8 @@ class StartCommand(CommandFactory):
         self.parser.add_argument(
             '--log',
             choices=self.choices,
-            type=str.lower
+            type=str.lower,
+            help="amount of info to log"
         )
 
     def run(self, *sys_args, **kwargs):

@@ -66,7 +66,7 @@ def config_loader(mappings, optional_envs):
                 else:
                     raise EnvironmentVariableError(
                         f"{value} is not optional.\n"
-                        "Set this in your YAML file or use 'export "
-                        f"{value}=YOUR_CUSTOM_VALUE' if you're a developer."
+                        "Set this in your TOML config file or use 'export "
+                        f"{value}=YOUR_CUSTOM_VALUE'!"
                     )
     return mappings

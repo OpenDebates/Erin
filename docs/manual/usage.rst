@@ -22,7 +22,7 @@ Looks good! So, we need to head over to the `discord developers portal <https://
 
 Now this is the most important part. We need to create a configuration file which is also valid TOML.
 
-.. code-block:: cfg
+.. code-block:: ini
 
     [bot]
 
@@ -91,16 +91,16 @@ You should also already have your database connection details. If not, read :ref
 Starting Erin
 ===============
 
-Now that we have a config file ready. Let's save it is somewhere. By convention, it's named ``app.cfg``.
+Now that we have a config file ready. Let's save it is somewhere. By convention, it's named ``config.toml``.
 
 Now let's tell Erin to start by passing the path to this file as an argument.
 
 ::
 
-    erin start --config /path/to/app.cfg
+    erin start --config /path/to/config.toml
 
 
 .. note::
 
-    You can also place it in the ``erin/app.cfg`` folder of the repository if you installed from source.
-    However, you must make sure to name it ``app.cfg`` in this case or Erin will throw an error.
+    You can also save it as ``Erin/erin/erin.toml`` in the repository if you installed from source.
+    However, you must make sure to name it ``erin.toml`` in this case or Erin will switch to trying environment variables.

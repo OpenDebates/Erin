@@ -29,10 +29,12 @@ def start(**kwargs):
         if kwargs['config_file']:
             config = toml.load(kwargs['config_file'])
         else:
-            config = toml.load("erin/app.cfg")
+            config = toml.load("erin/erin.toml")
     except FileNotFoundError as e:
-        logger.warning("Looks like erin/app.cfg is missing.")
-        logger.info("Checking for environment variables instead.")
+        logger.info(
+            "No config file provided. "
+            "Checking for environment variables instead."
+        )
         config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
     # Discord Debug Logging
