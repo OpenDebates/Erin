@@ -1,20 +1,22 @@
 ENV_MAPPINGS = {
         "bot": {
-            "token": "ENIGMA_TOKEN"
+            "token": "ERIN_TOKEN",
+            "debug": "ERIN_DEBUG"
         },
         "database": {
-            "host": "ENIGMA_HOST",
-            "port": "ENIGMA_PORT",
-            "username": "ENIGMA_USERNAME",
-            "password": "ENIGMA_PASSWORD",
-            "database": "ENIGMA_DATABASE"
+            "host": "ERIN_HOST",
+            "port": "ERIN_PORT",
+            "username": "ERIN_USERNAME",
+            "password": "ERIN_PASSWORD",
+            "database": "ERIN_DATABASE"
         },
         "global": {
-            "prefixes": "ENIGMA_PREFIXES",
-            "description": "ENIGMA_DESCRIPTION"
+            "prefixes": "ERIN_PREFIXES",
+            "description": "ERIN_DESCRIPTION"
         }
     }
 
 OPTIONAL_ENVS = [
-    "ENIGMA_DESCRIPTION"
+    "ERIN_DESCRIPTION",
+    "ERIN_DEBUG"
 ]
