@@ -1,8 +1,8 @@
 ======
-Enigma
+Erin
 ======
 
-This is the documentation of **Enigma**.
+This is the documentation of **Erin**.
 
 
 Contents

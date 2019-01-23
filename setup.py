@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Setup file for enigma.
+Setup file for erin.
 """
 
 import codecs
@@ -34,11 +34,11 @@ def setup_package():
     os.environ['SANIC_NO_UVLOOP'] = 'true'
     os.environ['SANIC_NO_UJSON'] = 'true'
     setup(
-        version=find_version('enigma', '__init__.py'),
+        version=find_version('erin', '__init__.py'),
         packages=find_packages(exclude=['docs', 'tests']),
         entry_points={
             'console_scripts': [
-                'enigma = enigma.__main__:main'
+                'erin = erin.__main__:main'
             ]
         },
         setup_requires=[

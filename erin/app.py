@@ -3,13 +3,13 @@ import logging
 
 import toml
 
-import enigma
-from enigma.client import EnigmaClient
-from enigma.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
-from enigma.core.loggers import discord_logger
-from enigma.core.utils import config_loader
+import erin
+from erin.client import ErinClient
+from erin.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
+from erin.core.loggers import discord_logger
+from erin.core.utils import config_loader
 
-logger = logging.getLogger('enigma')
+logger = logging.getLogger('erin')
 
 
 def start(**kwargs):
@@ -22,16 +22,16 @@ def start(**kwargs):
         logger.setLevel(level)
     else:
         logger.setLevel('INFO')
-    logger.info(f"Starting Enigma: {enigma.__version__}")
+    logger.info(f"Starting Erin: {erin.__version__}")
 
     # Config Loader
     try:
         if kwargs['config_file']:
             config = toml.load(kwargs['config_file'])
         else:
-            config = toml.load("enigma/app.cfg")
+            config = toml.load("erin/app.cfg")
     except FileNotFoundError as e:
-        logger.warning("Looks like enigma/app.cfg is missing.")
+        logger.warning("Looks like erin/app.cfg is missing.")
         logger.info("Checking for environment variables instead.")
         config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
@@ -50,7 +50,7 @@ def start(**kwargs):
         pass
 
     # Initialize Bot
-    bot = EnigmaClient(config)
+    bot = ErinClient(config)
     bot.remove_command("help")
     bot.setup()
     bot.run(

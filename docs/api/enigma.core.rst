@@ -1,4 +1,4 @@
-enigma.core package
+erin.core package
 ===================
 
 Subpackages
@@ -6,47 +6,47 @@ Subpackages
 
 .. toctree::
 
-    enigma.core.database
+    erin.core.database
 
 Submodules
 ----------
 
-enigma.core.client module
+erin.core.client module
 -------------------------
 
-.. automodule:: enigma.core.client
+.. automodule:: erin.core.client
     :members:
     :undoc-members:
     :show-inheritance:
 
-enigma.core.constants module
+erin.core.constants module
 ----------------------------
 
-.. automodule:: enigma.core.constants
+.. automodule:: erin.core.constants
     :members:
     :undoc-members:
     :show-inheritance:
 
-enigma.core.exceptions module
+erin.core.exceptions module
 -----------------------------
 
-.. automodule:: enigma.core.exceptions
+.. automodule:: erin.core.exceptions
     :members:
     :undoc-members:
     :show-inheritance:
 
-enigma.core.loggers module
+erin.core.loggers module
 --------------------------
 
-.. automodule:: enigma.core.loggers
+.. automodule:: erin.core.loggers
     :members:
     :undoc-members:
     :show-inheritance:
 
-enigma.core.utils module
+erin.core.utils module
 ------------------------
 
-.. automodule:: enigma.core.utils
+.. automodule:: erin.core.utils
     :members:
     :undoc-members:
     :show-inheritance:
@@ -55,7 +55,7 @@ enigma.core.utils module
 Module contents
 ---------------
 
-.. automodule:: enigma.core
+.. automodule:: erin.core
     :members:
     :undoc-members:
     :show-inheritance:

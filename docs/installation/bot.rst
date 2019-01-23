@@ -15,8 +15,8 @@ Follow the developer instructions for now and verify you have a working installa
 
 ::
 
-    $ enigma -V    # This should show the current version.
-    enigma 0.1.0.dev0
+    $ erin -V    # This should show the current version.
+    erin 0.1.0.dev0
 
 For Developers
 ==============
@@ -24,15 +24,15 @@ For Developers
 Installing from source
 ----------------------
 
-Enigma is very easy to install from source. First clone the latest development version from the master branch.
+Erin is very easy to install from source. First clone the latest development version from the master branch.
 
 ::
 
-    git clone https://github.com/UnethicalDiscord/Enigma.git
+    git clone https://github.com/UnethicalDiscord/Erin.git
 
 
-Since Enigma has a lot of dependencies, it is wise to install a virtualenv first. Please do not use `pipenv <https://docs.pipenv.org/>`_ however.
-It's incompatible with Enigma's dependencies and may cause more problems in the future. If you wish to submit a pull request to fix this problem please read more `here <https://github.com/pypa/pipenv/issues/1578>`_
+Since Erin has a lot of dependencies, it is wise to install a virtualenv first. Please do not use `pipenv <https://docs.pipenv.org/>`_ however.
+It's incompatible with Erin's dependencies and may cause more problems in the future. If you wish to submit a pull request to fix this problem please read more `here <https://github.com/pypa/pipenv/issues/1578>`_
 
 First let's make a virtualenv. So we have to install it first.
 
@@ -44,7 +44,7 @@ Then create a new virtualenv within the repository. If you name it ``venv`` it w
 
 ::
 
-    cd Enigma/
+    cd Erin/
     virtualenv venv
 
 Now let's activate the virtual environment.

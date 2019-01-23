@@ -1,7 +1,7 @@
 import argparse
 
-from enigma import app
-from enigma.cli import CommandFactory
+from erin import app
+from erin.cli import CommandFactory
 
 
 class StartCommand(CommandFactory):

@@ -1,4 +1,4 @@
-enigma package
+erin package
 ==============
 
 Subpackages
@@ -6,23 +6,23 @@ Subpackages
 
 .. toctree::
 
-    enigma.commands
+    erin.commands
 
 Submodules
 ----------
 
-enigma.app module
+erin.app module
 -----------------
 
-.. automodule:: enigma.app
+.. automodule:: erin.app
     :members:
     :undoc-members:
     :show-inheritance:
 
-enigma.utils module
+erin.utils module
 -------------------
 
-.. automodule:: enigma.utils
+.. automodule:: erin.utils
     :members:
     :undoc-members:
     :show-inheritance:
@@ -31,7 +31,7 @@ enigma.utils module
 Module contents
 ---------------
 
-.. automodule:: enigma
+.. automodule:: erin
     :members:
     :undoc-members:
     :show-inheritance:

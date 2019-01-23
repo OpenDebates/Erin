@@ -1,8 +1,8 @@
 from tests.common import run_command
 
 
-def test_enigma_command():
+def test_erin_command():
     """
-    Ensure enigma command exists.
+    Ensure erin command exists.
     """
-    run_command("enigma")
+    run_command("erin")

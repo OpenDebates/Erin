@@ -5,9 +5,9 @@ import pkgutil
 import sys
 from pathlib import Path
 
-from enigma.core.exceptions import EnvironmentVariableError
+from erin.core.exceptions import EnvironmentVariableError
 
-logger = logging.getLogger('enigma')
+logger = logging.getLogger('erin')
 
 
 def find_extensions(package):
@@ -75,7 +75,7 @@ def find_plugins(package, extensions):
     plugin_mods = []
     for ext in ext_mods:
         logger.debug(
-            f"Plugin Path: {Path(ext.__spec__.origin).parent.absolute())}"
+            f"Plugin Path: {Path(ext.__spec__.origin).parent.absolute()}"
         )
 
     # Module Populator

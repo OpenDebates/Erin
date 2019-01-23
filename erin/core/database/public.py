@@ -3,7 +3,7 @@ import urllib.parse
 
 from motor.motor_asyncio import AsyncIOMotorClient
 
-logger = logging.getLogger('enigma')
+logger = logging.getLogger('erin')
 
 
 class MongoClient(AsyncIOMotorClient):

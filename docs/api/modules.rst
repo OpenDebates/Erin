@@ -1,7 +1,7 @@
-enigma
+erin
 ======
 
 .. toctree::
    :maxdepth: 4
 
-   enigma
+   erin

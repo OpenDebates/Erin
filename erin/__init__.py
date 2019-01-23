@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from enigma.core.loggers import BotLogger
+from erin.core.loggers import BotLogger
 
-dist_name = 'Enigma'
+dist_name = 'Erin'
 __version__ = "0.1.0.dev0"
 
 # Set Custom Global Logger

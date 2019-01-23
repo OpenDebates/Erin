@@ -1,13 +1,13 @@
-enigma.core.database package
+erin.core.database package
 ============================
 
 Submodules
 ----------
 
-enigma.core.database.public module
+erin.core.database.public module
 ----------------------------------
 
-.. automodule:: enigma.core.database.public
+.. automodule:: erin.core.database.public
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ enigma.core.database.public module
 Module contents
 ---------------
 
-.. automodule:: enigma.core.database
+.. automodule:: erin.core.database
     :members:
     :undoc-members:
     :show-inheritance:

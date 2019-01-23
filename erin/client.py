@@ -4,14 +4,14 @@ import discord
 from discord.ext import commands
 
 import plugins
-from enigma.core.database import MongoClient
-from enigma.core.utils import find_extensions, find_plugins
+from erin.core.database import MongoClient
+from erin.core.utils import find_extensions, find_plugins
 
 # Logging
-logger = logging.getLogger('enigma')
+logger = logging.getLogger('erin')
 
 
-class EnigmaClient(commands.Bot):
+class ErinClient(commands.Bot):
     """
     Custom implementation designed to load configuration from the TOML
     config file and dynamic console configurations

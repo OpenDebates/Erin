@@ -1,7 +1,7 @@
 
 .gitignore
 *.py[cod]
-/enigma/app.cfg
+/erin/app.cfg
 /Dockerfile
 /venv/
 /build/

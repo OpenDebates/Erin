@@ -4,16 +4,16 @@
 Basic Usage Instructions
 ========================
 
-Configuring Enigma
+Configuring Erin
 ==================
 
-To start using Enigma, we to get some configuration details.
-First let's make sure Enigma is installed.
+To start using Erin, we to get some configuration details.
+First let's make sure Erin is installed.
 
 ::
 
-    $ enigma -V
-    enigma 0.1.0.dev
+    $ erin -V
+    erin 0.1.0.dev
 
 Looks good! So, we need to head over to the `discord developers portal <https://discordapp.com/developers/applications/me/create>`_ and create our bot user.
 
@@ -54,7 +54,7 @@ Next click to reveal the token.
     Make sure to copy this token down!
 
 For now we won't be delving in making our bot public and we'll stick to using our bot privately in a server of our choice.
-Save your changes and use this link replacing ``BOT_CLIENT_ID`` with your bot's client ID to invite Enigma to our server,
+Save your changes and use this link replacing ``BOT_CLIENT_ID`` with your bot's client ID to invite Erin to our server,
 
 Invite Link : ``https://discordapp.com/api/oauth2/authorize?client_id=BOT_CLIENT_ID&permissions=8&scope=bot``
 
@@ -86,21 +86,21 @@ You should also already have your database connection details. If not, read :ref
     prefixes = ["+" , ">"]
     description = "I will ping you back. Don't worry!"
 
-.. _starting_enigma:
+.. _starting_erin:
 
-Starting Enigma
+Starting Erin
 ===============
 
 Now that we have a config file ready. Let's save it is somewhere. By convention, it's named ``app.cfg``.
 
-Now let's tell Enigma to start by passing the path to this file as an argument.
+Now let's tell Erin to start by passing the path to this file as an argument.
 
 ::
 
-    enigma start --config /path/to/app.cfg
+    erin start --config /path/to/app.cfg
 
 
 .. note::
 
-    You can also place it in the ``enigma/app.cfg`` folder of the repository if you installed from source.
-    However, you must make sure to name it ``app.cfg`` in this case or Enigma will throw an error.
+    You can also place it in the ``erin/app.cfg`` folder of the repository if you installed from source.
+    However, you must make sure to name it ``app.cfg`` in this case or Erin will throw an error.

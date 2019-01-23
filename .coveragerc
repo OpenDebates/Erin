@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = */enigma/*
+source = */erin/*
 
 [report]
 exclude_lines =

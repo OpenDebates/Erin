@@ -1,13 +1,13 @@
-enigma.commands package
+erin.commands package
 =======================
 
 Submodules
 ----------
 
-enigma.commands.start module
+erin.commands.start module
 ----------------------------
 
-.. automodule:: enigma.commands.start
+.. automodule:: erin.commands.start
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ enigma.commands.start module
 Module contents
 ---------------
 
-.. automodule:: enigma.commands
+.. automodule:: erin.commands
     :members:
     :undoc-members:
     :show-inheritance:

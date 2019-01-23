@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from enigma.utils import find_members
+from erin.utils import find_members
 
 
 class PersistRoles:
