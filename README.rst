@@ -2,7 +2,7 @@
 
     <h1 align="center">Erin</h1>
     <p align="center">
-        <a href="https://erin.rtfd.io"><img width="100" src="https://i.imgur.com/m3Lagqr.png"/></a>
+        <a href="https://erin.rtfd.io"><img width="100" src="https://i.imgur.com/GK2KgOe.gif"/></a>
     </p>
     <p align="center">
         Batteries Included
