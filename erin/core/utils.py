@@ -1,6 +1,8 @@
+import importlib
 import logging
 import os
 import pkgutil
+import sys
 from pathlib import Path
 from typing import List
 
@@ -53,6 +55,29 @@ def find_plugins(package) -> List[str]:
     # Create plugin import list
     plugins = [f"plugins.{i.name}" for i in plugins]
     return plugins
+
+
+def get_plugin_data(plugin):
+    """
+    Retrieve the plugin_data dictionary defined in a plugin.
+    Parameters
+    -----------
+    plugin : path to a plugin in module import format
+    Returns
+    --------
+    dict or None
+        The plugin_data dict defined in a plugin or None if the dict is
+        not defined.
+    """
+    plugin = importlib.import_module(plugin)
+    plugin_data = None
+    try:
+        plugin_data = plugin.plugin_data
+    except AttributeError as e:
+        plugin_data = None
+    finally:
+        del sys.modules[plugin.__name__]
+        return plugin_data
 
 
 def config_loader(mappings, optional_envs):

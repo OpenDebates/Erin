@@ -5,7 +5,7 @@ from discord.ext import commands
 
 import plugins
 from erin.core.database import MongoClient
-from erin.core.utils import find_plugins
+from erin.core.utils import find_plugins, get_plugin_data
 
 # Logging
 logger = logging.getLogger('erin')
@@ -25,11 +25,14 @@ class ErinClient(commands.Bot):
             *args, **kwargs
         )
 
-        # Database
-        self.db = MongoClient(config, bot=self)
-
         # Logger
         self.logger = logger
+
+        # Database
+        if config['database'].get("enabled"):
+            self.db = MongoClient(config, bot=self)
+        else:
+            self.logger.warning("No database defined. Running without one!")
 
     def _get_command_prefix(self):
         self.prefixes = self.config["global"]["prefixes"]
@@ -51,7 +54,21 @@ class ErinClient(commands.Bot):
         except Exception as e:
             logger.exception()
             self.logout()
+            return None
         for extension in extensions:
+
+            # Add schema validation as per DiscordFederation/Erin#12
+            plugin_data = get_plugin_data(extension)
+            if not plugin_data:
+                continue
+
+            # Convert to db method later
+            if not self.config["database"].get("enabled"):
+                if plugin_data.get("database"):
+                    self.logger.info(f"Skipping {extension}: Database Needed")
+                    continue
+
+            # Attempt loading the plugin
             try:
                 logger.plugin(f"Loading Plugin: {extension}")
                 self.load_extension(extension)
@@ -67,7 +84,6 @@ class ErinClient(commands.Bot):
                 logger.exception("Core Error")
 
     def add_cog(self, cog):
-
         super().add_cog(cog)
 
     def setup(self):
