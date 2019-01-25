@@ -46,8 +46,12 @@ class ErinClient(commands.Bot):
             return ""
 
     def _load_plugins(self):
+        plugin_dir = self.config["bot"].get("plugin_dir")
         try:
-            extensions = find_plugins(plugins)
+            if plugin_dir:
+                extensions = find_plugins(plugin_dir)
+            else:
+                extensions = find_plugins(plugins)
             logger.debug(
                 f"Plugins: {extensions}"
             )
@@ -60,6 +64,9 @@ class ErinClient(commands.Bot):
             # Add schema validation as per DiscordFederation/Erin#12
             plugin_data = get_plugin_data(extension)
             if not plugin_data:
+                logger.warning(
+                    f"Skipping {extension}: `plugin_data` undefined"
+                )
                 continue
 
             # Convert to db method later
