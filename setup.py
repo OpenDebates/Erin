@@ -57,9 +57,7 @@ sphinx = ['sphinx'] if needs_sphinx else []
 os.environ['SANIC_NO_UVLOOP'] = 'true'
 os.environ['SANIC_NO_UJSON'] = 'true'
 
-
-if __name__ == "__main__":
-    setup(
+setup(
         version=find_version('erin', '__init__.py'),
         packages=find_packages(exclude=['docs', 'tests']),
         entry_points={
@@ -72,5 +70,7 @@ if __name__ == "__main__":
         dependency_links=DEPENDENCY_LINKS,
         setup_requires=[] + sphinx,
         extras_require=EXTRAS_REQUIRE
-    )
+)
 
+if __name__ == "__main__":
+    pass
