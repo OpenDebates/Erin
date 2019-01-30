@@ -52,11 +52,13 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-def setup_package():
-    needs_sphinx = {'build_sphinx', 'upload_docs'}.intersection(sys.argv)
-    sphinx = ['sphinx'] if needs_sphinx else []
-    os.environ['SANIC_NO_UVLOOP'] = 'true'
-    os.environ['SANIC_NO_UJSON'] = 'true'
+needs_sphinx = {'build_sphinx', 'upload_docs'}.intersection(sys.argv)
+sphinx = ['sphinx'] if needs_sphinx else []
+os.environ['SANIC_NO_UVLOOP'] = 'true'
+os.environ['SANIC_NO_UJSON'] = 'true'
+
+
+if __name__ == "__main__":
     setup(
         version=find_version('erin', '__init__.py'),
         packages=find_packages(exclude=['docs', 'tests']),
@@ -72,6 +74,3 @@ def setup_package():
         extras_require=EXTRAS_REQUIRE
     )
 
-
-if __name__ == "__main__":
-    setup_package()
