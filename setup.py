@@ -8,8 +8,32 @@ import codecs
 import os
 import re
 import sys
+
 from setuptools import setup, find_packages
 
+# Constants
+DEPENDENCY_LINKS = [
+    "https://github.com/Rapptz/discord.py/tarball/rewrite#egg=discord.py[voice]"
+]
+
+INSTALL_REQUIRES = [
+    "toml",
+    "motor",
+]
+
+EXTRAS_REQUIRE = {
+    'tests': [
+        'pytest',
+        'pytest-cov',
+        'pytest-runner',
+    ],
+    'docs': [
+        'Sphinx',
+        'sphinx_rtd_theme'
+    ]
+}
+
+# Variables
 path_here = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -41,19 +65,11 @@ def setup_package():
                 'erin = erin.__main__:main'
             ]
         },
-        setup_requires=[
-                       ] + sphinx,
-        extras_require={
-            'TESTS': [
-                'pytest',
-                'pytest-cov',
-                'pytest-runner',
-            ],
-            'DOCS': [
-                'Sphinx',
-                'sphinx_rtd_theme'
-            ]
-        }
+        include_package_data=True,
+        install_requires=INSTALL_REQUIRES,
+        dependency_links=DEPENDENCY_LINKS,
+        setup_requires=[] + sphinx,
+        extras_require=EXTRAS_REQUIRE
     )
 
 
