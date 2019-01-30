@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7a36d6e0eff1f84be416877e4c2c225de7e4cdf3cb5edaa71beb415beb82358d"
+            "sha256": "127108108366f57ef07aa830d4b339e0cb743b7e58618aae4eb57bb11f045f12"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -21,6 +21,10 @@
                 "voice"
             ],
             "file": "https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py"
+        },
+        "erin": {
+            "editable": true,
+            "path": "."
         },
         "motor": {
             "hashes": [
