@@ -19,6 +19,8 @@ DEPENDENCY_LINKS = [
 INSTALL_REQUIRES = [
     "toml",
     "motor",
+    "discord.py"
+
 ]
 
 EXTRAS_REQUIRE = {
