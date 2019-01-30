@@ -46,10 +46,11 @@ class ErinClient(commands.Bot):
             return ""
 
     def _load_plugins(self):
-        plugin_dir = self.config["bot"].get("plugin_dir")
+        plugin_dir = self.config["bot"].get("plugins")
         try:
             if plugin_dir:
                 extensions = find_plugins(plugin_dir)
+                print(extensions)
             else:
                 extensions = find_plugins(plugins)
             logger.debug(
@@ -89,9 +90,6 @@ class ErinClient(commands.Bot):
                 )
             except Exception as e:
                 logger.exception("Core Error")
-
-    def add_cog(self, cog):
-        super().add_cog(cog)
 
     def setup(self):
         """

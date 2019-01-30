@@ -36,14 +36,17 @@ def find_plugins(package) -> List[str]:
     # Check if parameter is a package
     if hasattr(package, '__path__'):
         plugins = pkgutil.walk_packages(package.__path__)
+        package_name = os.path.basename(package.__path__[0])
     elif isinstance(package, str):
         if os.path.exists(package):
             plugins = pkgutil.walk_packages([package])
+            package_name = os.path.basename(package)
         else:
             raise PluginNotFoundError(package)
     elif isinstance(package, Path):
         if package.exists():
             plugins = pkgutil.walk_packages([package])
+            package_name = os.path.basename(str(package))
         else:
             raise PluginNotFoundError(package)
     else:
@@ -53,7 +56,7 @@ def find_plugins(package) -> List[str]:
         )
 
     # Create plugin import list
-    plugins = [f"plugins.{i.name}" for i in plugins]
+    plugins = [f"{package_name}.{i.name}" for i in plugins]
     return plugins
 
 

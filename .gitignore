@@ -170,3 +170,4 @@ fabric.properties
 !/docs/api/
 .idea
 /erin/erin.toml
+/test_plugins/
