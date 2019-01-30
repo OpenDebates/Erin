@@ -9,13 +9,13 @@ motor = "*"
 "discord.py" = {file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py", extras = ["voice"]}
 
 [dev-packages]
-"e1839a8" = {editable = true, path = "."}
 Sphinx = "*"
 sphinx_rtd_theme = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-runner = "*"
 codecov = "*"
+erin = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7.1"
