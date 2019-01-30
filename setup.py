@@ -19,7 +19,7 @@ DEPENDENCY_LINKS = [
 INSTALL_REQUIRES = [
     "toml",
     "motor",
-    "discord.py"
+    "discord.py>0.16.12"
 
 ]
 
