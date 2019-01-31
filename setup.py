@@ -19,7 +19,7 @@ DEPENDENCY_LINKS = [
 INSTALL_REQUIRES = [
     "toml",
     "motor",
-    "pip @ https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py"
+    "discord @ https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py"
 
 ]
 
