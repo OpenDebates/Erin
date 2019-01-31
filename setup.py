@@ -15,7 +15,7 @@ from setuptools import setup, find_packages
 INSTALL_REQUIRES = [
     "toml",
     "motor",
-    "discord.py @ https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py"
+    "discord.py @ git+https://github.com/Rapptz/discord.py.git@rewrite#egg=discord.py"
 
 ]
 
@@ -30,7 +30,7 @@ EXTRAS_REQUIRE = {
         'sphinx_rtd_theme'
     ],
     'voice': [
-        "discord.py [voice] @ https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py[voice]"
+        "discord.py @ git+https://github.com/Rapptz/discord.py.git@rewrite#egg=discord.py[voice]"
     ]
 }
 

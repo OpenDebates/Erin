@@ -6,8 +6,7 @@ name = "pypi"
 [packages]
 toml = "*"
 motor = "*"
-"discord.py" = {file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py", extras = ["voice"]}
-erin = {editable = true, path = "."}
+discord-py = {editable = true,extras = ["voice"],git = "https://github.com/Rapptz/discord.py.git",ref = "rewrite"}
 
 [dev-packages]
 Sphinx = "*"
@@ -16,7 +15,10 @@ pytest = "*"
 pytest-cov = "*"
 pytest-runner = "*"
 codecov = "*"
-erin = {editable = true, path = "."}
+erin = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7.1"
+
+[pipenv]
+allow_prereleases = true
