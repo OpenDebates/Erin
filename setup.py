@@ -30,7 +30,7 @@ EXTRAS_REQUIRE = {
         'sphinx_rtd_theme'
     ],
     'voice': [
-        "discord.py @ https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py[voice]"
+        "discord.py[voice] @ https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py[voice]"
     ]
 }
 
