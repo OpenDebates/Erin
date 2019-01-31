@@ -12,10 +12,6 @@ import sys
 from setuptools import setup, find_packages
 
 # Constants
-DEPENDENCY_LINKS = [
-    "https://github.com/Rapptz/discord.py/tarball/rewrite#egg=discord.py[voice]"
-]
-
 INSTALL_REQUIRES = [
     "toml",
     "motor",
@@ -32,6 +28,9 @@ EXTRAS_REQUIRE = {
     'docs': [
         'Sphinx',
         'sphinx_rtd_theme'
+    ],
+    'voice': [
+        "discord @ https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py[voice]"
     ]
 }
 
@@ -69,7 +68,6 @@ setup(
         },
         include_package_data=True,
         install_requires=INSTALL_REQUIRES,
-        dependency_links=DEPENDENCY_LINKS,
         setup_requires=[] + sphinx,
         extras_require=EXTRAS_REQUIRE
 )
