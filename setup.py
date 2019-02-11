@@ -15,8 +15,8 @@ from setuptools import setup, find_packages
 INSTALL_REQUIRES = [
     "toml",
     "motor",
-    "discord.py @ git+https://github.com/Rapptz/discord.py.git@rewrite#egg=discord.py"
-
+    "discord.py @ git+https://github.com/Rapptz/discord.py.git@rewrite#egg=discord.py",
+    "cookiecutter"
 ]
 
 EXTRAS_REQUIRE = {

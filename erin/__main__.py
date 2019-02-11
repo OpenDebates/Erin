@@ -2,6 +2,7 @@ import argparse
 import sys
 
 import erin
+from erin.cli.scaffold import ScaffoldCommand
 from erin.cli.start import StartCommand
 
 
@@ -35,6 +36,12 @@ def _main_commands(parser):
         "start",
         aliases=["run"],
         help="start the server"
+    )
+    ScaffoldCommand(
+        parser,
+        "scaffold",
+        aliases=["init"],
+        help="create new erin project"
     )
     return parser
 
