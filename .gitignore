@@ -171,3 +171,4 @@ fabric.properties
 .idea
 /erin/erin.toml
 /test_plugins/
+/.pytest_cache/
