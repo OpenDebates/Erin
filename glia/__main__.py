@@ -11,10 +11,10 @@ def _optional_commands(parser):
     Optional cli passed directly to the main parser.
     """
     parser.add_argument(
-            "-V", "--version",
-            version=f"%(prog)s {glia.__version__}",
-            action="version"
-        )
+        "-V", "--version",
+        version=f"%(prog)s {glia.__version__}",
+        action="version"
+    )
     parser.add_argument(
         "-v", "--verbose",
         help="increase output verbosity",
@@ -62,18 +62,17 @@ def main(args=None):
     )
     parser_commands = _main_commands(parser_commands)
 
-    if type(args) == list:
+    if isinstance(args, list):
         args = parser.parse_args(args)
     else:
         args = parser.parse_args()
 
     if args.verbose:
-        """
-        This is different from logging output verbosity. Enabling this
-        will print command internals directly to STDOUT regardless of
-        the settings defined in the logging module. Only recommended
-        for use by developers. 
-        """
+
+        # This is different from logging output verbosity. Enabling this
+        # will print command internals directly to STDOUT regardless of
+        # the settings defined in the logging module. Only recommended
+        # for use by developers.
         print("Verbose Mode: Enabled")
 
     try:

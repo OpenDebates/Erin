@@ -27,7 +27,7 @@ def find_members(ctx):
     args = get_command_args(ctx)
     members = []
     for arg in args:
-        arg = re.findall("\d{18}", arg)[0]
+        arg = re.findall(r"\d{18}", arg)[0]
         if len(arg) == 18:
             member_obj = ctx.guild.get_member(int(arg))
             if member_obj:

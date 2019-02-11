@@ -1,14 +1,34 @@
 sudo: false
 language: python
+cache: pip
+env:
+  global:
+    - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+    - SEGFAULT_SIGNALS=all
+  matrix:
+    - TOXENV=check
+    - TOXENV=docs
 matrix:
   fast_finish: true
   include:
-  - python: pypy3
-  - python: 3.6.4
-  - python: 3.6-dev
+    - python: '3.6'
+      env:
+        - TOXENV=py36-cover,report,codecov
+    - python: '3.6'
+      env:
+        - TOXENV=py36-nocov
+    - python: '3.7'
+      dist: xenial
+      env:
+        - TOXENV=py37-cover,report,codecov
+    - python: '3.7'
+      dist: xenial
+      env:
+        - TOXENV=py37-nocov
+  - python: 3.7-dev
   - python: nightly
   allow_failures:
-  - python: 3.6-dev
+  - python: 3.7-dev
   - python: nightly
 os:
 - linux
@@ -17,26 +37,20 @@ git:
 branches:
   only:
   - "/.*/"
+before_install:
+  - python --version
+  - uname -a
+  - lsb_release -a
 install:
-- pip install codecov
-- pip install .[TESTS]
+  - pip install --upgrade pip
+  - pip install codecov
+  - pip install .[TESTS]
 script:
-- pytest --cov=glia tests/
+  - pytest --cov=glia tests/
 after_success:
-- codecov
+  - codecov
+after_failure:
+  - more .tox/log/* | cat
+  - more .tox/*/log/* | cat
 before_deploy:
-- python setup.py sdist bdist_wheel
-deploy:
-  provider: releases
-  prerelease: true
-  name: "pre-release"
-  api_key:
-    secure: M7GJ3rs49xhJKgio7pmKUUIoYB3u6852+Ld6PwYtcxi97mK2Uvk4KHrgDZRDVF0edO0161M8VD+1Ca8qujCi+Lb2EAkiEggo6KGaTFsBopKczeb4hAuSVsxAxDkhBti7NFt91fdKrMU0KZTT+zikBJhKOzY3K6czbXVqZbG4XyrWFTN2NqnsCELFrZW6QNlFhJXFCfuoEikyJtaIeZceRMXMF1+mrJe7b0a889Z2JozVgI6xIdx1OM7KDbxEISCfAMlrgufQbR93fWZNiYnlJqrFiJayGiZIOpVlBZJt7sVvohJAJdoVmJs9xjLyvZU1J9FuskN3iUdc+qU0xX4r0z4qk00bLJ7wzGGiUj+/dOx2/1e63NnMebiLEGLQ55HdiOBqnTSsVLaCbLj/5yNmMPdVBQJz/8gNha4yKfaKMPZRXFe70/+9q/+Spm3DTAXX3nzMEAoQVlXn/O1mjhJK4AdyocyTufN6VYDAo1d2q+PBf01mJFiE3nQYgTeTkV19yTBTq5kcs++GZP7lC85YbPMd2ObMI+XHlXlHcSapmptqd1i9mZ++ABildHvSBP/ifwyyG5lzjS/f9jd/lRxFlfxuAVSMle4S9zuE6gMugdzwAsPbBHFo2YcdnAXafavRYQr5KQE7qTKMwbuJ1GuAdgx3NiDwAzQnK70wGkch6Og=
-  file_glob: true
-  file: dist/*
-  skip_cleanup: true
-  on:
-    repo: UnethicalDiscord/Glia
-    tags: true
-    branch: master
-    python: 3.6.4
+  - python setup.py sdist bdist_wheel

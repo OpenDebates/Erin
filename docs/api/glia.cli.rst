@@ -4,6 +4,14 @@ glia.cli package
 Submodules
 ----------
 
+glia.cli.scaffold module
+------------------------
+
+.. automodule:: glia.cli.scaffold
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 glia.cli.start module
 ---------------------
 

@@ -51,7 +51,7 @@ class GliaClient(commands.Bot):
             logger.debug(
                 f"Plugins Found: {extensions}"
             )
-        except Exception as e:
+        except Exception:
             logger.exception()
             self.logout()
             return None
@@ -75,15 +75,15 @@ class GliaClient(commands.Bot):
             try:
                 logger.plugin(f"Loading Plugin: {extension}")
                 self.load_extension(extension)
-            except discord.ClientException as e:
+            except discord.ClientException:
                 logger.exception(
                     f'Missing setup() for Plugin: {extension}.'
                 )
-            except ImportError as e:
+            except ImportError:
                 logger.exception(
                     f"Failed to load Plugin: {extension}"
                 )
-            except Exception as e:
+            except Exception:
                 logger.exception("Core Error")
 
     def setup(self):
@@ -96,7 +96,7 @@ class GliaClient(commands.Bot):
     async def on_command(self, ctx):
         try:
             cog_name = ctx.cog.data['name']
-        except AttributeError as e:
+        except AttributeError:
             cog_name = None
 
         if cog_name:

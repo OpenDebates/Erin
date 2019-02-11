@@ -30,7 +30,7 @@ def start(**kwargs):
             config = toml.load(kwargs['config_file'])
         else:
             config = toml.load("glia/glia.toml")
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         logger.info(
             "No config file provided. "
             "Checking for environment variables instead."

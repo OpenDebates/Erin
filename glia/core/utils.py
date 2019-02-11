@@ -77,7 +77,7 @@ def get_plugin_data(plugin):
     plugin_data = None
     try:
         plugin_data = plugin.plugin_data
-    except AttributeError as e:
+    except AttributeError:
         plugin_data = None
     finally:
         del sys.modules[plugin.__name__]

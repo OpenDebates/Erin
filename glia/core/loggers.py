@@ -1,7 +1,5 @@
-import inspect
 import logging
-from logging import getLoggerClass, NOTSET, addLevelName
-
+from logging import NOTSET, addLevelName, getLoggerClass
 
 discord_logger = logging.getLogger('discord')
 discord_handler = logging.StreamHandler()
