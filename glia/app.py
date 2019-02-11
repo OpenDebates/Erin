@@ -3,13 +3,13 @@ import logging
 
 import toml
 
-import erin
-from erin.client import ErinClient
-from erin.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
-from erin.core.loggers import discord_logger
-from erin.core.utils import config_loader
+import glia
+from glia.client import GliaClient
+from glia.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
+from glia.core.loggers import discord_logger
+from glia.core.utils import config_loader
 
-logger = logging.getLogger('erin')
+logger = logging.getLogger('glia')
 
 
 def start(**kwargs):
@@ -22,14 +22,14 @@ def start(**kwargs):
         logger.setLevel(level)
     else:
         logger.setLevel('INFO')
-    logger.info(f"Starting Erin: {erin.__version__}")
+    logger.info(f"Starting Glia: {glia.__version__}")
 
     # Config Loader
     try:
         if kwargs['config_file']:
             config = toml.load(kwargs['config_file'])
         else:
-            config = toml.load("erin/erin.toml")
+            config = toml.load("glia/glia.toml")
     except FileNotFoundError as e:
         logger.info(
             "No config file provided. "
@@ -52,7 +52,7 @@ def start(**kwargs):
         pass
 
     # Initialize Bot
-    bot = ErinClient(config)
+    bot = GliaClient(config)
     bot.remove_command("help")
     bot.setup()
     bot.run(

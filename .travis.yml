@@ -21,7 +21,7 @@ install:
 - pip install codecov
 - pip install .[TESTS]
 script:
-- pytest --cov=erin tests/
+- pytest --cov=glia tests/
 after_success:
 - codecov
 before_deploy:
@@ -36,7 +36,7 @@ deploy:
   file: dist/*
   skip_cleanup: true
   on:
-    repo: UnethicalDiscord/Erin
+    repo: UnethicalDiscord/Glia
     tags: true
     branch: master
     python: 3.6.4

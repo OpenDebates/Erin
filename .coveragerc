@@ -1,8 +1,17 @@
+[paths]
+source = glia
+
 [run]
-branch = True
-source = */erin/*
+branch = true
+source =
+    glia
+    tests
+parallel = true
 
 [report]
+show_missing = true
+precision = 2
+omit = *migrations*
 exclude_lines =
     pragma: no cover
 

@@ -15,8 +15,8 @@ Follow the developer instructions for now and verify you have a working installa
 
 ::
 
-    $ erin -V    # This should show the current version.
-    erin 0.1.0.dev0
+    $ glia -V    # This should show the current version.
+    glia 0.1.0.dev0
 
 For Developers
 ==============
@@ -24,15 +24,15 @@ For Developers
 Installing from source
 ----------------------
 
-Erin is very easy to install from source. First clone the latest development version from the master branch.
+Glia is very easy to install from source. First clone the latest development version from the master branch.
 
 ::
 
-    git clone https://github.com/DiscordFederation/Erin.git
+    git clone https://github.com/DiscordFederation/Glia.git
 
 
-Since Erin has a lot of dependencies, it is wise to install a virtualenv first. Please do not use `pipenv <https://docs.pipenv.org/>`_ however.
-It's incompatible with Erin's dependencies and may cause more problems in the future. If you wish to submit a pull request to fix this problem please read more `here <https://github.com/pypa/pipenv/issues/1578>`_
+Since Glia has a lot of dependencies, it is wise to install a virtualenv first. Please do not use `pipenv <https://docs.pipenv.org/>`_ however.
+It's incompatible with Glia's dependencies and may cause more problems in the future. If you wish to submit a pull request to fix this problem please read more `here <https://github.com/pypa/pipenv/issues/1578>`_
 
 First let's make a virtualenv. So we have to install it first.
 
@@ -44,7 +44,7 @@ Then create a new virtualenv within the repository. If you name it ``venv`` it w
 
 ::
 
-    cd Erin/
+    cd Glia/
     virtualenv venv
 
 Now let's activate the virtual environment.

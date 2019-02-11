@@ -1,9 +1,9 @@
 import argparse
 import sys
 
-import erin
-from erin.cli.scaffold import ScaffoldCommand
-from erin.cli.start import StartCommand
+import glia
+from glia.cli.scaffold import ScaffoldCommand
+from glia.cli.start import StartCommand
 
 
 def _optional_commands(parser):
@@ -12,7 +12,7 @@ def _optional_commands(parser):
     """
     parser.add_argument(
             "-V", "--version",
-            version=f"%(prog)s {erin.__version__}",
+            version=f"%(prog)s {glia.__version__}",
             action="version"
         )
     parser.add_argument(
@@ -26,7 +26,7 @@ def _optional_commands(parser):
 def _main_commands(parser):
     """
     Commands for the cli subparser is defined in
-    :mod:`erin.cli` and called here.
+    :mod:`glia.cli` and called here.
 
     You can pass any of the arguments except `action` to these cli
     as defined by :func:`argparse.ArgumentParser.add_parser`.
@@ -41,7 +41,7 @@ def _main_commands(parser):
         parser,
         "scaffold",
         aliases=["init"],
-        help="create new erin project"
+        help="create new glia project"
     )
     return parser
 

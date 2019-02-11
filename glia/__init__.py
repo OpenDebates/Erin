@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from erin.core.loggers import BotLogger
+from glia.core.loggers import BotLogger
 
-dist_name = 'Erin'
+dist_name = 'Glia'
 __version__ = "0.1.0.dev0"
 
 # Set Custom Global Logger

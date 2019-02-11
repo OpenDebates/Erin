@@ -1,8 +1,8 @@
 from tests.common import run_command
 
 
-def test_erin_command():
+def test_glia_command():
     """
-    Ensure erin command exists.
+    Ensure glia command exists.
     """
-    run_command("erin")
+    run_command("glia")

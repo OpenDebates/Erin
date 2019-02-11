@@ -7,7 +7,7 @@ Introduction
 ============
 
 Building a discord bot can sometimes be overwhelming if you need complex commands. Keeping track of logging,
-configuration files, databases, efficiency, sharding, devops and more. With Erin you don't have to worry
+configuration files, databases, efficiency, sharding, devops and more. With Glia you don't have to worry
 about the boring parts and focus on building your commands the way you need them.
 
 Prerequisite Knowledge

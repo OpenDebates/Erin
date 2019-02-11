@@ -6,9 +6,9 @@ import sys
 from pathlib import Path
 from typing import List
 
-from erin.core.exceptions import EnvironmentVariableError, PluginNotFoundError
+from glia.core.exceptions import EnvironmentVariableError, PluginNotFoundError
 
-logger = logging.getLogger('erin')
+logger = logging.getLogger('glia')
 
 
 def find_plugins(package) -> List[str]:

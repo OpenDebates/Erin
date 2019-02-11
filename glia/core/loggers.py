@@ -16,7 +16,7 @@ discord_logger.addHandler(discord_handler)
 
 # Don't forget to call logging.setLoggerClass(BotLogger) at the start
 # of the code to ensure that this formatting is used everywhere.
-# The current logger class is set in erin.__init__.py.
+# The current logger class is set in glia.__init__.py.
 class BotLogger(getLoggerClass()):
     DATABASE = 15
     COMMAND = 16

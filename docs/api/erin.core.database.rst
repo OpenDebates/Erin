@@ -1,13 +1,13 @@
-erin.core.database package
+glia.core.database package
 ==========================
 
 Submodules
 ----------
 
-erin.core.database.public module
+glia.core.database.public module
 --------------------------------
 
-.. automodule:: erin.core.database.public
+.. automodule:: glia.core.database.public
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ erin.core.database.public module
 Module contents
 ---------------
 
-.. automodule:: erin.core.database
+.. automodule:: glia.core.database
     :members:
     :undoc-members:
     :show-inheritance:

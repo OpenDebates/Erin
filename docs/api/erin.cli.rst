@@ -1,13 +1,13 @@
-erin.cli package
+glia.cli package
 ================
 
 Submodules
 ----------
 
-erin.cli.start module
+glia.cli.start module
 ---------------------
 
-.. automodule:: erin.cli.start
+.. automodule:: glia.cli.start
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ erin.cli.start module
 Module contents
 ---------------
 
-.. automodule:: erin.cli
+.. automodule:: glia.cli
     :members:
     :undoc-members:
     :show-inheritance:

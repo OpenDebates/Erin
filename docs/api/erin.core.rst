@@ -1,4 +1,4 @@
-erin.core package
+glia.core package
 =================
 
 Subpackages
@@ -6,39 +6,39 @@ Subpackages
 
 .. toctree::
 
-    erin.core.database
+    glia.core.database
 
 Submodules
 ----------
 
-erin.core.constants module
+glia.core.constants module
 --------------------------
 
-.. automodule:: erin.core.constants
+.. automodule:: glia.core.constants
     :members:
     :undoc-members:
     :show-inheritance:
 
-erin.core.exceptions module
+glia.core.exceptions module
 ---------------------------
 
-.. automodule:: erin.core.exceptions
+.. automodule:: glia.core.exceptions
     :members:
     :undoc-members:
     :show-inheritance:
 
-erin.core.loggers module
+glia.core.loggers module
 ------------------------
 
-.. automodule:: erin.core.loggers
+.. automodule:: glia.core.loggers
     :members:
     :undoc-members:
     :show-inheritance:
 
-erin.core.utils module
+glia.core.utils module
 ----------------------
 
-.. automodule:: erin.core.utils
+.. automodule:: glia.core.utils
     :members:
     :undoc-members:
     :show-inheritance:
@@ -47,7 +47,7 @@ erin.core.utils module
 Module contents
 ---------------
 
-.. automodule:: erin.core
+.. automodule:: glia.core
     :members:
     :undoc-members:
     :show-inheritance:

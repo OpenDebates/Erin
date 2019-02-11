@@ -169,6 +169,6 @@ fabric.properties
 /venv/
 !/docs/api/
 .idea
-/erin/erin.toml
+/glia/glia.toml
 /test_plugins/
 /.pytest_cache/

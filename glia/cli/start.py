@@ -1,7 +1,7 @@
 import argparse
 
-from erin import app
-from erin.cli import CommandFactory
+from glia import app
+from glia.cli import CommandFactory
 
 
 class StartCommand(CommandFactory):

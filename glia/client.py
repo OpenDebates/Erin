@@ -3,14 +3,14 @@ import logging
 import discord
 from discord.ext import commands
 
-from erin.core.database import MongoClient
-from erin.core.utils import find_plugins, get_plugin_data
+from glia.core.database import MongoClient
+from glia.core.utils import find_plugins, get_plugin_data
 
 # Logging
-logger = logging.getLogger('erin')
+logger = logging.getLogger('glia')
 
 
-class ErinClient(commands.Bot):
+class GliaClient(commands.Bot):
     """
     Custom implementation designed to load configuration from the TOML
     config file and dynamic console configurations
@@ -57,7 +57,7 @@ class ErinClient(commands.Bot):
             return None
         for extension in extensions:
 
-            # Add schema validation as per DiscordFederation/Erin#12
+            # Add schema validation as per DiscordFederation/Glia#12
             plugin_data = get_plugin_data(extension)
             if not plugin_data:
                 logger.warning(
