@@ -1,8 +1,0 @@
-
-.gitignore
-*.py[cod]
-/erin/app.cfg
-/Dockerfile
-/venv/
-/build/
-/dist/
