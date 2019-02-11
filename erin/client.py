@@ -3,7 +3,6 @@ import logging
 import discord
 from discord.ext import commands
 
-import plugins
 from erin.core.database import MongoClient
 from erin.core.utils import find_plugins, get_plugin_data
 
@@ -46,15 +45,11 @@ class ErinClient(commands.Bot):
             return ""
 
     def _load_plugins(self):
-        plugin_dir = self.config["bot"].get("plugins")
+        plugin_dir = self.config["bot"].get("plugins_folder")
         try:
-            if plugin_dir:
-                extensions = find_plugins(plugin_dir)
-                print(extensions)
-            else:
-                extensions = find_plugins(plugins)
+            extensions = find_plugins(plugin_dir)
             logger.debug(
-                f"Plugins: {extensions}"
+                f"Plugins Found: {extensions}"
             )
         except Exception as e:
             logger.exception()

@@ -72,6 +72,7 @@ def get_plugin_data(plugin):
         The plugin_data dict defined in a plugin or None if the dict is
         not defined.
     """
+    logger.debug(f"Attempting Plugin Import: {plugin}")
     plugin = importlib.import_module(plugin)
     plugin_data = None
     try:
