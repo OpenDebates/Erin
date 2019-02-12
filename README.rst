@@ -8,8 +8,8 @@
         Batteries Included
         <br>
         <br>
-        <a href="https://travis-ci.org/Unethical/Glia">
-            <img src="https://travis-ci.org/Unethical/Glia.svg?branch=master"/>
+        <a href="https://travis-ci.org/DiscordFederation/Glia">
+            <img src="https://travis-ci.org/DiscordFederation/Glia.svg?branch=master"/>
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/glia">
             <img src="https://ci.appveyor.com/api/projects/status/x7b7nnj23uas0q80?svg=true"/>

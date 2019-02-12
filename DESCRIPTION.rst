@@ -45,8 +45,8 @@ any notice at all.
 .. |image0| image:: https://i.imgur.com/GK2KgOe.gif
    :width: 100px
    :target: https://glia.rtfd.io
-.. |image1| image:: https://travis-ci.org/Unethical/Glia.svg?branch=master
-   :target: https://travis-ci.org/Unethical/Glia
+.. |image1| image:: https://travis-ci.org/DiscordFederation/Glia.svg?branch=master
+   :target: https://travis-ci.org/DiscordFederation/Glia
 .. |image2| image:: https://ci.appveyor.com/api/projects/status/x7b7nnj23uas0q80?svg=true
    :target: https://ci.appveyor.com/project/daegontaven/glia
 .. |image3| image:: https://api.codeclimate.com/v1/badges/26c1c9a76a61d32d38dd/maintainability
