@@ -25,11 +25,25 @@ matrix:
       dist: xenial
       env:
         - TOXENV=py37-nocov
-  - python: 3.7-dev
-  - python: nightly
+    - python: '3.7-dev'
+      dist: xenial
+      env:
+        - TOXENV=py37-cover,report,codecov
+    - python: '3.7-dev'
+      dist: xenial
+      env:
+        - TOXENV=py37-nocov
+    - python: '3.8-dev'
+      dist: xenial
+      env:
+        - TOXENV=py38-cover,report,codecov
+    - python: '3.8-dev'
+      dist: xenial
+      env:
+        - TOXENV=py38-nocov
   allow_failures:
-  - python: 3.7-dev
-  - python: nightly
+    - python: 3.7-dev
+    - python: 3.8-dev
 os:
 - linux
 git:
@@ -46,7 +60,7 @@ install:
   - pip install codecov
   - pip install .[TESTS]
 script:
-  - pytest --cov=glia tests/
+  - tox -v
 after_success:
   - codecov
 after_failure:

@@ -172,3 +172,4 @@ fabric.properties
 /glia/glia.toml
 /test_plugins/
 /.pytest_cache/
+/tox_temps/
