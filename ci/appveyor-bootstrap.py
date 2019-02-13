@@ -107,5 +107,5 @@ if __name__ == "__main__":
     install_pip(environ['PYTHON_HOME'])
     install_packages(
         environ['PYTHON_HOME'], "setuptools>=40.6.2", "wheel", "tox",
-        "codecov", "virtualenv>=16.4.0", ". [TESTS]"
+        "codecov", "virtualenv>=16.4.0", ".[TESTS]"
     )

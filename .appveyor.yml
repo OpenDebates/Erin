@@ -63,6 +63,7 @@ install:
   - '%PYTHON_HOME%\Scripts\virtualenv --version'
   - '%PYTHON_HOME%\Scripts\pip --version'
   - '%PYTHON_HOME%\Scripts\tox --version'
+  - '%PYTHON_HOME%\Scripts\pip install .[TESTS]'
 platform:
   - x64
 test_script:
