@@ -12,7 +12,7 @@
             <img src="https://travis-ci.org/DiscordFederation/Glia.svg?branch=master"/>
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/glia">
-            <img src="https://ci.appveyor.com/api/projects/status/x7b7nnj23uas0q80?svg=true"/>
+            <img src="https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr?svg=true"/>
         </a>
         <a href="https://codeclimate.com/github/Unethical/Glia/maintainability">
             <img src="https://api.codeclimate.com/v1/badges/26c1c9a76a61d32d38dd/maintainability"/>
