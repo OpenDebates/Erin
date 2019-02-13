@@ -60,7 +60,6 @@ init:
   - ps: ls C:\Python*
 install:
   - 'pip install --upgrade pip'
-  - 'pip install codecov tox'
   - 'pip install .[TESTS]'
   - 'python -u ci\appveyor-bootstrap.py'
   - '%PYTHON_HOME%\Scripts\virtualenv --version'
