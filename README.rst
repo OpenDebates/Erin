@@ -17,8 +17,8 @@
         <a href="https://codeclimate.com/github/Unethical/Glia/maintainability">
             <img src="https://api.codeclimate.com/v1/badges/26c1c9a76a61d32d38dd/maintainability"/>
         </a>
-        <a href="https://codecov.io/gh/Unethical/Glia">
-            <img src="https://codecov.io/gh/Unethical/Glia/branch/master/graph/badge.svg"/>
+        <a href="https://codecov.io/gh/DiscordFederation/Glia">
+            <img src="https://codecov.io/gh/DiscordFederation/Glia/branch/master/graph/badge.svg"/>
         </a>
         <a href="http://glia.readthedocs.io/en/latest/?badge=latest">
             <img src="https://readthedocs.org/projects/glia/badge/?version=latest"/>

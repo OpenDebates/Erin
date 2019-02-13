@@ -51,7 +51,7 @@ any notice at all.
    :target: https://ci.appveyor.com/project/daegontaven/glia
 .. |image3| image:: https://api.codeclimate.com/v1/badges/26c1c9a76a61d32d38dd/maintainability
    :target: https://codeclimate.com/github/Unethical/Glia/maintainability
-.. |image4| image:: https://codecov.io/gh/Unethical/Glia/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/Unethical/Glia
+.. |image4| image:: https://codecov.io/gh/DiscordFederation/Glia/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/DiscordFederation/Glia
 .. |image5| image:: https://readthedocs.org/projects/glia/badge/?version=latest
    :target: http://glia.readthedocs.io/en/latest/?badge=latest
