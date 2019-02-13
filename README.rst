@@ -20,8 +20,8 @@
         <a href="https://codecov.io/gh/DiscordFederation/Glia">
             <img src="https://codecov.io/gh/DiscordFederation/Glia/branch/master/graph/badge.svg"/>
         </a>
-        <a href="http://glia.readthedocs.io/en/latest/?badge=latest">
-            <img src="https://readthedocs.org/projects/glia/badge/?version=latest"/>
+        <a href="https://glia.discord.cx/en/latest/?badge=latest">
+            <img src="https://readthedocs.org/projects/glia-framework/badge/?version=latest" alt='Documentation Status'/>
         </a>
     </p>
     <hr>
