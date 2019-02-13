@@ -41,10 +41,13 @@ def make_auth_headers():
 def download_latest_artifacts(account_project, build_id):
     """Download all the artifacts from the latest build."""
     if build_id is None:
-        url = f"https://ci.appveyor.com/api/projects/{account_project}"
+        url = "https://ci.appveyor.com/api/projects/{}".format(
+            account_project
+        )
     else:
-        url = f"https://ci.appveyor.com/api/" \
-            f"projects/{account_project}/build/{build_id}"
+        url = "https://ci.appveyor.com/api/projects/{}/build/{}".format(
+            account_project, build_id
+        )
     build = requests.get(url, headers=make_auth_headers()).json()
     jobs = build['build']['jobs']
     print(
@@ -61,8 +64,8 @@ def download_latest_artifacts(account_project, build_id):
             )
         )
 
-        url = f"https://ci.appveyor.com/api/" \
-            f"buildjobs/{job['jobId']}/artifacts"
+        url = "https://ci.appveyor.com/api/" \
+              "buildjobs/{}/artifacts".format(job['jobId'])
         response = requests.get(url, headers=make_auth_headers())
         artifacts = response.json()
 
@@ -71,8 +74,8 @@ def download_latest_artifacts(account_project, build_id):
             filename = artifact['fileName']
             print(u"    {0}, {1} bytes".format(filename, artifact['size']))
 
-            url = f"https://ci.appveyor.com/api/" \
-                f"buildjobs/{job['jobId']}/artifacts/{filename}"
+            url = "https://ci.appveyor.com/api/" \
+                  "buildjobs/{}/artifacts/{}".format(job['jobId'], filename)
             download_url(url, filename, make_auth_headers())
 
             if is_zip:

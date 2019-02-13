@@ -28,7 +28,7 @@ INSTALL_CMD = {
 
 
 def download_file(url, path):
-    print(f"Downloading: {url} (into {path})")
+    print("Downloading: {} (into {})".format(url, path))
     progress = [0, 0]
 
     def report(count, size, total):
