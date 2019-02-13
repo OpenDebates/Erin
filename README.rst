@@ -12,10 +12,10 @@
             <img src="https://travis-ci.org/DiscordFederation/Glia.svg?branch=master"/>
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/glia">
-            <img src="https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr?svg=true"/>
+            <img src="https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true"/>
         </a>
-        <a href="https://codeclimate.com/github/Unethical/Glia/maintainability">
-            <img src="https://api.codeclimate.com/v1/badges/26c1c9a76a61d32d38dd/maintainability"/>
+        <a href="https://codeclimate.com/github/DiscordFederation/Glia/maintainability">
+            <img src="https://api.codeclimate.com/v1/badges/d0f6fa3bd9da89146279/maintainability"/>
         </a>
         <a href="https://codecov.io/gh/DiscordFederation/Glia">
             <img src="https://codecov.io/gh/DiscordFederation/Glia/branch/master/graph/badge.svg"/>
@@ -38,4 +38,4 @@
        </ul>
 
     <h4>Can I get started with Glia today?</h4>
-       <p>Yes, Glia works out of the box with all <a href="https://github.com/Rapptz/discord.py/tree/rewrite">discord.py</a> <a href="https://discordpy.readthedocs.io/en/rewrite/ext/commands/api.html#discord.ext.commands.Bot.load_extension">extensions</a>. You can read how to set it up in the <a href="https://glia.rtfd.io">documentation</a>. However, keep in mind that this project has not even released a pre-alpha yet. This is because we are still deliberating core architecture and we want to get it right the first time. As a result expect plenty of changes to the API without any notice at all.</p>
+       <p>Yes, Glia works out of the box with all <a href="https://github.com/Rapptz/discord.py/tree/rewrite">discord.py</a> <a href="https://discordpy.readthedocs.io/en/rewrite/ext/commands/api.html#discord.ext.commands.Bot.load_extension">extensions</a>. You can read how to set it up in the <a href="https://glia.discord.cx">documentation</a>. However, keep in mind that this project has not even released a pre-alpha yet. This is because we are still deliberating core architecture and we want to get it right the first time. As a result expect plenty of changes to the API without any notice at all.</p>

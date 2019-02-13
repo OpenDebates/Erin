@@ -40,18 +40,18 @@ any notice at all.
 
 .. _discord.py: https://github.com/Rapptz/discord.py/tree/rewrite
 .. _extensions: https://discordpy.readthedocs.io/en/rewrite/ext/commands/api.html#discord.ext.commands.Bot.load_extension
-.. _documentation: https://glia.rtfd.io
+.. _documentation: https://glia.discord.cx
 
 .. |image0| image:: https://i.imgur.com/GK2KgOe.gif
    :width: 100px
-   :target: https://glia.rtfd.io
+   :target: https://glia.discord.cx
 .. |image1| image:: https://travis-ci.org/DiscordFederation/Glia.svg?branch=master
    :target: https://travis-ci.org/DiscordFederation/Glia
-.. |image2| image:: https://ci.appveyor.com/api/projects/status/x7b7nnj23uas0q80?svg=true
+.. |image2| image:: https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true
    :target: https://ci.appveyor.com/project/daegontaven/glia
-.. |image3| image:: https://api.codeclimate.com/v1/badges/26c1c9a76a61d32d38dd/maintainability
-   :target: https://codeclimate.com/github/Unethical/Glia/maintainability
+.. |image3| image:: https://api.codeclimate.com/v1/badges/d0f6fa3bd9da89146279/maintainability
+   :target: https://codeclimate.com/github/DiscordFederation/Glia/maintainability
 .. |image4| image:: https://codecov.io/gh/DiscordFederation/Glia/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/DiscordFederation/Glia
-.. |image5| image:: https://readthedocs.org/projects/glia/badge/?version=latest
-   :target: http://glia.readthedocs.io/en/latest/?badge=latest
+.. |image5| image:: http://readthedocs.org/projects/glia-framework/badge/?version=latest
+   :target: https://glia.discord.cx/en/latest/?badge=latest
