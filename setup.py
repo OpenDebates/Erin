@@ -25,6 +25,7 @@ EXTRAS_REQUIRE = {
         'pytest',
         'pytest-cov',
         'pytest-runner',
+        'tox'
     ],
     'docs': [
         'Sphinx',

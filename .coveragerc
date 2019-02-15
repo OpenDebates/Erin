@@ -5,7 +5,6 @@ source = glia
 branch = true
 source =
     glia
-    tests
 parallel = true
 
 [report]
