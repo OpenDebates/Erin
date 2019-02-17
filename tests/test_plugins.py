@@ -15,6 +15,7 @@ def test_find_plugins():
 
     # Test types of paths
     plugins_list = [
+        'fake_plugins.broken',
         'fake_plugins.core'
     ]
     assert hasattr(fake_plugins, '__path__')
@@ -38,9 +39,14 @@ def test_get_plugin_data():
     This is used to test if plugin data is imported correctly.
     """
     plugins_data_dict = {
+        'fake_plugins.broken': None,
         'fake_plugins.core': {
             "name": "Test Core Plugins"
         }
     }
+
     for plugin, data in plugins_data_dict.items():
-        assert get_plugin_data(plugin)["name"] == data["name"]
+        if data:
+            assert get_plugin_data(plugin)["name"] == data["name"]
+        else:
+            assert get_plugin_data(plugin) == data
