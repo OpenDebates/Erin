@@ -17,6 +17,8 @@ INSTALL_REQUIRES = [
     "motor",
     "discord.py @ "
     "git+https://github.com/Rapptz/discord.py.git@rewrite#egg=discord.py",
+    "coloredlogs",
+    "verboselogs",
     "cookiecutter"
 ]
 

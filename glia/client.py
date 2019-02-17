@@ -7,7 +7,10 @@ from glia.core.database import MongoClient
 from glia.core.utils import find_plugins, get_plugin_data
 
 # Logging
-logger = logging.getLogger('glia')
+glia_logger = logging.getLogger('glia')
+plugin_logger = logging.getLogger('plugin')
+command_logger = logging.getLogger('command')
+database_logger = logging.getLogger('database')
 
 
 class GliaClient(commands.Bot):
@@ -25,13 +28,13 @@ class GliaClient(commands.Bot):
         )
 
         # Logger
-        self.logger = logger
+        self.logger = plugin_logger
 
         # Database
         if config['database'].get("enabled"):
             self.db = MongoClient(config, bot=self)
         else:
-            self.logger.warning("No database defined. Running without one!")
+            database_logger.warning("No database defined. Running without one!")
 
     def _get_command_prefix(self):
         self.prefixes = self.config["global"]["prefixes"]
@@ -48,11 +51,11 @@ class GliaClient(commands.Bot):
         plugin_dir = self.config["bot"].get("plugins_folder")
         try:
             extensions = find_plugins(plugin_dir)
-            logger.debug(
+            glia_logger.debug(
                 f"Plugins Found: {extensions}"
             )
         except Exception:
-            logger.exception()
+            glia_logger.exception()
             self.logout()
             return None
         for extension in extensions:
@@ -60,7 +63,7 @@ class GliaClient(commands.Bot):
             # Add schema validation as per DiscordFederation/Glia#12
             plugin_data = get_plugin_data(extension)
             if not plugin_data:
-                logger.warning(
+                glia_logger.warning(
                     f"Skipping {extension}: `plugin_data` undefined"
                 )
                 continue
@@ -68,23 +71,23 @@ class GliaClient(commands.Bot):
             # Convert to db method later
             if not self.config["database"].get("enabled"):
                 if plugin_data.get("database"):
-                    self.logger.info(f"Skipping {extension}: Database Needed")
+                    glia_logger.info(f"Skipping {extension}: Database Needed")
                     continue
 
             # Attempt loading the plugin
             try:
-                logger.plugin(f"Loading Plugin: {extension}")
+                glia_logger.debug(f"Loading Plugin: {extension}")
                 self.load_extension(extension)
             except discord.ClientException:
-                logger.exception(
+                glia_logger.exception(
                     f'Missing setup() for Plugin: {extension}.'
                 )
             except ImportError:
-                logger.exception(
+                glia_logger.exception(
                     f"Failed to load Plugin: {extension}"
                 )
             except Exception:
-                logger.exception("Core Error")
+                glia_logger.exception("Core Error")
 
     def setup(self):
         """
@@ -100,7 +103,7 @@ class GliaClient(commands.Bot):
             cog_name = None
 
         if cog_name:
-            logger.command(
+            command_logger.info(
                 f"Cog: {cog_name} | "
                 f"Invoked With: {ctx.invoked_with} | Message Content: \n"
                 f"{ctx.message.content}"
