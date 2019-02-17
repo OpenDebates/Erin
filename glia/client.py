@@ -34,7 +34,9 @@ class GliaClient(commands.Bot):
         if config['database'].get("enabled"):
             self.db = MongoClient(config, bot=self)
         else:
-            database_logger.warning("No database defined. Running without one!")
+            database_logger.warning(
+                "No database defined. Running without one!"
+            )
 
     def _get_command_prefix(self):
         self.prefixes = self.config["global"]["prefixes"]
