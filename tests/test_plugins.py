@@ -1,10 +1,9 @@
 from pathlib import Path
 
-from tests import fake_plugins
-
 import pytest
 from glia.core.exceptions import PluginNotFoundError
 from glia.core.utils import find_plugins, get_plugin_data
+from tests import fake_plugins
 
 
 def test_find_plugins():

@@ -18,8 +18,8 @@ class StartCommand(CommandFactory):
 
         # Set Logging Levels
         self.choices = [
-            'debug', 'database', 'command', 'plugin', 'info', 'warning',
-            'error', 'critical'
+            'spam', 'debug', 'verbose', 'info', 'notice', 'warning',
+            'success', 'error', 'critical'
         ]
         self.parser.add_argument(
             '--log',
