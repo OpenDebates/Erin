@@ -3,8 +3,8 @@ import logging
 import discord
 from discord.ext import commands
 
-from glia.db.drivers import MongoClient
 from glia.core.utils import find_plugins, get_plugin_data
+from glia.db.drivers import MongoClient
 
 # Logging
 logger = logging.getLogger(__name__)
