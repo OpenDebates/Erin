@@ -1,6 +1,6 @@
 import os
 
-from schema import Or, Optional, Regex, Schema
+from schema import Optional, Or, Regex, Schema
 
 ENV_MAPPINGS = {
         "bot": {
