@@ -2,11 +2,12 @@ import logging
 import urllib.parse
 
 from motor.motor_asyncio import AsyncIOMotorClient
+from glia.database.abc import DatabaseDriverBase
 
 logger = logging.getLogger('glia')
 
 
-class MongoClient(AsyncIOMotorClient):
+class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
     def __init__(self, config,  bot=None, *args, **kwargs):
         # Internal
         self.conn = None

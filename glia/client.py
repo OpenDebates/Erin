@@ -3,7 +3,7 @@ import logging
 import discord
 from discord.ext import commands
 
-from glia.core.database import MongoClient
+from glia.database.drivers import MongoClient
 from glia.core.utils import find_plugins, get_plugin_data
 
 # Logging
