@@ -35,7 +35,7 @@ class EnvironmentVariableError(UserError):
 
 class DatabaseError(CoreError):
     """
-    Error raised when a db operation fails.
+    Error raised when a database operation fails.
     """
     pass
 

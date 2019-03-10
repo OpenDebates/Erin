@@ -8,6 +8,7 @@ Subpackages
 
     glia.cli
     glia.core
+    glia.db
 
 Submodules
 ----------

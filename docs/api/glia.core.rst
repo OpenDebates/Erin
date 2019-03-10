@@ -1,23 +1,8 @@
 glia.core package
 =================
 
-Subpackages
------------
-
-.. toctree::
-
-    glia.core.database
-
 Submodules
 ----------
-
-glia.core.constants module
---------------------------
-
-.. automodule:: glia.core.constants
-    :members:
-    :undoc-members:
-    :show-inheritance:
 
 glia.core.exceptions module
 ---------------------------
@@ -31,6 +16,14 @@ glia.core.loggers module
 ------------------------
 
 .. automodule:: glia.core.loggers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+glia.core.schema module
+-----------------------
+
+.. automodule:: glia.core.schema
     :members:
     :undoc-members:
     :show-inheritance:

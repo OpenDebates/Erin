@@ -1,18 +1,18 @@
 import os
 
-from schema import Or, Regex, Schema
+from schema import Or, Optional, Regex, Schema
 
 ENV_MAPPINGS = {
         "bot": {
             "token": "ERIN_TOKEN",
             "debug": "ERIN_DEBUG"
         },
-        "db": {
+        "database": {
             "host": "ERIN_HOST",
             "port": "ERIN_PORT",
             "username": "ERIN_USERNAME",
             "password": "ERIN_PASSWORD",
-            "db": "ERIN_DATABASE"
+            "database": "ERIN_DATABASE"
         },
         "global": {
             "prefixes": "ERIN_PREFIXES",
@@ -35,8 +35,18 @@ config_schema = Schema(
             'plugins_folder': os.path.exists,
             'log_type': Or('Normal', 'Timed')
         },
-        'db': {
+        'database': {
+            # Schema hooks can be used to force driver detail checks
+            # as noted in https://git.io/fhhd2 instead of resorting
+            # to blanket optionals. Will get to this later!
             'enabled': Or(True, False),
+            Optional('driver'): "mongo",
+            Optional('host'): [str],
+            Optional('port'): int,
+            Optional('username'): str,
+            Optional('password'): str,
+            Optional('database'): str,
+            Optional('replica'): str
         },
         'global': {
             'name': str,

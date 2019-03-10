@@ -14,12 +14,12 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
         self.conn = None
 
         # Config
-        self.host = config["db"]["host"]
-        self.port = config["db"]["port"]
-        self.database = config["db"]["db"]
-        self.username = urllib.parse.quote_plus(config["db"]["username"])
-        self.password = urllib.parse.quote_plus(config["db"]["password"])
-        self.replica_set = config["db"]["replica_set"]
+        self.host = config["database"]["host"]
+        self.port = config["database"]["port"]
+        self.database = config["database"]["database"]
+        self.username = urllib.parse.quote_plus(config["database"]["username"])
+        self.password = urllib.parse.quote_plus(config["database"]["password"])
+        self.replica_set = config["database"]["replica_set"]
 
         # URI Building
         if len(self.host) == 1:
@@ -40,7 +40,7 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
     async def upsert(self, entity, **states):
         """
         Updates an existing state's value. Creates a state
-        if it does not exist. Also creates a db collection
+        if it does not exist. Also creates a database collection
         for each entity type when needed.
 
         :param entity: Any discord object with an id attribute

@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class DatabaseDriverBase(ABC):
     """
     Force implementation of some methods in the event a new driver is
-    added to the db package.
+    added to the database package.
     """
 
     @abstractmethod
