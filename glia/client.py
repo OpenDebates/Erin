@@ -96,16 +96,13 @@ class GliaClient(commands.Bot):
         self._load_plugins()
 
     async def on_command(self, ctx):
-        try:
-            cog_name = ctx.cog.data['name']
-        except AttributeError:
-            cog_name = None
-
-        if cog_name:
-            self.logger.info(
-                f"Cog: {cog_name} | "
-                f"Invoked With: {ctx.invoked_with} | Message Content: \n"
-                f"{ctx.message.content}"
-            )
+        if ctx.cog.__cog_name__:
+            cog_name = ctx.cog.__cog_name__
         else:
-            pass
+            cog_name = repr(ctx.cog)
+
+        self.logger.info(
+            f"Cog: {cog_name} | "
+            f"Invoked With: {ctx.invoked_with} | Message Content: \n"
+            f"{ctx.message.content}"
+        )
