@@ -32,7 +32,7 @@
        <p> As part of the initiative, we have set sights on a few milestones we want to achieve and will release the first pre-alpha once these goals have been met.
        <ul>
            <li>Ease of use.</li>
-           <li>Support for SQL databases.</li>
+           <li>Web Dashboard.</li>
            <li>Full localization support.</li>
            <li>Complete customizability.</li>
        </ul>

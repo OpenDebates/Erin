@@ -24,7 +24,7 @@ want to achieve and will release the first pre-alpha once these goals
 have been met.
 
 -  Ease of use.
--  Support for SQL databases.
+-  Web Dashboard.
 -  Full localization support.
 -  Complete customizability.
 
