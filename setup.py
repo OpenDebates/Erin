@@ -19,7 +19,8 @@ INSTALL_REQUIRES = [
     "git+https://github.com/Rapptz/discord.py.git@rewrite#egg=discord.py",
     "coloredlogs",
     "verboselogs",
-    "cookiecutter"
+    "cookiecutter",
+    "schema"
 ]
 
 EXTRAS_REQUIRE = {

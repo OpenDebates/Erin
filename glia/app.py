@@ -6,7 +6,7 @@ import toml
 
 import glia
 from glia.client import GliaClient
-from glia.core.constants import ENV_MAPPINGS, OPTIONAL_ENVS
+from glia.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS, config_schema
 from glia.core.utils import config_loader
 
 logger = logging.getLogger(__name__)
@@ -40,6 +40,9 @@ def start(**kwargs):
             "Checking for environment variables instead."
         )
         config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
+
+    # Validate Config
+    config_schema.validate(config)
 
     logger.info(f"Starting Glia: {glia.__version__}")
 

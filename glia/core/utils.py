@@ -87,7 +87,7 @@ def get_plugin_data(plugin):
 def config_loader(mappings, optional_envs):
     for category, settings in mappings.items():
         for setting, value in settings.items():
-            if value.startswith("ERIN_"):
+            if value.startswith("GLIA_"):
                 if value in os.environ:
                     mappings[category][setting] = os.environ[value]
                 elif value in optional_envs:
