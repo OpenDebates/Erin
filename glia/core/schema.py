@@ -7,12 +7,12 @@ ENV_MAPPINGS = {
             "token": "ERIN_TOKEN",
             "debug": "ERIN_DEBUG"
         },
-        "database": {
+        "db": {
             "host": "ERIN_HOST",
             "port": "ERIN_PORT",
             "username": "ERIN_USERNAME",
             "password": "ERIN_PASSWORD",
-            "database": "ERIN_DATABASE"
+            "db": "ERIN_DATABASE"
         },
         "global": {
             "prefixes": "ERIN_PREFIXES",
@@ -35,7 +35,7 @@ config_schema = Schema(
             'plugins_folder': os.path.exists,
             'log_type': Or('Normal', 'Timed')
         },
-        'database': {
+        'db': {
             'enabled': Or(True, False),
         },
         'global': {

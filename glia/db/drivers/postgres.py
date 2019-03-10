@@ -1,3 +1,4 @@
+import logging
 import re
 from typing import Dict
 
@@ -7,7 +8,7 @@ from glia.core.exceptions import (
     DatabaseKeyError, PrimaryKeyError, TableNotFoundError,
     DatabaseTypeError, RecordExistsError
 )
-from glia.database.abc import DatabaseDriverBase
+from glia.db.abc import DatabaseDriverBase
 
 CHECK_VANILLA_DB = \
 """
@@ -59,6 +60,8 @@ CREATE TABLE member_roles
 );
 """
 
+logger = logging.getLogger(__name__)
+
 
 class PostgresClient(DatabaseDriverBase):
     def __init__(self, config, logger, bot=None):
@@ -67,11 +70,11 @@ class PostgresClient(DatabaseDriverBase):
         self._logger = logger
 
         # Config
-        self.host = config["database"]["host"]
-        self.port = config["database"]["port"]
-        self.database = config["database"]["database"]
-        self.username = config["database"]["username"]
-        self.password = config["database"]["password"]
+        self.host = config["db"]["host"]
+        self.port = config["db"]["port"]
+        self.database = config["db"]["db"]
+        self.username = config["db"]["username"]
+        self.password = config["db"]["password"]
         self.uri = f"postgresql://{self.username}:{self.password}" \
                    f"@{self.host}/{self.database}"
 
@@ -79,34 +82,34 @@ class PostgresClient(DatabaseDriverBase):
 
     async def connect(self):
         """
-        Connect to the preconfigured database. This is only made a
+        Connect to the preconfigured db. This is only made a
         public method for emergencies (eg: connectivity issues) and
         should never be called inside a plugin.
         """
         self._logger.info(
-            f"Connecting to database {self.database} at {self.host}"
+            f"Connecting to db {self.database} at {self.host}"
         )
         self.conn = await asyncpg.connect(self.uri)
         await self._startup()
 
     async def disconnect(self):
         """
-        Used to disconnect from the database. This is not to be called
+        Used to disconnect from the db. This is not to be called
         called directly in a plugin and is often used in conjunction
         when a commands need to terminate the application. Keeping the
-        bot up while the database is disconnected may result in lost
+        bot up while the db is disconnected may result in lost
         data.
         """
         await self.conn.close()
-        self._logger.info("Disconnecting from the database")
+        self._logger.info("Disconnecting from the db")
 
     async def _startup(self):
         records = await self.conn.fetch(CHECK_VANILLA_DB)
 
         if records[0]['exists']:
-            self._logger.info("Previous configs found in database")
+            self._logger.info("Previous configs found in db")
         else:
-            self._logger.info("Populating database")
+            self._logger.info("Populating db")
             async with self.conn.transaction():
                 await self.conn.execute(INITIALIZE_TABLES)
 
@@ -146,7 +149,7 @@ class PostgresClient(DatabaseDriverBase):
 
     async def get(self, ctx, key: str):
         """
-        Get a value stored in the key-value store of the database.
+        Get a value stored in the key-value store of the db.
 
         :param ctx: pass a :class:`discord.ext.commands.Context` object
         :param key: the key you previously set as :obj:`str`
@@ -326,3 +329,10 @@ class PostgresClient(DatabaseDriverBase):
             await self.conn.execute(update_query)
         else:
             raise TableNotFoundError(f"{repr(table)}")
+
+    def increment(self, entity, state, value):
+        # I'm lazy! Will add when someone wants this!
+        logger.warning(
+            "Incrementing in Postgres is not supported yet. Send a PR our way "
+            "to fix this!"
+        )

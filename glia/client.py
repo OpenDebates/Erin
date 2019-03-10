@@ -3,7 +3,7 @@ import logging
 import discord
 from discord.ext import commands
 
-from glia.database.drivers import MongoClient
+from glia.db.drivers import MongoClient
 from glia.core.utils import find_plugins, get_plugin_data
 
 # Logging
@@ -28,11 +28,11 @@ class GliaClient(commands.Bot):
         self.logger = logger
 
         # Database
-        if config['database'].get("enabled"):
+        if config['db'].get("enabled"):
             self.db = MongoClient(config, bot=self)
         else:
             self.logger.notice(
-                "No database defined. Running without one!"
+                "No db defined. Running without one!"
             )
 
     def _get_command_prefix(self):
@@ -68,8 +68,8 @@ class GliaClient(commands.Bot):
                 continue
 
             # Convert to db method later
-            if not self.config["database"].get("enabled"):
-                if plugin_data.get("database"):
+            if not self.config["db"].get("enabled"):
+                if plugin_data.get("db"):
                     logger.notice(f"Skipping {extension}: Database Needed")
                     continue
 
