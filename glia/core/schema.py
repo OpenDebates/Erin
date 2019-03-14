@@ -38,7 +38,8 @@ config_schema = Schema(
         'database': {
             # Schema hooks can be used to force driver detail checks
             # as noted in https://git.io/fhhd2 instead of resorting
-            # to blanket optionals. Will get to this later!
+            # to blanket optionals. Will get to this later if more
+            # databases are needed!
             'enabled': Or(True, False),
             Optional('driver'): "mongo",
             Optional('host'): [str],
