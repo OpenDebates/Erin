@@ -26,7 +26,7 @@
     </p>
     <hr>
     <h4>What is Glia?</h4>
-        <p>Glia is an initiative to build a bot development framework like how Django is a framework for web applications. It is built on top of the <a href="https://github.com/Rapptz/discord.py/tree/rewrite">discord.py</a> library and supports all of it's extensions by default.</p>
+        <p>Glia is an initiative to build a bot development framework like how flask is a framework for web applications. It is built on top of the <a href="https://github.com/Rapptz/discord.py/tree/rewrite">discord.py</a> library and supports all of it's extensions by default.</p>
 
     <h4>What are Glia's goals?</h4>
        <p> As part of the initiative, we have set sights on a few milestones we want to achieve and will release the first pre-alpha once these goals have been met.

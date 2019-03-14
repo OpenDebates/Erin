@@ -13,7 +13,7 @@ What is Glia?
 ^^^^^^^^^^^^^
 
 Glia is an initiative to build a bot development framework like how
-Django is a framework for web applications. It is built on top of the
+flask is a framework for web applications. It is built on top of the
 `discord.py`_ library and supports all of it's extensions by default.
 
 What are Glia's goals?
