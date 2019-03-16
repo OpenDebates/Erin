@@ -1,12 +1,9 @@
 from discord.ext import commands
 
 
-class BrokenCommand(commands.Cog):
+class BrokenCommand(commands.Cog, name="Broken Command"):
     def __init__(self, bot):
         self.bot = bot
-        self.data = {
-            "name": "Broken Command"
-        }
 
     @commands.command(name="broken")
     async def broken(self, ctx):

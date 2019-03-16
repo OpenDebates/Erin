@@ -1,12 +1,10 @@
 import discord
+from discord.ext import commands
 
 
-class Login:
+class Login(commands.Cog, name="Login"):
     def __init__(self, bot):
         self.bot = bot
-        self.data = {
-            "name": "Login"
-        }
 
     async def on_ready(self):
         self.bot.logger.info(

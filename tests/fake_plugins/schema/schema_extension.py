@@ -1,12 +1,9 @@
 from discord.ext import commands
 
 
-class SchemaCommand():
+class SchemaCommand(commands.Cog, name="Schema Command"):
     def __init__(self, bot):
         self.bot = bot
-        self.data = {
-            "name": "Schema Command"
-        }
 
     @commands.command(name="schema")
     async def broken(self, ctx):

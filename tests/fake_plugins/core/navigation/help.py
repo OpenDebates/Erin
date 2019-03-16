@@ -2,13 +2,10 @@ import discord
 from discord.ext import commands
 
 
-class Help:
+class Help(commands.Cog, name="Help"):
     def __init__(self, bot):
         self.bot = bot
         self.logger = self.bot.logger
-        self.data = {
-            "name": "Help"
-        }
 
     @commands.command(name="help")
     async def help(self, ctx, command=None):
