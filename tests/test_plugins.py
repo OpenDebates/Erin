@@ -1,7 +1,10 @@
 from pathlib import Path
 
+from schema import SchemaError
+
 import pytest
 from glia.core.exceptions import PluginNotFoundError
+from glia.core.schema import plugin_schema
 from glia.core.utils import find_plugins, get_plugin_data
 from tests import fake_plugins
 
@@ -15,7 +18,8 @@ def test_find_plugins():
     # Test types of paths
     plugins_list = [
         'fake_plugins.broken',
-        'fake_plugins.core'
+        'fake_plugins.core',
+        'fake_plugins.schema'
     ]
     assert hasattr(fake_plugins, '__path__')
     assert find_plugins(fake_plugins) == plugins_list
@@ -41,11 +45,21 @@ def test_get_plugin_data():
         'fake_plugins.broken': None,
         'fake_plugins.core': {
             "name": "Test Core Plugins"
+        },
+        'fake_plugins.schema': {
+            "name": "Schema Plugin",
+            "database": "enabled"
         }
     }
 
     for plugin, data in plugins_data_dict.items():
+        plugin_data = get_plugin_data(plugin)
         if data:
-            assert get_plugin_data(plugin)["name"] == data["name"]
+            assert plugin_data["name"] == data["name"]
         else:
-            assert get_plugin_data(plugin) == data
+            assert plugin_data == data
+
+        if plugin == "fake_plugins.schema":
+            # Ensure Schema Works
+            with pytest.raises(SchemaError) as e_info:
+                plugin_schema.validate(plugin_data)
