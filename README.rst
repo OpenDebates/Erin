@@ -9,7 +9,7 @@
         <br>
         <br>
         <a href="https://travis-ci.org/DiscordFederation/Glia">
-            <img src="https://travis-ci.org/DiscordFederation/Glia.svg?branch=master"/>
+            <img src="https://travis-ci.com/DiscordFederation/Glia.svg?branch=master" />
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/glia">
             <img src="https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true"/>

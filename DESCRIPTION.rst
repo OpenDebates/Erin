@@ -45,7 +45,7 @@ any notice at all.
 .. |image0| image:: https://i.imgur.com/GK2KgOe.gif
    :width: 100px
    :target: https://glia.discord.cx
-.. |image1| image:: https://travis-ci.org/DiscordFederation/Glia.svg?branch=master
+.. |image1| image:: https://travis-ci.com/DiscordFederation/Glia.svg?branch=master
    :target: https://travis-ci.org/DiscordFederation/Glia
 .. |image2| image:: https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true
    :target: https://ci.appveyor.com/project/daegontaven/glia
