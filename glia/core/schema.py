@@ -58,3 +58,11 @@ config_schema = Schema(
     },
     ignore_extra_keys=True
 )
+
+
+plugin_schema = Schema(
+    {
+        Optional('name'): str,
+        'database': Or(True, False),
+    }
+)

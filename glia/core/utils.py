@@ -8,7 +8,7 @@ from typing import List
 
 from glia.core.exceptions import EnvironmentVariableError, PluginNotFoundError
 
-logger = logging.getLogger('glia')
+logger = logging.getLogger(__name__)
 
 
 def find_plugins(package) -> List[str]:

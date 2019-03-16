@@ -2,7 +2,9 @@ import logging
 
 import discord
 from discord.ext import commands
+from schema import SchemaError
 
+from glia.core.schema import plugin_schema
 from glia.core.utils import find_plugins, get_plugin_data
 from glia.db.drivers import MongoClient
 
@@ -59,7 +61,6 @@ class GliaClient(commands.Bot):
             return None
         for extension in extensions:
 
-            # Add schema validation as per DiscordFederation/Glia#12
             plugin_data = get_plugin_data(extension)
             if not plugin_data:
                 self.logger.notice(
@@ -72,10 +73,25 @@ class GliaClient(commands.Bot):
                 if plugin_data.get("database"):
                     logger.notice(f"Skipping {extension}: Database Needed")
                     continue
+            else:
+                try:
+                    plugin_schema.validate(plugin_data)
+                except SchemaError as e:
+                    self.logger.exception(
+                        f"Plugin data is invalid: {extension}"
+                    )
+
+            if plugin_data.get("name"):
+                self.logger.verbose(
+                    f"Loading Plugin: {plugin_data['name']}"
+                )
+            else:
+                self.logger.verbose(
+                    f"Loading Plugin: {extension}"
+                )
 
             # Attempt loading the plugin
             try:
-                self.logger.verbose(f"Loading Plugin: {extension}")
                 self.load_extension(extension)
             except discord.ClientException:
                 self.logger.exception(
