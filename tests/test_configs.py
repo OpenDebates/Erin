@@ -1,5 +1,34 @@
+import os
+from random import random
+
+import pytest
+
+from glia.core.exceptions import EnvironmentVariableError
 from glia.core.utils import config_loader
+from glia.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS
 
 
 def test_config_env_vars():
-    pass
+    # Delete environment variables
+    delete_envs()
+
+    for key, val in ENV_MAPPINGS.items():
+        for sub_key, sub_val in val.items():
+            # Some random strings
+            if sub_val in OPTIONAL_ENVS:
+                os.environ[sub_val] = str(random())[2:]
+    with pytest.raises(EnvironmentVariableError) as e_info:
+        mappings = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
+
+    # Teardown
+    delete_envs()
+
+
+def delete_envs():
+    for key, val in ENV_MAPPINGS.items():
+        for sub_key, sub_val in val.items():
+            try:
+                # Some random strings
+                del os.environ[sub_val]
+            except KeyError:
+                pass
