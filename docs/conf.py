@@ -21,7 +21,7 @@ __location__ = os.path.join(os.getcwd(), os.path.dirname(
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.join(__location__, '../glia'))
+sys.path.insert(0, os.path.join(__location__, '../erin'))
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -37,7 +37,7 @@ except ImportError:
     from sphinx import apidoc
 
 output_dir = os.path.join(__location__, "../docs/api")
-module_dir = os.path.join(__location__, "../glia")
+module_dir = os.path.join(__location__, "../erin")
 try:
     shutil.rmtree(output_dir)
 except FileNotFoundError:
@@ -86,9 +86,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Glia'
+project = u'Erin'
 copyright = u'2018 - ' + str(datetime.datetime.now().year) + \
-            u', Glia Contributors'
+            u', Erin Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -159,7 +159,7 @@ except ImportError:
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
 try:
-    from glia import __version__ as version
+    from erin import __version__ as version
 except ImportError:
     pass
 else:
@@ -224,7 +224,7 @@ html_static_path = ['_static']
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'glia-doc'
+htmlhelp_basename = 'erin-doc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -243,8 +243,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'user_guide.tex', u'Glia Documentation',
-   u'Glia Contributors', 'manual'),
+  ('index', 'user_guide.tex', u'Erin Documentation',
+   u'Erin Contributors', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

@@ -3,15 +3,15 @@ from pathlib import Path
 from schema import SchemaError
 
 import pytest
-from glia.core.exceptions import PluginNotFoundError
-from glia.core.schema import plugin_schema
-from glia.core.utils import find_plugins, get_plugin_data
+from erin.core.exceptions import PluginNotFoundError
+from erin.core.schema import plugin_schema
+from erin.core.utils import find_plugins, get_plugin_data
 from tests import fake_plugins
 
 
 def test_find_plugins():
     """
-    These tests ensure that the :meth:glia.core.utils.find_plugins`
+    These tests ensure that the :meth:erin.core.utils.find_plugins`
     used for retrieving import paths is working correctly.
     """
 

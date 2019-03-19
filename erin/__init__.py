@@ -5,7 +5,7 @@ import sys
 from verboselogs import VerboseLogger
 
 # Package Info
-dist_name = 'Glia'
+dist_name = 'Erin'
 __version__ = "0.1.0.dev0"
 
 # Constants

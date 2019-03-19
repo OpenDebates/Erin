@@ -169,7 +169,7 @@ fabric.properties
 /venv/
 !/docs/api/
 .idea
-/glia/glia.toml
+/erin/erin.toml
 /test_plugins/
 /.pytest_cache/
 /tox_temps/

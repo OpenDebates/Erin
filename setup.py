@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Setup file for glia.
+Setup file for erin.
 """
 
 import codecs
@@ -64,11 +64,11 @@ os.environ['SANIC_NO_UVLOOP'] = 'true'
 os.environ['SANIC_NO_UJSON'] = 'true'
 
 setup(
-        version=find_version('glia', '__init__.py'),
+        version=find_version('erin', '__init__.py'),
         packages=find_packages(exclude=['docs', 'tests']),
         entry_points={
             'console_scripts': [
-                'glia = glia.__main__:main'
+                'erin = erin.__main__:main'
             ]
         },
         include_package_data=True,

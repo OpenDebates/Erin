@@ -1,6 +1,6 @@
 from cookiecutter.main import cookiecutter
 
-from glia.cli import CommandFactory
+from erin.cli import CommandFactory
 
 
 class ScaffoldCommand(CommandFactory):
@@ -10,5 +10,5 @@ class ScaffoldCommand(CommandFactory):
 
     def run(self, *sys_args, **kwargs):
         cookiecutter(
-            'https://github.com/DiscordFederation/cookiecutter-glia.git'
+            'https://github.com/DiscordFederation/cookiecutter-erin.git'
         )

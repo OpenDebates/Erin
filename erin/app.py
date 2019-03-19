@@ -4,10 +4,10 @@ from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
 
 import toml
 
-import glia
-from glia.client import GliaClient
-from glia.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS, config_schema
-from glia.core.utils import config_loader
+import erin
+from erin.client import ErinClient
+from erin.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS, config_schema
+from erin.core.utils import config_loader
 
 logger = logging.getLogger(__name__)
 root_logger = logger.parent
@@ -33,7 +33,7 @@ def start(**kwargs):
         if kwargs['config_file']:
             config = toml.load(kwargs['config_file'])
         else:
-            config = toml.load("glia/glia.toml")
+            config = toml.load("erin/erin.toml")
     except FileNotFoundError:
         logger.notice(
             "No config file provided. "
@@ -44,7 +44,7 @@ def start(**kwargs):
     # Validate Config
     config_schema.validate(config)
 
-    logger.info(f"Starting Glia: {glia.__version__}")
+    logger.info(f"Starting Erin: {erin.__version__}")
 
     # Discord Debug Logging
     if config["bot"].get("debug"):
@@ -71,7 +71,7 @@ def start(**kwargs):
         pass
 
     # Initialize Bot
-    bot = GliaClient(config)
+    bot = ErinClient(config)
     bot.remove_command("help")
     bot.setup()
     bot.run(

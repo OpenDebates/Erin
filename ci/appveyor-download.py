@@ -3,11 +3,11 @@
 Use the AppVeyor API to download Windows artifacts.
 
 Taken from:
-  https://bitbucket.org/ned/coveragepy/glia/tip/ci/download_appveyor.py
+  https://bitbucket.org/ned/coveragepy/erin/tip/ci/download_appveyor.py
 Licensed under the Apache License:
   http://www.apache.org/licenses/LICENSE-2.0
 For details:
-  https://bitbucket.org/ned/coveragepy/glia/default/NOTICE.txt
+  https://bitbucket.org/ned/coveragepy/erin/default/NOTICE.txt
 """
 from __future__ import unicode_literals
 
@@ -118,7 +118,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     '--id',
     metavar='PROJECT_ID',
-    default='daegontaven/Glia',
+    default='daegontaven/Erin',
     help='Project ID in AppVeyor.'
 )
 parser.add_argument(

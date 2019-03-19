@@ -2,10 +2,9 @@ import os
 from random import random
 
 import pytest
-
-from glia.core.exceptions import EnvironmentVariableError
-from glia.core.utils import config_loader
-from glia.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS
+from erin.core.exceptions import EnvironmentVariableError
+from erin.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS
+from erin.core.utils import config_loader
 
 
 def test_config_env_vars():

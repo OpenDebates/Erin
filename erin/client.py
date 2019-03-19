@@ -4,15 +4,15 @@ import discord
 from discord.ext import commands
 from schema import SchemaError
 
-from glia.core.schema import plugin_schema
-from glia.core.utils import find_plugins, get_plugin_data
-from glia.db.drivers import MongoClient
+from erin.core.schema import plugin_schema
+from erin.core.utils import find_plugins, get_plugin_data
+from erin.db.drivers import MongoClient
 
 # Logging
 logger = logging.getLogger(__name__)
 
 
-class GliaClient(commands.Bot):
+class ErinClient(commands.Bot):
     """
     Custom implementation designed to load configuration from the TOML
     config file and dynamic console configurations

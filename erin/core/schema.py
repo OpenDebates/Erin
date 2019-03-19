@@ -4,25 +4,25 @@ from schema import Optional, Or, Regex, Schema
 
 ENV_MAPPINGS = {
         "bot": {
-            "token": "GLIA_TOKEN",
-            "debug": "GLIA_DEBUG"
+            "token": "ERIN_TOKEN",
+            "debug": "ERIN_DEBUG"
         },
         "database": {
-            "host": "GLIA_HOST",
-            "port": "GLIA_PORT",
-            "username": "GLIA_USERNAME",
-            "password": "GLIA_PASSWORD",
-            "database": "GLIA_DATABASE"
+            "host": "ERIN_HOST",
+            "port": "ERIN_PORT",
+            "username": "ERIN_USERNAME",
+            "password": "ERIN_PASSWORD",
+            "database": "ERIN_DATABASE"
         },
         "global": {
-            "prefixes": "GLIA_PREFIXES",
-            "description": "GLIA_DESCRIPTION"
+            "prefixes": "ERIN_PREFIXES",
+            "description": "ERIN_DESCRIPTION"
         }
     }
 
 OPTIONAL_ENVS = [
-    "GLIA_DESCRIPTION",
-    "GLIA_DEBUG"
+    "ERIN_DESCRIPTION",
+    "ERIN_DEBUG"
 ]
 
 
