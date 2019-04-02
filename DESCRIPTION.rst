@@ -46,7 +46,7 @@ any notice at all.
    :width: 100px
    :target: https://erin.discord.cx
 .. |image1| image:: https://travis-ci.com/DiscordFederation/Erin.svg?branch=master
-   :target: https://travis-ci.org/DiscordFederation/Erin
+   :target: https://travis-ci.com/DiscordFederation/Erin
 .. |image2| image:: https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true
    :target: https://ci.appveyor.com/project/daegontaven/erin
 .. |image3| image:: https://api.codeclimate.com/v1/badges/d0f6fa3bd9da89146279/maintainability

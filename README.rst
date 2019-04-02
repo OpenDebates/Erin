@@ -8,7 +8,7 @@
         Batteries Included
         <br>
         <br>
-        <a href="https://travis-ci.org/DiscordFederation/Erin">
+        <a href="https://travis-ci.com/DiscordFederation/Erin">
             <img src="https://travis-ci.com/DiscordFederation/Erin.svg?branch=master" />
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/erin">
