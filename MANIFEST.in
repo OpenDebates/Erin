@@ -16,7 +16,7 @@ include README.rst
 include DESCRIPTION.rst
 
 include CODE_OF_CONDUCT.md
-include ISSUE_TEMPLATE.md
+include .github/*
 
 include tox.ini .travis.yml .appveyor.yml .readthedocs.yml
 
