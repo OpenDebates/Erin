@@ -1,10 +1,10 @@
 [paths]
-source = glia
+source = erin
 
 [run]
 branch = true
 source =
-    glia
+    erin
 parallel = true
 
 [report]
