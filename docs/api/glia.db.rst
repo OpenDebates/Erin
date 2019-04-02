@@ -1,4 +1,4 @@
-glia.db package
+erin.db package
 ===============
 
 Subpackages
@@ -6,15 +6,15 @@ Subpackages
 
 .. toctree::
 
-    glia.db.drivers
+    erin.db.drivers
 
 Submodules
 ----------
 
-glia.db.abc module
+erin.db.abc module
 ------------------
 
-.. automodule:: glia.db.abc
+.. automodule:: erin.db.abc
     :members:
     :undoc-members:
     :show-inheritance:
@@ -23,7 +23,7 @@ glia.db.abc module
 Module contents
 ---------------
 
-.. automodule:: glia.db
+.. automodule:: erin.db
     :members:
     :undoc-members:
     :show-inheritance:

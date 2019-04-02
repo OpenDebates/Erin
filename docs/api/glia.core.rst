@@ -1,37 +1,37 @@
-glia.core package
+erin.core package
 =================
 
 Submodules
 ----------
 
-glia.core.exceptions module
+erin.core.exceptions module
 ---------------------------
 
-.. automodule:: glia.core.exceptions
+.. automodule:: erin.core.exceptions
     :members:
     :undoc-members:
     :show-inheritance:
 
-glia.core.loggers module
+erin.core.loggers module
 ------------------------
 
-.. automodule:: glia.core.loggers
+.. automodule:: erin.core.loggers
     :members:
     :undoc-members:
     :show-inheritance:
 
-glia.core.schema module
+erin.core.schema module
 -----------------------
 
-.. automodule:: glia.core.schema
+.. automodule:: erin.core.schema
     :members:
     :undoc-members:
     :show-inheritance:
 
-glia.core.utils module
+erin.core.utils module
 ----------------------
 
-.. automodule:: glia.core.utils
+.. automodule:: erin.core.utils
     :members:
     :undoc-members:
     :show-inheritance:
@@ -40,7 +40,7 @@ glia.core.utils module
 Module contents
 ---------------
 
-.. automodule:: glia.core
+.. automodule:: erin.core
     :members:
     :undoc-members:
     :show-inheritance:

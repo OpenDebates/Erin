@@ -1,7 +1,7 @@
-glia
+erin
 ====
 
 .. toctree::
    :maxdepth: 4
 
-   glia
+   erin

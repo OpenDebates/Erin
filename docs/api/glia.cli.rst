@@ -1,21 +1,21 @@
-glia.cli package
+erin.cli package
 ================
 
 Submodules
 ----------
 
-glia.cli.scaffold module
+erin.cli.scaffold module
 ------------------------
 
-.. automodule:: glia.cli.scaffold
+.. automodule:: erin.cli.scaffold
     :members:
     :undoc-members:
     :show-inheritance:
 
-glia.cli.start module
+erin.cli.start module
 ---------------------
 
-.. automodule:: glia.cli.start
+.. automodule:: erin.cli.start
     :members:
     :undoc-members:
     :show-inheritance:
@@ -24,7 +24,7 @@ glia.cli.start module
 Module contents
 ---------------
 
-.. automodule:: glia.cli
+.. automodule:: erin.cli
     :members:
     :undoc-members:
     :show-inheritance:

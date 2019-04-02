@@ -1,13 +1,13 @@
-glia.db.drivers package
+erin.db.drivers package
 =======================
 
 Submodules
 ----------
 
-glia.db.drivers.mongo module
+erin.db.drivers.mongo module
 ----------------------------
 
-.. automodule:: glia.db.drivers.mongo
+.. automodule:: erin.db.drivers.mongo
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ glia.db.drivers.mongo module
 Module contents
 ---------------
 
-.. automodule:: glia.db.drivers
+.. automodule:: erin.db.drivers
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,8 +1,8 @@
 ======
-Glia
+Erin
 ======
 
-This is the documentation of **Glia**.
+This is the documentation of **Erin**.
 
 
 Contents

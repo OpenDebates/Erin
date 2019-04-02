@@ -63,11 +63,11 @@ You can remove the comments if you want.
            self.logger.debug(f"Tag: {tag})
 
 
-Now :ref:`start glia <starting_glia>` and send a test command with a tag name to ensure everything works properly.
+Now :ref:`start erin <starting_erin>` and send a test command with a tag name to ensure everything works properly.
 If everything went smoothly, we need to figure out to how to store data so it can be retrieved later.
-Not to worry, glia has made it very easy to store data without worrying about relational data too much.
+Not to worry, erin has made it very easy to store data without worrying about relational data too much.
 
-We need to use a driver to talk to our database. Don't worry, Glia takes care of this for you. But you will need to be aware that we are using it
+We need to use a driver to talk to our database. Don't worry, Erin takes care of this for you. But you will need to be aware that we are using it
 to do operations on the database.
 
 - `Motor Documentation <https://motor.readthedocs.io/en/stable/>`_

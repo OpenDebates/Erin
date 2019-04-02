@@ -1,4 +1,4 @@
-glia package
+erin package
 ============
 
 Subpackages
@@ -6,33 +6,33 @@ Subpackages
 
 .. toctree::
 
-    glia.cli
-    glia.core
-    glia.db
+    erin.cli
+    erin.core
+    erin.db
 
 Submodules
 ----------
 
-glia.app module
+erin.app module
 ---------------
 
-.. automodule:: glia.app
+.. automodule:: erin.app
     :members:
     :undoc-members:
     :show-inheritance:
 
-glia.client module
+erin.client module
 ------------------
 
-.. automodule:: glia.client
+.. automodule:: erin.client
     :members:
     :undoc-members:
     :show-inheritance:
 
-glia.utils module
+erin.utils module
 -----------------
 
-.. automodule:: glia.utils
+.. automodule:: erin.utils
     :members:
     :undoc-members:
     :show-inheritance:
@@ -41,7 +41,7 @@ glia.utils module
 Module contents
 ---------------
 
-.. automodule:: glia
+.. automodule:: erin
     :members:
     :undoc-members:
     :show-inheritance:
