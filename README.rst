@@ -12,7 +12,7 @@
             <img src="https://travis-ci.com/DiscordFederation/Erin.svg?branch=master" />
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/erin">
-            <img src="https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true"/>
+            <img src="https://ci.appveyor.com/api/projects/status/dm6iw684c1lgji74?svg=true"/>
         </a>
         <a href="https://codeclimate.com/github/DiscordFederation/Erin/maintainability">
             <img src="https://api.codeclimate.com/v1/badges/213ee8d6348a385e5df7/maintainability"/>
