@@ -15,13 +15,13 @@
             <img src="https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true"/>
         </a>
         <a href="https://codeclimate.com/github/DiscordFederation/Erin/maintainability">
-            <img src="https://api.codeclimate.com/v1/badges/d0f6fa3bd9da89146279/maintainability"/>
+            <img src="https://api.codeclimate.com/v1/badges/213ee8d6348a385e5df7/maintainability"/>
         </a>
         <a href="https://codecov.io/gh/DiscordFederation/Erin">
             <img src="https://codecov.io/gh/DiscordFederation/Erin/branch/master/graph/badge.svg"/>
         </a>
-        <a href="https://erin.discord.cx/en/latest/?badge=latest">
-            <img src="https://readthedocs.org/projects/erin-framework/badge/?version=latest" alt='Documentation Status'/>
+        <a href="https://erin.readthedocs.io/en/latest/?badge=latest">
+            <img src="https://readthedocs.org/projects/erin/badge/?version=latest" alt='Documentation Status'/>
         </a>
     </p>
     <hr>

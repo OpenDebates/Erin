@@ -49,9 +49,9 @@ any notice at all.
    :target: https://travis-ci.com/DiscordFederation/Erin
 .. |image2| image:: https://ci.appveyor.com/api/projects/status/9urvfwps99hu97sr/branch/master?svg=true
    :target: https://ci.appveyor.com/project/daegontaven/erin
-.. |image3| image:: https://api.codeclimate.com/v1/badges/d0f6fa3bd9da89146279/maintainability
+.. |image3| image:: https://api.codeclimate.com/v1/badges/213ee8d6348a385e5df7/maintainability
    :target: https://codeclimate.com/github/DiscordFederation/Erin/maintainability
 .. |image4| image:: https://codecov.io/gh/DiscordFederation/Erin/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/DiscordFederation/Erin
-.. |image5| image:: http://readthedocs.org/projects/erin-framework/badge/?version=latest
-   :target: https://erin.discord.cx/en/latest/?badge=latest
+.. |image5| image:: https://readthedocs.org/projects/erin/badge/?version=latest
+   :target: https://erin.readthedocs.io/en/latest/?badge=latest
