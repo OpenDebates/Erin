@@ -27,7 +27,6 @@ def start(**kwargs):
         root_logger.setLevel(level)
     else:
         root_logger.setLevel('INFO')
-
     # Config Loader
     try:
         if kwargs['config_file']:
