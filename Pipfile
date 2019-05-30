@@ -1,0 +1,14 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+erin = {editable = true,path = "."}
+
+[dev-packages]
+tox = "*"
+erin = {editable = true,extras = ["docs", "tests"],path = "."}
+
+[requires]
+python_version = "3.7"
