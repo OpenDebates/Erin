@@ -1,26 +1,19 @@
 sudo: false
 language: python
 python:
-  - "3.6"
+  - "3.7"
 cache: pip
 env:
   global:
     - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
     - SEGFAULT_SIGNALS=all
-  matrix:
-    - TOXENV=check
-    - TOXENV=docs
 matrix:
   fast_finish: true
   include:
-    - python: '3.6'
-      dist: xenial
-      env:
-        - TOXENV=py36-cover,report,codecov
     - python: '3.7'
       dist: xenial
       env:
-        - TOXENV=py37-cover,report,codecov
+        - TOXENV=check,docs,py37-cover,report,codecov
     - python: '3.7-dev'
       dist: xenial
       env:
