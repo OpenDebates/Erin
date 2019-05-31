@@ -280,5 +280,5 @@ python_version = '.'.join(map(str, sys.version_info[0:2]))
 intersphinx_mapping = {
     'sphinx': ('http://www.sphinx-doc.org/en/stable', None),
     'python': ('https://docs.python.org/' + python_version, None),
-    'discord.': ('http://discordpy.readthedocs.io/en/rewrite/', None)
+    'discord.': ('https://discordpy.readthedocs.io/en/latest/', None)
 }
