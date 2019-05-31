@@ -1,6 +1,6 @@
 .. _dev_intro:
 
-.. _discord.py: https://github.com/Rapptz/discord.py/tree/rewrite
+.. _discord.py: https://github.com/Rapptz/discord.py/tree/master
 
 ============
 Introduction
@@ -32,7 +32,7 @@ Before we begin building commands, there's some jargon you need to get familiar 
 
 **Cogs:**
 
-Quoting `add_cog <http://discordpy.readthedocs.io/en/rewrite/ext/commands/api.html#discord.ext.commands.Bot.add_cog>`_ in the discord.py_ documentation.
+Quoting `add_cog <https://discordpy.readthedocs.io/en/latest/ext/commands/api.html#discord.ext.commands.Bot.add_cog>`_ in the discord.py_ documentation.
 
     "A cog is a class that has its own event listeners and commands.
 
@@ -65,7 +65,7 @@ Although it is fairly easy to initialize other cogs and commands directly from t
 
 **Entities:**
 
-Entities are simply `discord data model <http://discordpy.readthedocs.io/en/rewrite/api.html#discord-models>`_ objects that represents anything that for which information can be stored.
+Entities are simply `discord data model <https://discordpy.readthedocs.io/en/latest/api.html#discord-models>`_ objects that represents anything that for which information can be stored.
 In simple terms, entities are any object in discord that can be referenced by an ID.
 
 **Entity States:**

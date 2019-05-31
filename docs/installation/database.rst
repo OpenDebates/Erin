@@ -11,7 +11,7 @@ You need to either setup one using Google Cloud like we are in production or set
 Either ways, it is outside the scope of this documentation for the most part.
 
 You can read more about setting up a database by following the official MongoDB `documentation <https://docs.mongodb.com/manual/administration/install-community/>`_
-Once you've successfully done this, we need to setup an administrator with superuser capabilites. You can read more about setting this up `here <https://docs.mongodb.com/manual/tutorial/enable-authentication/#enable-auth>`_
+Once you've successfully done this, we need to setup an administrator with superuser capabilites. You can read more about setting this up `here <https://docs.mongodb.com/manual/tutorial/enable-authentication/>`_
 
 To do this, first we need to open up the ``mongo`` shell and create our user adjusting the commands below as needed.
 

@@ -74,8 +74,8 @@ to do operations on the database.
 - `PyMongo Documentation <https://api.mongodb.com/python/current/>`_
 
 Let's begin by adding an ``add`` sub command to our existing command to allow adding new tags.
-In order to do this, we need to use a feature of the `discord.py <http://discordpy.readthedocs.io/en/stable/>`_ library called Groups.
-You can learn more about groups `here <http://rapptz.github.io/discord.py/docs/faq.html#how-do-i-make-a-subcommand>`_.
+In order to do this, we need to use a feature of the `discord.py <https://discordpy.readthedocs.io/en/latest/>`_ library called Groups.
+You can learn more about groups `here <https://discordpy.readthedocs.io/en/latest/faq.html#how-do-i-make-a-subcommand>`_.
 
 .. code-block:: python3
 
