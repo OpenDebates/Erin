@@ -8,4 +8,4 @@ erin = {editable = true,path = "."}
 
 [dev-packages]
 tox = "*"
-erin = {editable = true,extras = ["docs", "tests"],path = "."}
+erin = {editable = true,extras = ["docs", "tests", "voice"],path = "."}
