@@ -9,6 +9,3 @@ erin = {editable = true,path = "."}
 [dev-packages]
 tox = "*"
 erin = {editable = true,extras = ["docs", "tests"],path = "."}
-
-[requires]
-python_version = "3.7"
