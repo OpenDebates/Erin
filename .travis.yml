@@ -49,3 +49,13 @@ after_failure:
   - more .tox/*/log/* | cat
 before_deploy:
   - python setup.py sdist bdist_wheel
+deploy:
+  - provider: pypi
+    user: daegontaven
+    password:
+      secure: "IpxLFnR1mq9HF5JM5KZMcOjZOCOAag6ikQfWz/Lt09x0/dOzzALjanq1OYWbtSimzIIZi+7G70pFV81Imacfk5+z1Gf7kdz5Bzy8/GKwtGQVS87+y8a3Blw9DwfNLAzU/vRVbW6/nnhVUtlDgveb/x/V/n1Xq1pR9NWIiBSwAuo2jHkoqnHq0y8WI8DGS/LI78TeN5uga75+pXbLlJvreICKpr80lJd7lY5FOmMccsCSEZ6nk1BQZcl2mZBWUC5QBJZDfR8M1gg3B+3tqFJFuEYXfK+I4r7ltCsQ8q4ElXydYNBEPwWDxJC0JEEe2fCd/n64Xcjwt6MphVBj7qFs6Y6Zo5XCURWXK2yNUlqJmW5t65TMDeSu9GEjdxe36G2FlAHYawU1iLYW0PjhHyOY9DAQ31Fog0SPi5YkQZoB8pakJQKJhrdDdgo3I+vvjUf8Zwtc4im3cP5uOkGAv1Vq52h6Ts5P2W6iAa0uEDNJtgZ5xFlULtJBI+ISd6B/BV1B7jXKlKQ28ZvorFyiaNW5lNalZZLoEtdnyNTZViNP0RzOL97TcMbpuukH5qOjP+OKJJ/T7MK2eoIA7TInOaHgyVJStvY3nfa+xhbqNXa8jjyj5oX8OthcdHVATxjMpGCirTL+s3itBElyyJkpYmP110B83Cey/wt165PsrO/dPPY="
+    skip_existing: true
+    distributions: "sdist bdist_wheel"
+    on:
+      tags: true
+branch: master
