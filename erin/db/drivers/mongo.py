@@ -14,12 +14,24 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
         self.conn = None
 
         # Config
-        self.host = config["database"]["host"]
-        self.port = config["database"]["port"]
-        self.database = config["database"]["database"]
-        self.username = urllib.parse.quote_plus(config["database"]["username"])
-        self.password = urllib.parse.quote_plus(config["database"]["password"])
-        self.replica_set = config["database"]["replica_set"]
+        try:
+            self.uri = config["database"]["uri"]
+        except KeyError as e:
+            self.uri = None
+            self.host = config["database"]["host"]
+            self.port = config["database"]["port"]
+            self.database = config["database"]["database"]
+            self.username = urllib.parse.quote_plus(
+                config["database"]["username"]
+            )
+            self.password = urllib.parse.quote_plus(
+                config["database"]["password"]
+            )
+            self.replica_set = config["database"]["replica_set"]
+
+        if self.uri:
+            super(MongoClient, self).__init__(self.uri, *args, **kwargs)
+            return
 
         # URI Building
         if len(self.host) == 1:
