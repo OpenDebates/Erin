@@ -14,13 +14,13 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
         self.conn = None
 
         # Config
+        self.database = config["database"]["database"]
         try:
             self.uri = config["database"]["uri"]
         except KeyError as e:
             self.uri = None
             self.host = config["database"]["host"]
             self.port = config["database"]["port"]
-            self.database = config["database"]["database"]
             self.username = urllib.parse.quote_plus(
                 config["database"]["username"]
             )
