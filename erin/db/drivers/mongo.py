@@ -63,7 +63,7 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
 
         collection = self[self.database][
             f'{entity.__class__.__name__}States']
-        await collection.update(
+        await collection.update_many(
             {f"{entity.__class__.__name__.lower()}_id": entity.id},
             {"$set": states},
             upsert=True
@@ -106,7 +106,7 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
 
         collection = self[self.database][
             f'{entity.__class__.__name__}States']
-        await collection.update(
+        await collection.update_many(
             {f"{entity.__class__.__name__.lower()}_id": entity.id},
             {"$inc": {state: value}},
         )
