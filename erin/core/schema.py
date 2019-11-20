@@ -8,11 +8,14 @@ ENV_MAPPINGS = {
             "debug": "ERIN_DEBUG"
         },
         "database": {
-            "host": "ERIN_HOST",
-            "port": "ERIN_PORT",
-            "username": "ERIN_USERNAME",
-            "password": "ERIN_PASSWORD",
-            "database": "ERIN_DATABASE"
+            "enabled": "ERIN_DB_ENABLED",
+            "driver": "ERIN_DB_DRIVER",
+            "uri": "ERIN_DB_URI",
+            "host": "ERIN_DB_HOST",
+            "port": "ERIN_DB_PORT",
+            "username": "ERIN_DB_USERNAME",
+            "password": "ERIN_DB_PASSWORD",
+            "database": "ERIN_DB_DATABASE"
         },
         "global": {
             "prefixes": "ERIN_PREFIXES",
@@ -21,8 +24,15 @@ ENV_MAPPINGS = {
     }
 
 OPTIONAL_ENVS = [
+    "ERIN_DEBUG",
+    "ERIN_DB_DRIVER",
+    "ERIN_DB_URI",
+    "ERIN_DB_HOST",
+    "ERIN_DB_PORT",
+    "ERIN_DB_USERNAME",
+    "ERIN_DB_PASSWORD",
+    "ERIN_DB_DATABASE"
     "ERIN_DESCRIPTION",
-    "ERIN_DEBUG"
 ]
 
 
@@ -42,6 +52,7 @@ config_schema = Schema(
             # databases are needed!
             'enabled': Or(True, False),
             Optional('driver'): "mongo",
+            Optional('uri'): str,
             Optional('host'): [str],
             Optional('port'): int,
             Optional('username'): str,
