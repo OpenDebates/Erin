@@ -1,1 +1,1 @@
-from tests.fake_plugins.core.navigation.help import Help
+from tests.fake_plugins.core.navigation.help import HelpMenu
