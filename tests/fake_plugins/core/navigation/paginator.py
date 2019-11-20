@@ -258,7 +258,7 @@ class Pages:
                 self.paginating = False
                 try:
                     await self.message.clear_reactions()
-                except:
+                except (discord.HTTPException, discord.Forbidden) as e:
                     pass
                 finally:
                     break
@@ -267,7 +267,12 @@ class Pages:
                 await self.message.remove_reaction(
                     payload.emoji, discord.Object(id=payload.user_id)
                 )
-            except:
+            except (
+                discord.HTTPException,
+                discord.Forbidden,
+                discord.NotFound,
+                discord.InvalidArgument,
+            ):
                 pass  # can't remove it so don't bother doing so
 
             await self.match()

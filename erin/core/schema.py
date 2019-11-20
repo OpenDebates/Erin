@@ -59,4 +59,4 @@ config_schema = Schema(
 )
 
 
-plugin_schema = Schema({Optional("name"): str, "database": Or(True, False),})
+plugin_schema = Schema({Optional("name"): str, "database": Or(True, False)})
