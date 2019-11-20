@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
-    def __init__(self, config,  bot=None, *args, **kwargs):
+    def __init__(self, config, bot=None, *args, **kwargs):
         # Internal
         self.conn = None
 
@@ -21,12 +21,8 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
             self.uri = None
             self.host = config["database"]["host"]
             self.port = config["database"]["port"]
-            self.username = urllib.parse.quote_plus(
-                config["database"]["username"]
-            )
-            self.password = urllib.parse.quote_plus(
-                config["database"]["password"]
-            )
+            self.username = urllib.parse.quote_plus(config["database"]["username"])
+            self.password = urllib.parse.quote_plus(config["database"]["password"])
             self.replica_set = config["database"]["replica_set"]
 
         if self.uri:
@@ -35,14 +31,15 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
 
         # URI Building
         if len(self.host) == 1:
-            self.uri = f"mongodb://{self.username}:{self.password}" \
-                       f"@{self.host[0]}:{self.port}"
+            self.uri = (
+                f"mongodb://{self.username}:{self.password}"
+                f"@{self.host[0]}:{self.port}"
+            )
             super(MongoClient, self).__init__(self.uri, *args, **kwargs)
         elif len(self.host) > 1:
             host_list = []
             for replica_host in self.host:
-                host = f"mongodb://{self.username}:{self.password}"\
-                                     f"@{replica_host}"
+                host = f"mongodb://{self.username}:{self.password}" f"@{replica_host}"
                 host_list.append(host)
 
             super(MongoClient, self).__init__(
@@ -61,12 +58,11 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
         if not (hasattr(entity, "id")):
             raise TypeError(f"'{entity}' is not an Entity!")
 
-        collection = self[self.database][
-            f'{entity.__class__.__name__}States']
+        collection = self[self.database][f"{entity.__class__.__name__}States"]
         await collection.update_many(
             {f"{entity.__class__.__name__.lower()}_id": entity.id},
             {"$set": states},
-            upsert=True
+            upsert=True,
         )
 
     async def get(self, entity, state):
@@ -80,10 +76,10 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
         if not (hasattr(entity, "id")):
             raise TypeError(f"'{entity}' is not an Entity!")
 
-        collection = self[self.database][
-            f'{entity.__class__.__name__}States']
+        collection = self[self.database][f"{entity.__class__.__name__}States"]
         record = await collection.find_one(
-            {f"{entity.__class__.__name__.lower()}_id": entity.id})
+            {f"{entity.__class__.__name__.lower()}_id": entity.id}
+        )
         if record is None:
             return record
         else:
@@ -104,8 +100,7 @@ class MongoClient(AsyncIOMotorClient, DatabaseDriverBase):
         if not (hasattr(entity, "id")):
             raise TypeError(f"'{entity}' is not an Entity!")
 
-        collection = self[self.database][
-            f'{entity.__class__.__name__}States']
+        collection = self[self.database][f"{entity.__class__.__name__}States"]
         await collection.update_many(
             {f"{entity.__class__.__name__.lower()}_id": entity.id},
             {"$inc": {state: value}},

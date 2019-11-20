@@ -34,7 +34,7 @@ def find_plugins(package) -> List[str]:
         valid then `None` is returned instead.
     """
     # Check if parameter is a package
-    if hasattr(package, '__path__'):
+    if hasattr(package, "__path__"):
         plugins = pkgutil.walk_packages(package.__path__)
         package_name = os.path.basename(package.__path__[0])
     elif isinstance(package, str):

@@ -2,9 +2,7 @@ from tests.fake_plugins.core.error import CommandError
 from tests.fake_plugins.core.navigation import HelpMenu
 from tests.fake_plugins.core.startup import Login
 
-plugin_data = {
-    "name": "Test Core Plugins"
-}
+plugin_data = {"name": "Test Core Plugins"}
 
 
 def setup(bot):

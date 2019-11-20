@@ -9,6 +9,4 @@ class ScaffoldCommand(CommandFactory):
         self.parser.set_defaults(action=self.run)
 
     def run(self, *sys_args, **kwargs):
-        cookiecutter(
-            'https://github.com/DiscordFederation/cookiecutter-erin.git'
-        )
+        cookiecutter("https://github.com/DiscordFederation/cookiecutter-erin.git")

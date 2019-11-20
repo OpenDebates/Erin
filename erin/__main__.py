@@ -11,14 +11,10 @@ def _optional_commands(parser):
     Optional cli passed directly to the main parser.
     """
     parser.add_argument(
-        "-V", "--version",
-        version=f"%(prog)s {erin.__version__}",
-        action="version"
+        "-V", "--version", version=f"%(prog)s {erin.__version__}", action="version"
     )
     parser.add_argument(
-        "-v", "--verbose",
-        help="increase output verbosity",
-        action="store_true"
+        "-v", "--verbose", help="increase output verbosity", action="store_true"
     )
     return parser
 
@@ -31,17 +27,9 @@ def _main_commands(parser):
     You can pass any of the arguments except `action` to these cli
     as defined by :func:`argparse.ArgumentParser.add_parser`.
     """
-    StartCommand(
-        parser,
-        "start",
-        aliases=["run"],
-        help="start the server"
-    )
+    StartCommand(parser, "start", aliases=["run"], help="start the server")
     ScaffoldCommand(
-        parser,
-        "scaffold",
-        aliases=["init"],
-        help="create new erin project"
+        parser, "scaffold", aliases=["init"], help="create new erin project"
     )
     return parser
 
@@ -51,15 +39,10 @@ def main(args=None):
     if args is None:
         args = sys.argv[1:]
 
-    parser = argparse.ArgumentParser(
-        description="Fully Fledged Discord Bot Framework"
-    )
+    parser = argparse.ArgumentParser(description="Fully Fledged Discord Bot Framework")
 
     parser = _optional_commands(parser)
-    parser_commands = parser.add_subparsers(
-        title="Commands",
-        dest="cli"
-    )
+    parser_commands = parser.add_subparsers(title="Commands", dest="cli")
     parser_commands = _main_commands(parser_commands)
 
     if isinstance(args, list):

@@ -16,22 +16,18 @@ def test_find_plugins():
     """
 
     # Test types of paths
-    plugins_list = [
-        'fake_plugins.broken',
-        'fake_plugins.core',
-        'fake_plugins.schema'
-    ]
-    assert hasattr(fake_plugins, '__path__')
+    plugins_list = ["fake_plugins.broken", "fake_plugins.core", "fake_plugins.schema"]
+    assert hasattr(fake_plugins, "__path__")
     assert find_plugins(fake_plugins) == plugins_list
-    assert find_plugins('tests/fake_plugins') == plugins_list
-    assert find_plugins(Path('tests/fake_plugins')) == plugins_list
+    assert find_plugins("tests/fake_plugins") == plugins_list
+    assert find_plugins(Path("tests/fake_plugins")) == plugins_list
 
     # Test exceptions
     with pytest.raises(PluginNotFoundError) as e_info:
-        find_plugins('tests/incorrect_plugins_path')
+        find_plugins("tests/incorrect_plugins_path")
 
     with pytest.raises(PluginNotFoundError) as e_info:
-        find_plugins(Path('tests/incorrect_plugins_path'))
+        find_plugins(Path("tests/incorrect_plugins_path"))
 
     with pytest.raises(TypeError) as e_info:
         find_plugins(123)
@@ -42,14 +38,9 @@ def test_get_plugin_data():
     This is used to test if plugin data is imported correctly.
     """
     plugins_data_dict = {
-        'fake_plugins.broken': None,
-        'fake_plugins.core': {
-            "name": "Test Core Plugins"
-        },
-        'fake_plugins.schema': {
-            "name": "Schema Plugin",
-            "database": "enabled"
-        }
+        "fake_plugins.broken": None,
+        "fake_plugins.core": {"name": "Test Core Plugins"},
+        "fake_plugins.schema": {"name": "Schema Plugin", "database": "enabled"},
     }
 
     for plugin, data in plugins_data_dict.items():

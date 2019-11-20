@@ -12,6 +12,7 @@ class CommandFactory(object):
     name to the action key.
 
     """
+
     __metaclass__ = ABCMeta
 
     @abstractmethod
@@ -19,9 +20,7 @@ class CommandFactory(object):
         """
         Kittens will die if this isn't implemented.
         """
-        raise NotImplementedError(
-            f"This method is not optional"
-        )
+        raise NotImplementedError(f"This method is not optional")
 
 
 if __name__ == "__main__":

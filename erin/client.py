@@ -17,25 +17,25 @@ class ErinClient(commands.Bot):
     Custom implementation designed to load configuration from the TOML
     config file and dynamic console configurations
     """
+
     def __init__(self, config, *args, **kwargs):
         self.config = config
 
         super().__init__(
             command_prefix=self._get_command_prefix(),
             description=self._get_description(),
-            *args, **kwargs
+            *args,
+            **kwargs,
         )
 
         # Logger
         self.logger = logger
 
         # Database
-        if config['database'].get("enabled"):
+        if config["database"].get("enabled"):
             self.db = MongoClient(config, bot=self)
         else:
-            self.logger.notice(
-                "No database defined. Running without one!"
-            )
+            self.logger.notice("No database defined. Running without one!")
 
     def _get_command_prefix(self):
         self.prefixes = self.config["global"]["prefixes"]
@@ -52,9 +52,7 @@ class ErinClient(commands.Bot):
         plugin_dir = self.config["bot"].get("plugins_folder")
         try:
             extensions = find_plugins(plugin_dir)
-            logger.verbose(
-                f"Plugins Found: {extensions}"
-            )
+            logger.verbose(f"Plugins Found: {extensions}")
         except Exception:
             self.logger.exception()
             self.logout()
@@ -63,9 +61,7 @@ class ErinClient(commands.Bot):
 
             plugin_data = get_plugin_data(extension)
             if not plugin_data:
-                self.logger.notice(
-                    f"Skipping {extension}: `plugin_data` undefined"
-                )
+                self.logger.notice(f"Skipping {extension}: `plugin_data` undefined")
                 continue
 
             # Convert to database method later
@@ -77,30 +73,20 @@ class ErinClient(commands.Bot):
                 try:
                     plugin_schema.validate(plugin_data)
                 except SchemaError as e:
-                    self.logger.exception(
-                        f"Plugin data is invalid: {extension}"
-                    )
+                    self.logger.exception(f"Plugin data is invalid: {extension}")
 
             if plugin_data.get("name"):
-                self.logger.verbose(
-                    f"Loading Plugin: {plugin_data['name']}"
-                )
+                self.logger.verbose(f"Loading Plugin: {plugin_data['name']}")
             else:
-                self.logger.verbose(
-                    f"Loading Plugin: {extension}"
-                )
+                self.logger.verbose(f"Loading Plugin: {extension}")
 
             # Attempt loading the plugin
             try:
                 self.load_extension(extension)
             except discord.ClientException:
-                self.logger.exception(
-                    f'Missing setup() for Plugin: {extension}.'
-                )
+                self.logger.exception(f"Missing setup() for Plugin: {extension}.")
             except ImportError:
-                self.logger.exception(
-                    f"Failed to load Plugin: {extension}"
-                )
+                self.logger.exception(f"Failed to load Plugin: {extension}")
             except Exception as e:
                 self.logger.exception("Core Error:")
 

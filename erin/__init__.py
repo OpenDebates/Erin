@@ -4,7 +4,7 @@ import sys
 
 from verboselogs import VerboseLogger
 
-dist_name = 'Erin'
+dist_name = "Erin"
 __version__ = "0.0.0.dev0"
 
 # Constants

@@ -45,9 +45,7 @@ def download_file(url, path):
 
 
 def install_python(version, arch, home):
-    print(
-        "Installing Python", version, "for", arch, "bit architecture to", home
-    )
+    print("Installing Python", version, "for", arch, "bit architecture to", home)
     if exists(home):
         return
 
@@ -101,11 +99,15 @@ def install_packages(home, *packages):
 
 if __name__ == "__main__":
     install_python(
-        environ['PYTHON_VERSION'], environ['PYTHON_ARCH'],
-        environ['PYTHON_HOME']
+        environ["PYTHON_VERSION"], environ["PYTHON_ARCH"], environ["PYTHON_HOME"]
     )
-    install_pip(environ['PYTHON_HOME'])
+    install_pip(environ["PYTHON_HOME"])
     install_packages(
-        environ['PYTHON_HOME'], "setuptools>=40.6.2", "wheel", "tox",
-        "codecov", "virtualenv>=16.4.0", ".[TESTS]"
+        environ["PYTHON_HOME"],
+        "setuptools>=40.6.2",
+        "wheel",
+        "tox",
+        "codecov",
+        "virtualenv>=16.4.0",
+        ".[TESTS]",
     )

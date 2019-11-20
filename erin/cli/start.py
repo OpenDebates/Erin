@@ -11,31 +11,32 @@ class StartCommand(CommandFactory):
 
         # Config File
         self.parser.add_argument(
-            '--config',
-            type=argparse.FileType('r'),
-            help="give a path to custom config file"
+            "--config",
+            type=argparse.FileType("r"),
+            help="give a path to custom config file",
         )
 
         # Set Logging Levels
         self.choices = [
-            'spam', 'debug', 'verbose', 'info', 'notice', 'warning',
-            'success', 'error', 'critical'
+            "spam",
+            "debug",
+            "verbose",
+            "info",
+            "notice",
+            "warning",
+            "success",
+            "error",
+            "critical",
         ]
         self.parser.add_argument(
-            '--log',
-            choices=self.choices,
-            type=str.lower,
-            help="amount of info to log"
+            "--log", choices=self.choices, type=str.lower, help="amount of info to log"
         )
 
     def run(self, *sys_args, **kwargs):
-        passed_args = {
-            'config_file': None,
-            'log_level': None
-        }
+        passed_args = {"config_file": None, "log_level": None}
         if sys_args[0].config:
-            passed_args['config_file'] = sys_args[0].config
+            passed_args["config_file"] = sys_args[0].config
         if sys_args[0].log:
-            passed_args['log_level'] = sys_args[0].log
+            passed_args["log_level"] = sys_args[0].log
 
         app.start(**passed_args)
