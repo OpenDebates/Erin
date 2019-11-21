@@ -16,6 +16,8 @@ root_logger = logger.parent
 discord_logger = logging.getLogger("discord")
 discord_logger.setLevel(logging.INFO)
 
+# Global Bot Variable
+bot = None
 
 def start(**kwargs):
     """
@@ -80,6 +82,7 @@ def start(**kwargs):
         pass
 
     # Initialize Bot
+    global bot
     bot = ErinClient(config)
     bot.remove_command("help")
     bot.setup()
