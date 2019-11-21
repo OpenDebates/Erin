@@ -39,6 +39,10 @@ def start(**kwargs):
         )
         config = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
 
+    # Override configs from config file with ones from cli
+    if kwargs["log_level"]:
+        config["log_level"] = kwargs["log_level"].upper()
+
     # Validate Config
     config_schema.validate(config)
 

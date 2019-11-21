@@ -3,7 +3,14 @@ import os
 from schema import Optional, Or, Regex, Schema
 
 ENV_MAPPINGS = {
-    "bot": {"token": "ERIN_TOKEN", "debug": "ERIN_DEBUG"},
+    "bot": {
+        "token": "ERIN_TOKEN",
+        "debug": "ERIN_DEBUG",
+        "project": "ERIN_PROJECT",
+        "project_folder": "ERIN_PROJECT_FOLDER",
+        "log_type": "ERIN_LOG_TYPE",
+        "log_level": "ERIN_LOG_LEVEL"
+    },
     "database": {
         "enabled": "ERIN_DB_ENABLED",
         "driver": "ERIN_DB_DRIVER",
@@ -37,6 +44,17 @@ config_schema = Schema(
             "project": str,
             "plugins_folder": os.path.exists,
             "log_type": Or("Normal", "Timed"),
+            "log_level": Or(
+                "spam",
+                "debug",
+                "verbose",
+                "info",
+                "notice",
+                "warning",
+                "success",
+                "error",
+                "critical",
+            ),
         },
         "database": {
             # Schema hooks can be used to force driver detail checks
