@@ -1,11 +1,13 @@
 import asyncio
 import logging
+import sys
 from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
 
 import toml
 
 import erin
 from erin.client import ErinClient
+from erin.core.loggers import access_logger
 from erin.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS, config_schema
 from erin.core.utils import config_loader
 
@@ -18,6 +20,7 @@ discord_logger.setLevel(logging.INFO)
 
 # Global Bot Variable
 bot = None
+
 
 def start(**kwargs):
     """
@@ -43,7 +46,7 @@ def start(**kwargs):
 
     # Override configs from config file with ones from cli
     if kwargs["log_level"]:
-        config["log_level"] = kwargs["log_level"].upper()
+        config["bot"]["log_level"] = kwargs["log_level"].upper()
 
     # Validate Config
     config_schema.validate(config)
@@ -62,6 +65,14 @@ def start(**kwargs):
         backupCount=5,
     )
 
+    access_handler = RotatingFileHandler(
+        filename=".logs/access.log",
+        encoding="utf-8",
+        mode="a",
+        maxBytes=10 ** 7,
+        backupCount=5,
+    )
+
     if config["bot"].get("log_type") == "Timed":
         discord_handler = TimedRotatingFileHandler(
             filename=".logs/discord.log",
@@ -72,6 +83,7 @@ def start(**kwargs):
         )
 
     discord_logger.addHandler(discord_handler)
+    access_logger.addHandler(access_handler)
 
     # Faster Event Loop
     try:
@@ -86,7 +98,13 @@ def start(**kwargs):
     bot = ErinClient(config)
     bot.remove_command("help")
     bot.setup()
-    bot.run(config["bot"]["token"], bot=True, reconnect=True)
+
+    try:
+        bot.run(config["bot"]["token"], bot=True, reconnect=True)
+    except (KeyboardInterrupt, SystemExit):
+        bot.close()
+    finally:
+        sys.exit()
 
 
 if __name__ == "__main__":

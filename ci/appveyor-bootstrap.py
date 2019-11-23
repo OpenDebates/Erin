@@ -19,14 +19,14 @@ BASE_URL = "https://www.python.org/ftp/python/"
 GET_PIP_URL = "https://bootstrap.pypa.io/get-pip.py"
 GET_PIP_PATH = r"C:\get-pip.py"
 URLS = {
-    ("3.6", "64"): BASE_URL + "3.6.8/python-3.6.8-amd64.exe",
-    ("3.6", "32"): BASE_URL + "3.6.8/python-3.6.8.exe",
-    ("3.7", "64"): BASE_URL + "3.7.2/python-3.7.2-amd64.exe",
-    ("3.7", "32"): BASE_URL + "3.7.2/python-3.7.2.exe",
+    ("3.7", "64"): BASE_URL + "3.7.5/python-3.7.5-amd64.exe",
+    ("3.7", "32"): BASE_URL + "3.7.5/python-3.7.5.exe",
+    ("3.8", "64"): BASE_URL + "3.8.0/python-3.8.0-amd64.exe",
+    ("3.8", "32"): BASE_URL + "3.8.0/python-3.8.0.exe",
 }
 INSTALL_CMD = {
-    "3.6": [["{path}", "/quiet", "TargetDir={home}"]],
     "3.7": [["{path}", "/quiet", "TargetDir={home}"]],
+    "3.8": [["{path}", "/quiet", "TargetDir={home}"]],
 }
 
 

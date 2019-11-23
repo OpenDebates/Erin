@@ -9,7 +9,7 @@ ENV_MAPPINGS = {
         "project": "ERIN_PROJECT",
         "project_folder": "ERIN_PROJECT_FOLDER",
         "log_type": "ERIN_LOG_TYPE",
-        "log_level": "ERIN_LOG_LEVEL"
+        "log_level": "ERIN_LOG_LEVEL",
     },
     "database": {
         "enabled": "ERIN_DB_ENABLED",
@@ -45,15 +45,15 @@ config_schema = Schema(
             "plugins_folder": os.path.exists,
             "log_type": Or("Normal", "Timed"),
             "log_level": Or(
-                "spam",
-                "debug",
-                "verbose",
-                "info",
-                "notice",
-                "warning",
-                "success",
-                "error",
-                "critical",
+                "SPAM",
+                "DEBUG",
+                "VERBOSE",
+                "INFO",
+                "NOTICE",
+                "WARNING",
+                "SUCCESS",
+                "ERROR",
+                "CRITICAL",
             ),
         },
         "database": {

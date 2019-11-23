@@ -13,18 +13,22 @@ matrix:
     - python: '3.7'
       dist: xenial
       env:
-        - TOXENV=check,docs,py37-cover,report,codecov
-    - python: '3.7-dev'
+        - TOXENV=py37-cover,report,codecov
+    - python: '3.8'
       dist: xenial
       env:
-        - TOXENV=py37-cover,report,codecov
+        - TOXENV=check,docs,py38-cover,report,codecov
     - python: '3.8-dev'
       dist: xenial
       env:
         - TOXENV=py38-cover,report,codecov
+    - python: 'nightly'
+      dist: xenial
+      env:
+        - TOXENV=py39-cover,report,codecov
   allow_failures:
-    - python: 3.7-dev
     - python: 3.8-dev
+    - python: nightly
 os:
 - linux
 git:
