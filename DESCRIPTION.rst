@@ -38,13 +38,13 @@ we are still deliberating core architecture and we want to get it right
 the first time. As a result expect plenty of changes to the API without
 any notice at all.
 
-.. _discord.py: https://github.com/Rapptz/discord.py/tree/rewrite
-.. _extensions: https://discordpy.readthedocs.io/en/rewrite/ext/commands/api.html#discord.ext.commands.Bot.load_extension
-.. _documentation: https://erin.discord.cx
+.. _discord.py: https://github.com/Rapptz/discord.py
+.. _extensions: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#discord.ext.commands.Bot.load_extension
+.. _documentation: https://erin.readthedocs.io/en/latest/?badge=latest
 
-.. |image0| image:: https://i.imgur.com/GK2KgOe.gif
+.. |image0| image:: https://i.imgur.com/ffkXdcI.gif
    :width: 100px
-   :target: https://erin.discord.cx
+   :target: https://erin.readthedocs.io/en/latest/?badge=latest
 .. |image1| image:: https://travis-ci.com/DiscordFederation/Erin.svg?branch=master
    :target: https://travis-ci.com/DiscordFederation/Erin
 .. |image2| image:: https://ci.appveyor.com/api/projects/status/dm6iw684c1lgji74?svg=true
