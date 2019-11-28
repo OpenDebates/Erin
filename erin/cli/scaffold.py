@@ -15,9 +15,7 @@ class ScaffoldCommand(CommandFactory):
             "project_slug": ("Project Slug", "bot"),
             "version": ("Version Number", "0.0.0.dev0"),
             "config_file": ("Configuration File Name", "config.toml"),
-            "_copy_without_render": [
-                "plugins/*"
-            ]
+            "_copy_without_render": ["plugins/*"],
         }
         for key, val in extra_context.items():
             if isinstance(val, tuple):
@@ -30,5 +28,5 @@ class ScaffoldCommand(CommandFactory):
         cookiecutter(
             "https://github.com/DiscordFederation/cookiecutter-erin.git",
             no_input=True,
-            extra_context=extra_context
+            extra_context=extra_context,
         )
