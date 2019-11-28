@@ -1,4 +1,5 @@
 import os
+from copy import deepcopy
 from random import random
 
 import pytest
@@ -18,6 +19,16 @@ def test_config_env_vars():
                 os.environ[sub_val] = str(random())[2:]
     with pytest.raises(EnvironmentVariableError) as e_info:
         mappings = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
+
+    # Check if ENV variables get saved
+    saved_maps = deepcopy(ENV_MAPPINGS)
+    for key, val in ENV_MAPPINGS.items():
+        for sub_key, sub_val in val.items():
+            saved_maps[key][sub_key] = str(random())[2:]
+            os.environ[sub_val] = saved_maps[key][sub_key]
+    mappings = config_loader(ENV_MAPPINGS, OPTIONAL_ENVS)
+
+    assert mappings == saved_maps
 
     # Teardown
     delete_envs()
