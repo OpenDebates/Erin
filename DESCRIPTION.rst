@@ -16,18 +16,6 @@ Erin is an initiative to build a bot development framework like how
 flask is a framework for web applications. It is built on top of the
 `discord.py`_ library and supports all of it's extensions by default.
 
-What are Erin's goals?
-^^^^^^^^^^^^^^^^^^^^^^
-
-As part of the initiative, we have set sights on a few milestones we
-want to achieve and will release the first pre-alpha once these goals
-have been met.
-
--  Ease of use.
--  Web Dashboard.
--  Full localization support.
--  Complete customizability.
-
 Can I get started with Erin today?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
