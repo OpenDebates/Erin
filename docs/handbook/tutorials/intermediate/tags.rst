@@ -2,6 +2,16 @@
 Tags
 ====
 
+Prerequisites
+=============
+
+- You will need a MongoDB client like Robo3T or Compass to view collections
+- An IDE or code editor like Pycharm, Atom, Sublime etc
+- Minimal knowledge of collections, documents, databases and CRUD operations in MongoDB
+
+Guide
+=====
+
 Tags are commands used to save frequently sent messages like rules, instructions and help information in a guild.
 It's a very useful feature and implemented in a lot of bots on discord. So let's build one for our self.
 
@@ -27,22 +37,17 @@ Now that we know what we want our command to look like, let's create our plugin.
 Create a ``tags.py`` file in the ``Plugins/`` directory and put this code in it.
 You can remove the comments if you want.
 
-.. warning::
-
-    There is an existing tags plugin in ``Plugins/Utilities/tags.py``. You should
-    move it to a safe location in another folder before continuing. You can't use
-    two cogs with the same name at the same time.
-
 .. code-block:: python3
 
    import discord
    from discord.ext import commands
 
    plugin_data = {
-       "name": "Tags"
+       "name": "Tags",
+       "database": True
    }
 
-   class Tag:
+   class Tag(commands.Cog, name="Tag"):
        def __init__(self, bot):
            self.bot = bot
            self.data = plugin_data
@@ -79,7 +84,7 @@ You can learn more about groups `here <https://discordpy.readthedocs.io/en/lates
 
 .. code-block:: python3
 
-   class Tag:
+   class Tag(commands.Cog, name="Tag"):
        def __init__(self, bot):
            self.bot = bot
            self.data = plugin_data
@@ -180,11 +185,12 @@ You can see the full code here.
    from discord.ext import commands
 
    plugin_data = {
-       "name": "Tags"
+       "name": "Tags",
+       "database": True
    }
 
 
-   class Tag:
+   class Tag(commands.Cog, name="Tag"):
        def __init__(self, bot):
            self.bot = bot
            self.data = plugin_data

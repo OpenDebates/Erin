@@ -71,7 +71,7 @@ config_schema = Schema(
             Optional("database"): str,
             Optional("replica"): str,
         },
-        "global": {"name": str, "icon_url": str, "prefixes": [str], "description": str},
+        "global": {"name": str, "prefixes": [str], "description": str},
     },
     ignore_extra_keys=True,
 )

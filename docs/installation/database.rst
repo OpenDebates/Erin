@@ -4,8 +4,8 @@
 Configuring a database
 =======================
 
-Erin does not come with it's own database. So we need to install and configure one to make sure Erin works properly.
-Currently Erin uses MongoDB to store all it's data.
+Erin does not come with it's own database. It is a framework, not a Cog Managment System. So we need to install and configure one to make sure stateful apps work properly.
+Currently Erin only supports MongoDB natively.
 
 You need to either setup one using Google Cloud like we are in production or set one up yourself on a bare metal server or a VPS.
 Either ways, it is outside the scope of this documentation for the most part.

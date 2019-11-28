@@ -7,16 +7,17 @@ Installing the bot
 For Users
 =========
 
-.. todo::
-
-    Add instructions for Docker, Kubernetes and pip wheel releases.
-
-Follow the developer instructions for now and verify you have a working installation with this command.
+For production use, please install from pip.
 
 ::
 
-    $ erin -V    # This should show the current version.
-    erin 0.1.0.dev0
+    pip install erin
+
+Then verify it is working by running this command:
+
+.. runblock:: console
+
+    $ erin -V
 
 For Developers
 ==============

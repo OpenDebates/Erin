@@ -9,7 +9,7 @@ Style Guide
 All pull requests to the python source must follow `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_ conventions.
 
 All methods and functions must be in snake_case and not camelCase. If a module is written in python,
-it must also conform to the 79 character limit.
+it must also conform to an 88 character limit.
 
 
 Pull Requests
