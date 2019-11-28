@@ -63,3 +63,10 @@ deploy:
     on:
       tags: true
       branch: master
+  - provider: releases
+    api_key:
+      secure: YwjaCiwCXx2ieHdzzCWDB9uMGpFUM8hLQfdWYaa+MKZvNQTjsuojw9SxunSyRrxW+8ls0YJUuLEr9nf274MWfv7iffKDcJ689RzLsoRGHMB2VzHg1zXDpfQbNcQ6hvX1NGNVSuf4Qu2HndtpBbwAxFB7I8pGo7NnUvAAW7FrylGpelChGVKp109WFXbG+bWYjwmAPrjLBPCMvHwBgX7i3CCC2GzLnKYuTjewafRWByex89SSqyoFuPp8O1Sc0FGsPZ6aLuR7j8fKl94EWCR846wxR7S7oCTP+hGeraiXAblKOgNyBJRWUXYVQHGtAhl9QKxjvn+qbq04FHaegYWQPJCMFkXvGAoM+Sc0yyZaSH5CAZeJZGTsT+5M7Rf1dqCCkzTq94GeDrocrPmu03tYeAD0KmPN9jYweYPUKBIbE4Ue617ZJ7ezPegxibXgJQ58h6mBtmSjh4d7DMOZQaTMrHQRTNDtgMsSQEAaLeQGVdXJaCWqYzu83gpWxGgN7vookYRqRWjs+soS1ZSQ3xVZOQ3vpFZSdg+F1MzUsDvbXloPzG5880WaG7JEb/TqL7SikFPnW+bIdE0jkwkyyDwNBSLRHex46Ylv5vl+ZIg8hW6QqhSFKuMrQWPZ68iaPDzPeKSUxosvHrp4aSB1d3AZcYDlyXKnlXz8Z4oFORJphtk=
+    file: dist/*
+    skip_cleanup: true
+    on:
+      tags: true
