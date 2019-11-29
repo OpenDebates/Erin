@@ -19,8 +19,10 @@ include CODE_OF_CONDUCT.md
 
 include tox.ini .travis.yml .appveyor.yml .readthedocs.yml
 
-include Pipfile Pipfile.lock
+include requirements.txt
 
 recursive-include .github *
+
+recursive-exclude docs/_build *
 
 global-exclude *.py[cod] __pycache__ *.so *.dylib
