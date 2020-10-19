@@ -9,7 +9,7 @@
         <br>
         <br>
         <a href="https://travis-ci.com/OpenDebates/Erin">
-            <img src="https://travis-ci.com/OpenDebates/Erin.svg?branch=master" />
+            <img src="https://travis-ci.com/OpenDebates/Erin.svg?branch=master"/>
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/erin">
             <img src="https://ci.appveyor.com/api/projects/status/dm6iw684c1lgji74?svg=true"/>

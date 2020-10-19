@@ -12,7 +12,6 @@ erin.db.drivers.mongo module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

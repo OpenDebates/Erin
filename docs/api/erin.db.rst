@@ -5,6 +5,7 @@ Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
    erin.db.drivers
 
@@ -18,7 +19,6 @@ erin.db.abc module
    :members:
    :undoc-members:
    :show-inheritance:
-
 
 Module contents
 ---------------
