@@ -8,17 +8,17 @@
         Batteries Included
         <br>
         <br>
-        <a href="https://travis-ci.com/DiscordFederation/Erin">
-            <img src="https://travis-ci.com/DiscordFederation/Erin.svg?branch=master" />
+        <a href="https://travis-ci.com/OpenDebates/Erin">
+            <img src="https://travis-ci.com/OpenDebates/Erin.svg?branch=master" />
         </a>
         <a href="https://ci.appveyor.com/project/daegontaven/erin">
             <img src="https://ci.appveyor.com/api/projects/status/dm6iw684c1lgji74?svg=true"/>
         </a>
-        <a href="https://codeclimate.com/github/DiscordFederation/Erin/maintainability">
-            <img src="https://api.codeclimate.com/v1/badges/213ee8d6348a385e5df7/maintainability"/>
+        <a href="https://codeclimate.com/github/OpenDebates/Erin/maintainability">
+            <img src="https://api.codeclimate.com/v1/badges/e5ea00ded93f855cb5a4/maintainability"/>
         </a>
-        <a href="https://codecov.io/gh/DiscordFederation/Erin">
-            <img src="https://codecov.io/gh/DiscordFederation/Erin/branch/master/graph/badge.svg"/>
+        <a href="https://codecov.io/gh/OpenDebates/Erin">
+            <img src="https://codecov.io/gh/OpenDebates/Erin/branch/master/graph/badge.svg"/>
         </a>
         <a href="https://erin.readthedocs.io/en/latest/?badge=latest">
             <img src="https://readthedocs.org/projects/erin/badge/?version=latest" alt='Documentation Status'/>
