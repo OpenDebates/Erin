@@ -26,7 +26,7 @@ class ScaffoldCommand(CommandFactory):
                     extra_context[key] = setting
 
         cookiecutter(
-            "https://github.com/DiscordFederation/cookiecutter-erin.git",
+            "https://github.com/OpenDebates/cookiecutter-erin.git",
             no_input=True,
             extra_context=extra_context,
         )
