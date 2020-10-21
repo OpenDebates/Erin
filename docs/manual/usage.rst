@@ -73,7 +73,7 @@ This will create a folder named :code:`ping_bot` in the directory where you ran 
 
     color = 0x6C5CE7
     support_text = """
-    Need further help? Ping us at our [support server](https://discord.gg/cytVBaH)!
+    Need further help? Ping us at our [support server](https://discord.gg/dRUPaRr)!
     """
 
 
