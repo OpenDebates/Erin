@@ -24,6 +24,7 @@ class ErinClient(commands.Bot):
         super().__init__(
             command_prefix=self._get_command_prefix(),
             description=self._get_description(),
+            intents=discord.Intents.all(),
             *args,
             **kwargs,
         )
