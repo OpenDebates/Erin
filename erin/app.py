@@ -8,7 +8,6 @@ import toml
 
 import erin
 from erin.client import ErinClient
-from erin.core.loggers import access_logger
 from erin.core.schema import ENV_MAPPINGS, OPTIONAL_ENVS, config_schema
 from erin.core.utils import config_loader
 
