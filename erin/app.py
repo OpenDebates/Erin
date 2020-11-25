@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 import sys
 from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
 
@@ -57,16 +58,11 @@ def start(**kwargs):
     if config["bot"].get("debug"):
         discord_logger.setLevel(logging.DEBUG)
 
+    if not os.path.isdir('.logs'):
+        os.makedirs('.logs')
+
     discord_handler = RotatingFileHandler(
         filename=".logs/discord.log",
-        encoding="utf-8",
-        mode="a",
-        maxBytes=10 ** 7,
-        backupCount=5,
-    )
-
-    access_handler = RotatingFileHandler(
-        filename=".logs/access.log",
         encoding="utf-8",
         mode="a",
         maxBytes=10 ** 7,
@@ -83,7 +79,6 @@ def start(**kwargs):
         )
 
     discord_logger.addHandler(discord_handler)
-    access_logger.addHandler(access_handler)
 
     # Faster Event Loop
     try:
