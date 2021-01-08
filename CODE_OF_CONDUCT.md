@@ -2,11 +2,11 @@
 
 ## 1. Purpose
 
-A primary goal of Glia is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a friendly, safe and welcoming environment for all, regardless of gender, sexual orientation, ability, ethnicity, socioeconomic status, and religion (or lack thereof).
+A primary goal of Erin is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a friendly, safe and welcoming environment for all, regardless of gender, sexual orientation, ability, ethnicity, socioeconomic status, and religion (or lack thereof).
 
 This code of conduct outlines our expectations for all those who participate in our community, as well as the consequences for unacceptable behavior.
 
-We invite all those who participate in Glia to help us create safe and positive experiences for everyone.
+We invite all those who participate in Erin to help us create safe and positive experiences for everyone.
 
 ## 2. Open Source Citizenship
 
@@ -53,7 +53,8 @@ If a community member engages in unacceptable behavior, the community organizers
 
 ## 6. Reporting Guidelines
 
-If you are subject to or witness unacceptable behavior, or have any other concerns, please notify a community organizer as soon as possible. support@unethical.me.
+If you are subject to or witness unacceptable behavior, or have any other concerns
+, please notify a community organizer as soon as possible at contact@taven.me.
 
 [Reporting Guidelines]()
 
@@ -73,7 +74,7 @@ This code of conduct and its related procedures also applies to unacceptable beh
 
 ## 9. Contact info
 
-admin@discord.cx
+contact@taven.me
 
 ## 10. License and attribution
 

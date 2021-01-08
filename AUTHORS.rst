@@ -2,4 +2,4 @@
 Contributors
 ============
 
-* Taven <admin@discord.cx>
+* Taven <contact@taven.me>
