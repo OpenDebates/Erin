@@ -76,7 +76,7 @@ We need to use a driver to talk to our database. Don't worry, Erin takes care of
 to do operations on the database.
 
 - `Motor Documentation <https://motor.readthedocs.io/en/stable/>`_
-- `PyMongo Documentation <https://api.mongodb.com/python/current/>`_
+- `PyMongo Documentation <https://pymongo.readthedocs.io/en/stable/>`_
 
 Let's begin by adding an ``add`` sub command to our existing command to allow adding new tags.
 In order to do this, we need to use a feature of the `discord.py <https://discordpy.readthedocs.io/en/latest/>`_ library called Groups.

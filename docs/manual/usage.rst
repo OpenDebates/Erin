@@ -14,7 +14,7 @@ First let's make sure Erin is installed.
 
     $ erin -V
 
-Looks good! So, we need to head over to the `discord developers portal <https://discordapp.com/developers/applications/>`_ and create our application by clicking on "New Application".
+Looks good! So, we need to head over to the `discord developers portal <https://discord.com/developers/applications/>`_ and create our application by clicking on "New Application".
 
 .. figure:: ../_static/images/create_app_discord.png
     :alt: Create a discord app
