@@ -105,7 +105,9 @@ class ErinClient(commands.Bot):
             cog_name = repr(ctx.cog)
 
         self.logger.info(
-            f"Cog: {cog_name} | "
-            f"Invoked With: {ctx.invoked_with} | Message Content: \n"
+            f"Cog: {cog_name} "
+            f"| Invoked With: {ctx.invoked_with} "
+            f"| Invoked By: {ctx.message.author} - <@!{ctx.message.author.id}> "
+            f"| Message Content: \n"
             f"{ctx.message.content}"
         )
