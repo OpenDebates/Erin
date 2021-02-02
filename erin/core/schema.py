@@ -39,7 +39,7 @@ OPTIONAL_ENVS = [
 config_schema = Schema(
     {
         "bot": {
-            "token": Regex(r"[MN][A-Za-z\d]{23}\.[\w-]{6}\.[\w-]{27}"),
+            "token": str,
             "debug": Or(True, False),
             "project": str,
             "plugins_folder": os.path.exists,
