@@ -27,6 +27,8 @@ contextlib2==0.6.0.post1
     # via schema
 cookiecutter==1.7.2
     # via Erin (setup.py)
+discord-py-slash-command==1.1.2
+    # via Erin (setup.py)
 discord.py==1.7.1
     # via Erin (setup.py)
 dnspython==2.1.0

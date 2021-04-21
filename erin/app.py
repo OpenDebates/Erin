@@ -91,7 +91,7 @@ def start(**kwargs):
     # Initialize Bot
     global bot
     bot = ErinClient(config)
-    slash = SlashCommand(bot, override_type=True)
+    slash = SlashCommand(bot, override_type=True, sync_commands=True)
     bot.remove_command("help")
     bot.setup()
 
