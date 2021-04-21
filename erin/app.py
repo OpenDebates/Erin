@@ -5,6 +5,7 @@ import sys
 from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
 
 import toml
+from discord_slash import SlashCommand
 
 import erin
 from erin.client import ErinClient
@@ -90,6 +91,7 @@ def start(**kwargs):
     # Initialize Bot
     global bot
     bot = ErinClient(config)
+    slash = SlashCommand(bot, override_type=True)
     bot.remove_command("help")
     bot.setup()
 
